@@ -1,7 +1,7 @@
 # Frontend (React + TypeScript + Vite)
 
 ## Overview
-Interactive web UI for SDSU Parking Locator with real-time parking availability and campus map visualization.
+Interactive web UI for SDSU Parking Locator with real-time parking availability, campus map visualization, and feature-based architecture.
 
 ## Tech Stack
 - **Framework:** React 19.1.1
@@ -11,32 +11,61 @@ Interactive web UI for SDSU Parking Locator with real-time parking availability 
 - **Routing:** React Router 7.9.4
 - **Maps:** Leaflet 1.9.4
 - **HTTP Client:** Axios 1.7.9
+- **Component Development:** Storybook 10.0.5
+- **Testing:** Vitest + Playwright
 
-## Project Structure
+## Architecture
+
+### Feature-Based Organization
+The frontend follows a modular architecture with clear separation of concerns:
 
 ```
 src/
-├── api/              # API service layer (placeholder)
-├── components/       # Reusable UI components
-│   ├── Message.tsx
-│   ├── Navigation.tsx
-│   ├── ParkingLotList.tsx
-│   ├── ParkingMap.tsx
-│   └── ReportForm.tsx
-├── pages/           # Page components
-│   ├── About.tsx
+├── features/               # Domain features (business logic)
+│   ├── parking/           # Parking visualization
+│   │   └── components/    # ParkingMap, ParkingLotList
+│   ├── navigation/        # App navigation
+│   │   └── components/    # Navigation
+│   └── reporting/         # User reporting
+│       └── components/    # ReportForm
+│
+├── shared/                # Shared resources
+│   ├── api/              # API client & endpoint definitions
+│   ├── components/       # Reusable UI components (Message)
+│   ├── assets/           # Images, data files
+│   ├── hooks/            # Custom React hooks
+│   ├── types/            # TypeScript interfaces/types
+│   ├── utils/            # Utility functions
+│   ├── constants/        # Application constants
+│   └── contexts/         # React Context providers
+│
+├── pages/                # Route-level components
 │   ├── Home.tsx
 │   ├── Map.tsx
+│   ├── About.tsx
 │   └── Profile.tsx
-├── hooks/           # Custom React hooks (placeholder)
-├── types/           # TypeScript types (placeholder)
-├── utils/           # Utility functions (placeholder)
-├── constants/       # Constants (placeholder)
-├── contexts/        # React contexts (placeholder)
-├── assets/          # Static assets (images, data)
-├── App.tsx          # Main app component
-└── main.tsx         # App entry point
+│
+├── stories/              # Storybook component examples
+├── App.tsx               # Main application component
+└── main.tsx              # Application entry point
 ```
+
+### Component Layers
+
+**Layer 1: Shared Components** (`shared/components/`)
+- Reusable, generic UI components
+- No business logic
+- Example: Message, LoadingSpinner
+
+**Layer 2: Feature Components** (`features/*/components/`)
+- Domain-specific components
+- May contain business logic
+- Example: ParkingMap, ReportForm
+
+**Layer 3: Pages** (`pages/`)
+- Route components
+- Compose feature components
+- Example: Home, Map, About
 
 ## Prerequisites
 - Node.js 18+
@@ -69,6 +98,9 @@ npm run preview
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint
+- `npm run storybook` - Run Storybook component explorer
+- `npm run build-storybook` - Build static Storybook
+- `npx vitest --project=storybook` - Run component tests
 
 ## Environment Variables
 
@@ -83,12 +115,10 @@ VITE_MAP_ZOOM=16
 
 ## Key Features
 
-### Components
-- **Navigation** - App navigation bar
-- **ParkingMap** - Interactive Leaflet map showing parking lots
-- **ParkingLotList** - List view of parking availability
-- **ReportForm** - User reporting interface
-- **Message** - Reusable message/alert component
+### Feature Modules
+- **Parking** (`features/parking/`) - Interactive Leaflet map and lot list view
+- **Navigation** (`features/navigation/`) - App navigation bar
+- **Reporting** (`features/reporting/`) - User reporting interface
 
 ### Pages
 - **Home** - Landing page with overview
@@ -96,19 +126,80 @@ VITE_MAP_ZOOM=16
 - **About** - Project information
 - **Profile** - User profile (planned)
 
-## Development Notes
+## Development Guidelines
 
-### Adding New Components
-Place reusable components in `src/components/` and page-specific components in `src/pages/`.
+### Adding New Features
+1. Create feature folder: `src/features/[feature-name]/`
+2. Add subfolders as needed: `components/`, `hooks/`, `types/`, `api/`
+3. Keep feature code self-contained
+4. Import shared utilities from `src/shared/`
+
+### Adding Shared Components
+Place reusable, generic components in `src/shared/components/`
 
 ### API Integration
-API service functions should be added to `src/api/` (currently placeholder).
+- Add API client in `src/shared/api/client.ts`
+- Define feature-specific endpoints in `src/features/[feature]/api/`
 
 ### TypeScript Types
-Define shared types in `src/types/` (currently placeholder).
+- Shared types → `src/shared/types/`
+- Feature-specific types → `src/features/[feature]/types/`
 
 ### Custom Hooks
-Add React hooks to `src/hooks/` (currently placeholder).
+- Shared hooks → `src/shared/hooks/`
+- Feature-specific hooks → `src/features/[feature]/hooks/`
+
+### Import Rules
+✅ Features can import from `shared/`
+✅ Pages can import from `features/` and `shared/`
+❌ `shared/` should NOT import from `features/`
+❌ Features should NOT import from other features
+
+## Storybook
+
+Storybook is configured for component development and testing.
+
+### Running Storybook
+```bash
+npm run storybook
+```
+Storybook available at: `http://localhost:6006`
+
+### Creating Stories
+Create `.stories.ts` files alongside your components:
+
+```typescript
+// src/components/MyComponent.stories.ts
+import type { Meta, StoryObj } from '@storybook/react';
+import { MyComponent } from './MyComponent';
+
+const meta: Meta<typeof MyComponent> = {
+  title: 'Components/MyComponent',
+  component: MyComponent,
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<typeof MyComponent>;
+
+export const Default: Story = {
+  args: {
+    // component props
+  },
+};
+```
+
+### Installed Addons
+- **a11y** - Accessibility testing
+- **vitest** - Component testing integration
+- **docs** - Auto-generated documentation
+- **interactions** - User interaction testing
+
+### Component Testing
+Run component tests with Vitest:
+```bash
+npx vitest --project=storybook
+```
 
 ## Docker Support
 
@@ -123,6 +214,14 @@ Or use docker-compose from project root:
 docker-compose up frontend
 ```
 
+## Architecture Benefits
+- ✅ **Scalability**: Easy to add new features without affecting existing code
+- ✅ **Maintainability**: Related code is grouped together
+- ✅ **Reusability**: Shared components and utilities are centralized
+- ✅ **Team Collaboration**: Different developers can work on different features
+- ✅ **Testing**: Features can be tested in isolation
+- ✅ **Code Organization**: Clear boundaries between features and shared code
+
 ## Browser Support
 - Chrome/Edge (latest)
 - Firefox (latest)
@@ -134,3 +233,6 @@ docker-compose up frontend
 - `tsconfig.json` - TypeScript configuration
 - `eslint.config.js` - ESLint rules
 - `nginx.conf` - Production server config (Docker)
+- `.storybook/main.ts` - Storybook configuration
+- `.storybook/preview.ts` - Storybook preview settings
+- `.storybook/vitest.setup.ts` - Vitest integration setup

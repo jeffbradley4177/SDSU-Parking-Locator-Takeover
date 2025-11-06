@@ -3,10 +3,10 @@ import { Home } from './pages/Home';
 import { Map } from './pages/Map';
 import { About } from './pages/About';
 import { Profile } from './pages/Profile';
-import Message from './components/Message';
-import ParkingLotList from './components/ParkingLotList';
-import ReportForm from './components/ReportForm';
-import { Navigation } from './components/Navigation';
+import Message from './shared/components/Message';
+import ParkingLotList from './features/parking/components/ParkingLotList';
+import ReportForm from './features/reporting/components/ReportForm';
+import { Navigation } from './features/navigation/components/Navigation';
 
 function App() {
   return (

@@ -6,34 +6,52 @@ A small class project to show SDSU parking lot availability.
 
 ```
 SDSU-Parking-Locator-Takeover/
-├── backend/                   # Spring Boot API
-│   ├── src/main/java/edu/sdsu/parking_backend/
-│   │   ├── config/           # Configuration classes
-│   │   ├── controller/       # REST controllers
-│   │   ├── model/            # Entity classes
-│   │   ├── repository/       # Data access layer
-│   │   ├── service/          # Business logic
-│   │   ├── dto/             # Data transfer objects (placeholder)
-│   │   ├── exception/       # Custom exceptions (placeholder)
-│   │   ├── constants/       # Application constants (placeholder)
-│   │   └── util/            # Utility classes (placeholder)
-│   ├── pom.xml
-│   ├── Dockerfile
-│   └── README.md
-└── frontend/                 # React UI
-    ├── src/
-    │   ├── api/             # API service layer (placeholder)
-    │   ├── components/      # Reusable UI components
-    │   ├── pages/           # Page components
-    │   ├── hooks/           # Custom React hooks (placeholder)
-    │   ├── types/           # TypeScript types (placeholder)
-    │   ├── utils/           # Utility functions (placeholder)
-    │   ├── constants/       # Constants (placeholder)
-    │   └── contexts/        # React contexts (placeholder)
-    ├── package.json
-    ├── Dockerfile
-    ├── nginx.conf
-    └── README.md
+├── backend/                   # Spring Boot API (Feature-based architecture)
+│   └── src/main/java/edu/sdsu/parking_backend/
+│       ├── features/         # Domain features
+│       │   ├── parking/      # Parking lot management
+│       │   │   ├── controller/    # REST endpoints
+│       │   │   ├── service/       # Business logic
+│       │   │   ├── repository/    # Data access
+│       │   │   └── model/         # Entities (ParkingLot, Report)
+│       │   ├── analytics/    # Usage analytics
+│       │   │   ├── controller/
+│       │   │   ├── service/
+│       │   │   ├── repository/
+│       │   │   └── model/         # Analytics entity
+│       │   ├── user/         # User management
+│       │   │   ├── service/
+│       │   │   ├── repository/
+│       │   │   └── model/         # User, Student, Admin, Staff
+│       │   └── admin/        # Admin operations
+│       │       └── controller/
+│       └── shared/           # Cross-cutting concerns
+│           ├── config/       # Security, data seeding
+│           ├── exception/    # Custom exceptions
+│           ├── constants/    # Application constants
+│           └── util/         # Utility classes
+│
+└── frontend/                 # React UI (Feature-based architecture)
+    └── src/
+        ├── features/         # Domain features
+        │   ├── parking/      # Parking visualization
+        │   │   └── components/     # ParkingMap, ParkingLotList
+        │   ├── navigation/   # App navigation
+        │   │   └── components/     # Navigation
+        │   └── reporting/    # User reporting
+        │       └── components/     # ReportForm
+        ├── shared/           # Shared resources
+        │   ├── api/          # API client & endpoints
+        │   ├── components/   # Reusable components
+        │   ├── assets/       # Images, data files
+        │   ├── hooks/        # Custom React hooks
+        │   ├── types/        # TypeScript types
+        │   ├── utils/        # Utility functions
+        │   ├── constants/    # Constants
+        │   └── contexts/     # React contexts
+        ├── pages/            # Route components
+        ├── stories/          # Storybook stories
+        └── .storybook/       # Storybook configuration
 ```
 
 ## Quick Start
@@ -55,6 +73,10 @@ cd frontend
 npm install
 npm run dev
 # UI available at http://localhost:5173
+
+# Optional: Run Storybook for component development
+npm run storybook
+# Storybook available at http://localhost:6006
 ```
 
 ## Getting Started (Cloning files to your computer)
@@ -93,7 +115,8 @@ git pull
 
 ## Tech Stack
 - **Backend:** Spring Boot 3.5.6, Java 17, H2 Database, Spring Security
-- **Frontend:** React 19, TypeScript, Vite, Leaflet, React Router
+- **Frontend:** React 19, TypeScript, Vite, Leaflet, React Router, Storybook
+- **DevOps:** Docker, Docker Compose
 
 ## Documentation
 - See `backend/README.md` for backend setup and API details

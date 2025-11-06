@@ -1,5 +1,10 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.analytics.service;
 
+import edu.sdsu.parking_backend.features.analytics.model.Analytics;
+import edu.sdsu.parking_backend.features.analytics.repository.AnalyticsRepository;
+import edu.sdsu.parking_backend.features.parking.model.Report;
+import edu.sdsu.parking_backend.features.parking.repository.ReportRepository;
+import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
@@ -9,15 +14,15 @@ import java.util.stream.Collectors;
 @Service
 public class AnalyticsService 
 {
-    private final AnalyticsRepo analyticsRepo;
-    private final ReportRepo reportRepo;
-    private final ParkingLotRepo parkingLotRepo;
+    private final AnalyticsRepository analyticsRepository;
+    private final ReportRepository reportRepository;
+    private final ParkingLotRepository parkingLotRepository;
 
-    public AnalyticsService(AnalyticsRepo analyticsRepo, ReportRepo reportRepo, ParkingLotRepo parkingLotRepo)
+    public AnalyticsService(AnalyticsRepository analyticsRepository, ReportRepository reportRepository, ParkingLotRepository parkingLotRepository)
     {
-        this.analyticsRepo = analyticsRepo;
-        this.reportRepo    = reportRepo;
-        this.parkingLotRepo = parkingLotRepo;
+        this.analyticsRepository = analyticsRepository;
+        this.reportRepository    = reportRepository;
+        this.parkingLotRepository = parkingLotRepository;
     }
 
     /*
@@ -27,10 +32,10 @@ public class AnalyticsService
     public Analytics genUsageStat()
     {
         // Gather the data 
-        List<Report> allReports = reportRepo.findAll();
-        List<ParkingLot> allLots = parkingLotRepo.findAll();
+        List<Report> allReports = reportRepository.findAll();
+        List<ParkingLot> allLots = parkingLotRepository.findAll();
 
-        int newReportID = (int) (analyticsRepo.count()+1);
+        int newReportID = (int) (analyticsRepository.count()+1);
         Analytics newReport = new Analytics(newReportID);
         
         // Find busiest lots
@@ -54,7 +59,7 @@ public class AnalyticsService
                                           .map(entry -> entry.getKey() + ":00 - " + (entry.getKey() + 1) + ":00") // transform hr (ex. 15) into a string ("15:00-16:00")
                                           .collect(Collectors.toList()); 
         newReport.setPeakTimes(peakTimes);
-        return analyticsRepo.save(newReport);
+        return analyticsRepository.save(newReport);
     }
 
 }

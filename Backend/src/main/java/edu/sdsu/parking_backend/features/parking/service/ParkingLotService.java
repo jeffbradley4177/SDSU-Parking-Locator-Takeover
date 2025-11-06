@@ -1,5 +1,10 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.parking.service;
 
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
+import edu.sdsu.parking_backend.features.parking.model.Report;
+import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
+import edu.sdsu.parking_backend.features.parking.repository.ReportRepository;
+import edu.sdsu.parking_backend.features.analytics.service.AnalyticsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,32 +18,32 @@ public class ParkingLotService {
 
     private static final Logger log = LoggerFactory.getLogger(ParkingLotService.class);
 
-    private final ParkingLotRepo parkingLotRepo;
-    private final ReportRepo reportRepo;
+    private final ParkingLotRepository parkingLotRepository;
+    private final ReportRepository reportRepository;
 
-    public ParkingLotService(ParkingLotRepo parkingLotRepo,
-                             ReportRepo reportRepo,
+    public ParkingLotService(ParkingLotRepository parkingLotRepository,
+                             ReportRepository reportRepository,
                              Optional<AnalyticsService> analyticsService) {
-        this.parkingLotRepo = parkingLotRepo;
-        this.reportRepo = reportRepo;
+        this.parkingLotRepository = parkingLotRepository;
+        this.reportRepository = reportRepository;
     }
 
     public List<ParkingLot> findAll() {
-        return parkingLotRepo.findAll();
+        return parkingLotRepository.findAll();
     }
 
     public ParkingLot findById(int id) {
-        return parkingLotRepo.findById(id).orElse(null);
+        return parkingLotRepository.findById(id).orElse(null);
     }
 
     /**
      * Update occupied spaces for a lot.
      * Returns true if update succeeded (valid lot and occupancy), false otherwise.
-     * Persists the lot and records a snapshot in reportRepo.
+     * Persists the lot and records a snapshot in reportRepository.
      */
     @Transactional
     public boolean updateOccupied(int lotId, int occupied) {
-        Optional<ParkingLot> opt = parkingLotRepo.findById(lotId);
+        Optional<ParkingLot> opt = parkingLotRepository.findById(lotId);
         if (opt.isEmpty()) {
             log.warn("updateOccupied: lot {} not found", lotId);
             return false;
@@ -56,12 +61,12 @@ public class ParkingLotService {
         // set status based on capacity — change to enum or boolean as your model requires
         lot.setCurrentStatus(occupied >= capacity ? "FULL" : "NOT FULL");
 
-        parkingLotRepo.save(lot);
+        parkingLotRepository.save(lot);
 
         // record snapshot; adjust Report constructor if your Report fields differ
         try {
             Report r = new Report(lotId, capacity, null);
-            reportRepo.save(r);
+            reportRepository.save(r);
         } catch (Exception e) {
             log.debug("Could not write report snapshot: {}", e.getMessage());
             // not fatal for the primary update
