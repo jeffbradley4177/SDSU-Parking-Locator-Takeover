@@ -1,7 +1,5 @@
 # SDSU Parking Locator
 
-A small class project to show SDSU parking lot availability.
-
 ## Project Structure
 
 ```
@@ -79,7 +77,7 @@ npm run storybook
 # Storybook available at http://localhost:6006
 ```
 
-## Getting Started (Cloning files to your computer)
+## Getting Started
 
 ### Option 1: GitHub Desktop
 - From this screen, click on the "code" section on the top left
@@ -95,7 +93,7 @@ git clone https://github.com/jeffbradley4177/SDSU-Parking-Locator-Takeover.git
 cd SDSU-Parking-Locator-Takeover
 ```
 
-## Updating Project (After First Clone)
+## Updating Project
 
 ### GitHub Desktop
 - Open GitHub Desktop
