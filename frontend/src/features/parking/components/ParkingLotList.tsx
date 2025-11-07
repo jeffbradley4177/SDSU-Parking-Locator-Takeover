@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 type Status = "Open" | "Busy" | "Full";
 
@@ -9,12 +9,6 @@ type Lot = {
   lastUpdated: string; // ISO or human string
 };
 
-const mockLots: Lot[] = [
-  { id: 1, name: "Parking Structure 1", status: "Open", lastUpdated: "5 min ago" },
-  { id: 2, name: "Parking Structure 2", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 3, name: "Lot 10", status: "Full", lastUpdated: "2 min ago" },
-  { id: 4, name: "Lot 7", status: "Open", lastUpdated: "8 min ago" },
-];
 
 function statusColor(s: Status) {
   if (s === "Open") return "limegreen";
@@ -23,6 +17,15 @@ function statusColor(s: Status) {
 }
 
 const ParkingLotList: React.FC = () => {
+
+const [lots, setLots] = useState<Lot[]>([
+  { id: 1, name: "Parking Structure 1", status: "Open", lastUpdated: "5 min ago" },
+  { id: 2, name: "Parking Structure 2", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 3, name: "Lot 10", status: "Full", lastUpdated: "2 min ago" },
+  { id: 4, name: "Lot 7", status: "Open", lastUpdated: "8 min ago" },
+]);
+
+
   return (
     <div style={{ marginTop: "1.5rem" }}>
       <h2 style={{ marginBottom: ".5rem" }}>Current Parking Status</h2>
@@ -38,7 +41,7 @@ const ParkingLotList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {mockLots.map((lot) => (
+          {lots.map((lot) => (
             <tr key={lot.id} style={{ borderBottom: "1px solid #333" }}>
               <td style={{ padding: ".6rem" }}>{lot.name}</td>
               <td style={{ padding: ".6rem", fontWeight: 700, color: statusColor(lot.status) }}>
