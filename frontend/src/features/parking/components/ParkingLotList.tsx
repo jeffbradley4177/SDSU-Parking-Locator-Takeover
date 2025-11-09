@@ -19,10 +19,23 @@ function statusColor(s: Status) {
 const ParkingLotList: React.FC = () => {
 
 const [lots, setLots] = useState<Lot[]>([
-  { id: 1, name: "Parking Structure 1", status: "Open", lastUpdated: "5 min ago" },
-  { id: 2, name: "Parking Structure 2", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 3, name: "Lot 10", status: "Full", lastUpdated: "2 min ago" },
-  { id: 4, name: "Lot 7", status: "Open", lastUpdated: "8 min ago" },
+  { id: 1, name: "Lot 1", status: "Open", lastUpdated: "5 min ago" },
+  { id: 2, name: "Lot 2", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 3, name: "Lot 2A", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 4, name: "Lot 2B", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 5, name: "Lot 2C", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 6, name: "Lot 3", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 7, name: "Lot 4", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 8, name: "Lot 6", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 9, name: "Lot 7", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 10, name: "Lot 10", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 11, name: "Lot 11", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 12, name: "Lot 12", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 13, name: "Lot 14", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 14, name: "Lot 15", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 15, name: "Lot 17", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 16, name: "Lot 17A", status: "Busy", lastUpdated: "12 min ago" },
+  { id: 17, name: "Lot 17B", status: "Busy", lastUpdated: "12 min ago" },
 ]);
 
 
