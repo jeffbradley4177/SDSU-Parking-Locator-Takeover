@@ -35,7 +35,7 @@ src/main/java/edu/sdsu/parking_backend/
 ```
 
 ## Prerequisites
-- Java 17+
+- Java 21+
 - Maven (wrapper included)
 
 ## Getting Started
