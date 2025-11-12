@@ -32,10 +32,10 @@ const BASE_CLASSES = [
 
   // Shape & Border
   "rounded-[var(--component-button-radius)]",
-  "border-[length:var(--component-button-border-width)]",
+  "border",
 
   // Typography
-  "text-[length:var(--component-button-font-size)]",
+  "text-[var(--component-button-font-size)]",
   "font-[var(--component-button-font-weight)]",
   "leading-none",
 
@@ -45,7 +45,7 @@ const BASE_CLASSES = [
   // Focus States
   "focus-visible:outline",
   "focus-visible:outline-2",
-  "focus-visible:outline-[var(--semantic-border-focus)]",
+  "focus-visible:outline-[var(--border-color-focus)]",
   "focus-visible:outline-offset-2",
 
   // Disabled States

@@ -5,7 +5,6 @@ import { About } from './pages/About';
 import { Profile } from './pages/Profile';
 import Message from './shared/components/Message';
 import ParkingLotList from './features/parking/components/ParkingLotList';
-import ReportForm from './features/reporting/components/ReportForm';
 import { Navigation } from './features/navigation/components/Navigation';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
                   View current parking lot conditions and help keep the information updated by submitting your own report.
                 </p>
                 <ParkingLotList />
-                <ReportForm />
               </section>
               <div></div>
             </>
