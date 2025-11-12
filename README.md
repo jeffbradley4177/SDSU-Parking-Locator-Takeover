@@ -40,7 +40,8 @@ SDSU-Parking-Locator-Takeover/
         │       └── components/     # ReportForm
         ├── shared/           # Shared resources
         │   ├── api/          # API client & endpoints
-        │   ├── components/   # Reusable components
+        │   ├── components/   # Reusable UI components (Badge, Button, Input)
+        │   ├── styles/       # Design system (tokens, global styles)
         │   ├── assets/       # Images, data files
         │   ├── hooks/        # Custom React hooks
         │   ├── types/        # TypeScript types
@@ -112,10 +113,12 @@ git pull
 - Analytics dashboard (admin)
 
 ## Tech Stack
-- **Backend:** Spring Boot 3.5.6, Java 17, H2 Database, Spring Security
-- **Frontend:** React 19, TypeScript, Vite, Leaflet, React Router, Storybook
+- **Backend:** Spring Boot 3.5.6, Java 21, H2 Database, Spring Security
+- **Frontend:** React 19, TypeScript, Vite, TailwindCSS, Leaflet, React Router, Storybook
+- **Design System:** Token-based CSS custom properties (Primitives → Semantics → Components)
 - **DevOps:** Docker, Docker Compose
 
 ## Documentation
 - See `backend/README.md` for backend setup and API details
 - See `frontend/README.md` for frontend setup and component structure
+- See `frontend/DESIGN_SYSTEM.md` for design system documentation and token usage

@@ -5,6 +5,7 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
+import "./Button.css";
 
 export type ButtonVariant =
   | "primary"

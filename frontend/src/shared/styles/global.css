@@ -1,0 +1,80 @@
+/**
+ * GLOBAL ELEMENT STYLES
+ * Base styling for HTML elements using semantic tokens
+ */
+
+/* Root element configuration */
+:root {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  
+  color: var(--color-text);
+  background-color: var(--color-background);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* Body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  font-weight: var(--link-weight);
+  color: var(--link-color);
+  text-decoration: var(--link-decoration);
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+/* Headings */
+h1 {
+  font-size: var(--heading-size-1);
+  line-height: var(--heading-line-height);
+}
+
+h2 {
+  font-size: var(--heading-size-2);
+  line-height: var(--heading-line-height);
+}
+
+h3 {
+  font-size: var(--heading-size-3);
+  line-height: var(--heading-line-height);
+}
+
+/* Buttons */
+button {
+  border-radius: var(--button-radius);
+  border: var(--button-border);
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  font-family: var(--font-family);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+button:hover {
+  border-color: var(--button-border-hover);
+}
+
+button:focus,
+button:focus-visible {
+  outline: var(--focus-outline);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

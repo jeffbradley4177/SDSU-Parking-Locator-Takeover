@@ -5,6 +5,7 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
+import "./Badge.css";
 
 export type BadgeVariant =
   | "primary"
@@ -49,6 +50,7 @@ export interface BadgeProps extends ComponentPropsWithoutRef<"span"> {
   variant?: BadgeVariant;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
+  onDismiss?: () => void;
   className?: string;
 }
 

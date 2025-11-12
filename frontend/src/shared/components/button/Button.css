@@ -1,0 +1,69 @@
+/**
+ * Button Component Tokens
+ * 
+ * Component-specific design tokens for the Button component.
+ * References semantic tokens from the global design system.
+ */
+
+:root {
+  /* Layout & Sizing */
+  --component-button-gap: var(--semantic-space-2);
+  --component-button-height-default: var(--semantic-size-12);
+  --component-button-padding-inline: var(--semantic-space-4);
+  --component-button-padding-block: var(--semantic-space-2);
+
+  /* Border */
+  --component-button-radius: var(--primitive-radius-md);
+  --component-button-border-width: 1px;
+
+  /* Typography */
+  --component-button-font-size: var(--semantic-font-size-100);
+  --component-button-font-weight: var(--semantic-font-weight-medium);
+
+  /* Icons */
+  --component-button-icon-size: var(--primitive-size-20);
+
+  /* Primary Variant */
+  --component-button-bg-primary-default: var(--semantic-brand-bg);
+  --component-button-text-primary-default: var(--semantic-brand-text-on-bg);
+  --component-button-bg-primary-hover: var(--semantic-brand-bg-hover);
+  --component-button-bg-primary-active: var(--semantic-brand-bg-active);
+
+  /* Secondary Variant */
+  --component-button-bg-secondary-default: var(--semantic-surface-secondary);
+  --component-button-text-secondary-default: var(--semantic-text-primary);
+  --component-button-bg-secondary-hover: var(--semantic-surface-hover);
+  --component-button-text-secondary-hover: var(--semantic-text-primary);
+  --component-button-bg-secondary-active: var(--semantic-surface-active);
+
+  /* Outline Variant */
+  --component-button-border-outline-default: var(--semantic-border-default);
+  --component-button-bg-outline-default: transparent;
+  --component-button-text-outline-default: var(--semantic-text-primary);
+  --component-button-border-outline-hover: var(--semantic-border-hover);
+  --component-button-bg-outline-hover: var(--semantic-surface-hover);
+  --component-button-text-outline-hover: var(--semantic-text-primary);
+  --component-button-border-outline-active: var(--semantic-border-focus);
+  --component-button-bg-outline-active: var(--semantic-surface-active);
+  --component-button-text-outline-active: var(--semantic-text-primary);
+
+  /* Destructive Variant */
+  --component-button-border-destructive-default: var(--semantic-status-error-border);
+  --component-button-bg-destructive-default: var(--semantic-status-error-bg);
+  --component-button-text-destructive-default: var(--semantic-status-error-text);
+  --component-button-border-destructive-hover: var(--semantic-status-error-border);
+  --component-button-bg-destructive-hover: var(--primitive-color-red-600);
+  --component-button-text-destructive-hover: var(--primitive-color-white);
+  --component-button-border-destructive-disabled: var(--semantic-border-disabled);
+  --component-button-bg-destructive-disabled: var(--semantic-surface-disabled);
+  --component-button-text-destructive-disabled: var(--semantic-text-disabled);
+
+  /* Google Variant */
+  --component-button-border-google-default: var(--semantic-border-default);
+  --component-button-bg-google-default: var(--semantic-surface-primary);
+  --component-button-text-google-default: var(--semantic-text-secondary);
+  --component-button-border-google-hover: var(--semantic-border-hover);
+  --component-button-bg-google-hover: var(--semantic-surface-hover);
+  --component-button-border-google-active: var(--semantic-border-focus);
+  --component-button-bg-google-active: var(--semantic-surface-active);
+}

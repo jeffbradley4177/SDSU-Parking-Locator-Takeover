@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/react";
+import type { ButtonProps } from "./Button";
 import { Button, type ButtonVariant } from "./Button";
 
 // Icon components for stories
@@ -227,7 +228,7 @@ export const Google: Story = {
  * All button variants displayed together
  */
 export const AllVariants: Story = {
-  render: (args) => (
+  render: (args: ButtonProps) => (
     <div className="flex flex-wrap items-center gap-[var(--component-page-gap-tight)]">
       {VARIANT_OPTIONS.map((variant) => (
         <Button key={variant} {...args} variant={variant}>
@@ -267,7 +268,7 @@ export const Loading: Story = {
  * All variants in loading state
  */
 export const LoadingStates: Story = {
-  render: (args) => (
+  render: (args: ButtonProps) => (
     <div className="flex flex-wrap items-center gap-[var(--component-page-gap-tight)]">
       {VARIANT_OPTIONS.map((variant) => (
         <Button key={variant} {...args} variant={variant} isLoading>

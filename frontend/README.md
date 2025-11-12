@@ -31,7 +31,15 @@ src/
 │
 ├── shared/                # Shared resources
 │   ├── api/              # API client & endpoint definitions
-│   ├── components/       # Reusable UI components (Message)
+│   ├── components/       # Reusable UI components
+│   │   ├── badge/        # Badge component (Button, Badge.css, Badge.stories)
+│   │   ├── button/       # Button component (Button, Button.css, Button.stories)
+│   │   └── input/        # Input component (input, input.css, input.stories)
+│   ├── styles/           # Design system & global styles
+│   │   ├── tokens/       # Design tokens (primitives.css, semantic.css)
+│   │   ├── reset.css     # Browser reset styles
+│   │   ├── global.css    # Global element styles
+│   │   └── index.css     # Main style entry point
 │   ├── assets/           # Images, data files
 │   ├── hooks/            # Custom React hooks
 │   ├── types/            # TypeScript interfaces/types
@@ -55,7 +63,9 @@ src/
 **Layer 1: Shared Components** (`shared/components/`)
 - Reusable, generic UI components
 - No business logic
-- Example: Message, LoadingSpinner
+- Each component includes: `.tsx`, `.css`, `.stories.tsx`
+- Design tokens via CSS custom properties
+- Base components: Badge, Button, Input, Message
 
 **Layer 2: Feature Components** (`features/*/components/`)
 - Domain-specific components
@@ -114,6 +124,30 @@ VITE_MAP_ZOOM=16
 ```
 
 ## Key Features
+
+### Design System
+The frontend uses a token-based design system with CSS custom properties:
+
+**Token Hierarchy:**
+1. **Primitives** (`shared/styles/tokens/primitives.css`) - Raw values (colors, spacing, typography)
+2. **Semantics** (`shared/styles/tokens/semantic.css`) - Contextual tokens (brand, status, surface)
+3. **Component Tokens** - Component-specific tokens in each component's CSS file
+
+**SDSU Brand Colors:**
+- Primary: `#d41735` (SDSU Red)
+- Secondary: Gold and Gray palettes
+- Accent Colors: 10 color palettes (green, indigo, navy, orange, pink, purple, red, teal, yellow, gray)
+
+**Component Structure:**
+Each base component includes:
+- `.tsx` - React component with TypeScript
+- `.css` - Component-specific design tokens
+- `.stories.tsx` - Storybook stories for development/testing
+
+**Available Components:**
+- **Badge** - 50+ variants (primary, secondary, status, color accents, dismissible)
+- **Button** - 5 variants (primary, secondary, outline, destructive, google)
+- **Input** - Text input with states (default, hover, focus, error, disabled)
 
 ### Feature Modules
 - **Parking** (`features/parking/`) - Interactive Leaflet map and lot list view

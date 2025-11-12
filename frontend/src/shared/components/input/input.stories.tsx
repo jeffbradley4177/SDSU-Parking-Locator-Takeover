@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Input, type InputSize } from "./input";
 
 // Example icon components for stories (using inline SVG)
