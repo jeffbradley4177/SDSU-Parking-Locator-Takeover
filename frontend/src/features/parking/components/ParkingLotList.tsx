@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useRef} from "react";
 
-type Status = "Open" | "Busy" | "Full";
+
+type LotStatus = "Open" | "Busy" | "Full";
 
 type Lot = {
   id: number;
   name: string;
-  status: Status;
+  status: LotStatus;
   lastUpdated: string; // ISO or human string
 };
 
 
-function statusColor(s: Status) {
+function statusColor(s: LotStatus) {
   if (s === "Open") return "limegreen";
   if (s === "Busy") return "gold";
   return "tomato"; // Full
@@ -18,6 +19,8 @@ function statusColor(s: Status) {
 
 const ParkingLotList: React.FC = () => {
 
+
+//lot data exists here. We can build the JSON submission from the state values here.
 const [lots, setLots] = useState<Lot[]>([
   { id: 1, name: "Lot 1", status: "Open", lastUpdated: "5 min ago" },
   { id: 2, name: "Lot 2", status: "Busy", lastUpdated: "12 min ago" },
@@ -38,35 +41,83 @@ const [lots, setLots] = useState<Lot[]>([
   { id: 17, name: "Lot 17B", status: "Busy", lastUpdated: "12 min ago" },
 ]);
 
+const [selectedLotId, setSelectedLotId] = useState<number | null>(null);
+const [isDialogOpen, setIsDialogOpen] = useState(false);
+const dialogRef = useRef<HTMLDialogElement | null>(null);
 
-  return (
-    <div style={{ marginTop: "1.5rem" }}>
-      <h2 style={{ marginBottom: ".5rem" }}>Current Parking Status</h2>
-      <div style={{ fontSize: ".9rem", opacity: 0.8, marginBottom: "1rem" }}>
-        Status reflects recent user/admin reports.
-      </div>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr style={{ textAlign: "left", borderBottom: "1px solid #444" }}>
-            <th style={{ padding: ".5rem" }}>Lot Name</th>
-            <th style={{ padding: ".5rem" }}>Status</th>
-            <th style={{ padding: ".5rem" }}>Last Updated</th>
-          </tr>
-        </thead>
+  const selectedLot = useMemo(
+    () => lots.find(lot => lot.id === selectedLotId) ?? null,
+    [lots, selectedLotId]
+  );
+
+  const openDialogFor = (id: number) => {
+    setSelectedLotId(id);
+    setIsDialogOpen(true);
+    // show native dialog
+    requestAnimationFrame(() => dialogRef.current?.showModal());
+  };
+
+   const closeDialog = () => {
+    setIsDialogOpen(false);
+    dialogRef.current?.close();
+  };
+
+
+//submission here can send information to the server side. It needs to be built out.
+  const updateLotStatus = (status: LotStatus) => {
+    if (selectedLotId == null) return;
+    setLots(prev =>
+      prev.map(l => (l.id === selectedLotId ? { ...l, status, lastUpdated: "just now" } : l))
+    );
+    closeDialog();
+  };
+
+
+   return (
+    <>
+      <table>
         <tbody>
-          {lots.map((lot) => (
-            <tr key={lot.id} style={{ borderBottom: "1px solid #333" }}>
+          {lots.map(lot => (
+            <tr
+              key={lot.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => openDialogFor(lot.id)}
+              onKeyDown={e => (e.key === "Enter" || e.key === " ") && openDialogFor(lot.id)}
+              style={{ cursor: "pointer", borderBottom: "1px solid #333" }}
+            >
               <td style={{ padding: ".6rem" }}>{lot.name}</td>
-              <td style={{ padding: ".6rem", fontWeight: 700, color: statusColor(lot.status) }}>
-                {lot.status}
-              </td>
+              <td style={{ padding: ".6rem", fontWeight: 700 }}>{lot.status}</td>
               <td style={{ padding: ".6rem", opacity: 0.8 }}>{lot.lastUpdated}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+
+      <dialog ref={dialogRef} onClose={closeDialog} style={{ borderRadius: 12, padding: 16 }}>
+        <form method="dialog" style={{ display: "grid", gap: 12 }}>
+          <h3 style={{ margin: 0 }}>
+            Set status for {selectedLot?.name ?? "Lot"}
+          </h3>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button 
+            type="button" 
+            style={{color: "green"}} 
+            onClick={() => updateLotStatus("Open")}>Open</button>
+            <button 
+            type="button" 
+            style={{color: "yellow"}} 
+            onClick={() => updateLotStatus("Busy")}>Busy</button>
+            <button 
+            type="button" 
+            style={{color:"red"}}
+            onClick={() => updateLotStatus("Full")}>Full</button>
+          </div>
+          <button value="cancel" onClick={closeDialog}>Cancel</button>
+        </form>
+      </dialog>
+    </>
   );
-};
+}
 
 export default ParkingLotList;
