@@ -10,13 +10,6 @@ type Lot = {
   lastUpdated: string; // ISO or human string
 };
 
-
-function statusColor(s: LotStatus) {
-  if (s === "Open") return "limegreen";
-  if (s === "Busy") return "gold";
-  return "tomato"; // Full
-}
-
 const ParkingLotList: React.FC = () => {
 
 
@@ -42,7 +35,7 @@ const [lots, setLots] = useState<Lot[]>([
 ]);
 
 const [selectedLotId, setSelectedLotId] = useState<number | null>(null);
-const [isDialogOpen, setIsDialogOpen] = useState(false);
+const [, setIsDialogOpen] = useState(false);
 const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   const selectedLot = useMemo(

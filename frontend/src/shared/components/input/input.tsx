@@ -5,7 +5,6 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import "./input.css";
 
 export type InputSize = "default";
 

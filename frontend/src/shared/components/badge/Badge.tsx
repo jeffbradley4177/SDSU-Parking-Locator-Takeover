@@ -5,7 +5,6 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import "./Badge.css";
 
 export type BadgeVariant =
   | "primary"

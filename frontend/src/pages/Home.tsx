@@ -1,5 +1,3 @@
-import carParkingImg from "../shared/assets/images/map-header.webp";
-import parklot from "../shared/assets/images/isometric-scene-of-parking-spot-in-highway-traffic-road-with-car-vector.jpg";
 import { HomeMap } from "../features/parking/components/ParkingMap";
 
 export const Home = () => {

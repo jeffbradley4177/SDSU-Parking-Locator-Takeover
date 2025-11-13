@@ -1,0 +1,827 @@
+@import "tailwindcss";
+
+:root {
+  /* ============================================
+     PRIMITIVES - Raw values
+     ============================================ */
+
+  /* Colors - Alpha */
+  --primitive-color-black-alpha-40: #00000066;
+  --primitive-color-black-alpha-60: #00000099;
+
+  /* Colors - Blue */
+  --primitive-color-blue-300: #5297b4;
+  --primitive-color-blue-300-alpha: #5297b480;
+  --primitive-color-blue-500: #277da1;
+  --primitive-color-blue-700: #1f6481;
+
+  /* Colors - Gold */
+  --primitive-color-gold-50: #fff8e6;
+  --primitive-color-gold-100: #ffefc2;
+  --primitive-color-gold-200: #ffe390;
+  --primitive-color-gold-300: #ffd45a;
+  --primitive-color-gold-400: #f9c435;
+  --primitive-color-gold-500: #fdb927;
+  --primitive-color-gold-600: #e0a21f;
+  --primitive-color-gold-700: #b88019;
+  --primitive-color-gold-800: #8f6114;
+  --primitive-color-gold-900: #6d4710;
+
+  /* Colors - Green */
+  --primitive-color-green-300: #68bba2;
+  --primitive-color-green-300-alpha: #68bba280;
+  --primitive-color-green-500: #42aa8b;
+  --primitive-color-green-700: #35886f;
+
+  /* Colors - Indigo */
+  --primitive-color-indigo-300: #714770;
+  --primitive-color-indigo-500: #4d194d;
+  --primitive-color-indigo-700: #3d143d;
+
+  /* Colors - Navy */
+  --primitive-color-navy-300: #4d596a;
+  --primitive-color-navy-500: #212f45;
+  --primitive-color-navy-700: #1a2637;
+
+  /* Colors - Neutral */
+  --primitive-color-neutral-50: #ffffff;
+  --primitive-color-neutral-100: #f4f4f4;
+  --primitive-color-neutral-200: #ececec;
+  --primitive-color-neutral-300: #cccccc;
+  --primitive-color-neutral-400: #999999;
+  --primitive-color-neutral-500: #666666;
+  --primitive-color-neutral-600: #333333;
+  --primitive-color-neutral-700: #222222;
+  --primitive-color-neutral-800: #111111;
+  --primitive-color-neutral-900: #000000;
+
+  /* Colors - Orange */
+  --primitive-color-orange-300: #fa9c6e;
+  --primitive-color-orange-300-alpha: #fa9c6e80;
+  --primitive-color-orange-500: #f9844a;
+  --primitive-color-orange-700: #c7693b;
+
+  /* Colors - Pink */
+  --primitive-color-pink-300: #de5c9c;
+  --primitive-color-pink-500: #d63384;
+  --primitive-color-pink-700: #ab2869;
+
+  /* Colors - Primary (Brand Red) */
+  --primitive-color-primary-50: #fff1f3;
+  --primitive-color-primary-100: #ffe1e6;
+  --primitive-color-primary-200: #ffc4ce;
+  --primitive-color-primary-300: #ff97aa;
+  --primitive-color-primary-400: #f05b6f;
+  --primitive-color-primary-500: #d41735;
+  --primitive-color-primary-600: #a6192e;
+  --primitive-color-primary-700: #870c22;
+  --primitive-color-primary-800: #69091b;
+  --primitive-color-primary-900: #4e0715;
+
+  /* Colors - Purple */
+  --primitive-color-purple-300: #a673a3;
+  --primitive-color-purple-500: #90518c;
+  --primitive-color-purple-700: #734170;
+
+  /* Colors - Red */
+  --primitive-color-red-300: #ff8989;
+  --primitive-color-red-300-alpha: #ff898980;
+  --primitive-color-red-500: #e05050;
+  --primitive-color-red-700: #cc5555;
+
+  /* Colors - Sand */
+  --primitive-color-sand-300: #f6f5f1;
+  --primitive-color-sand-500: #f4f3ee;
+  --primitive-color-sand-700: #c3c2be;
+
+  /* Colors - Secondary (Brand Gray) */
+  --primitive-color-secondary-50: #f5f5f5;
+  --primitive-color-secondary-100: #e5e5e5;
+  --primitive-color-secondary-200: #d4d4d4;
+  --primitive-color-secondary-300: #a3a3a3;
+  --primitive-color-secondary-400: #737373;
+  --primitive-color-secondary-500: #525252;
+  --primitive-color-secondary-600: #404040;
+  --primitive-color-secondary-700: #2d2828;
+  --primitive-color-secondary-800: #171717;
+  --primitive-color-secondary-900: #000000;
+
+  /* Colors - Teal */
+  --primitive-color-teal-300: #338384;
+  --primitive-color-teal-500: #006466;
+  --primitive-color-teal-700: #005252;
+
+  /* Colors - Yellow */
+  --primitive-color-yellow-300: #fcd34d;
+  --primitive-color-yellow-300-alpha: #fcd34d80;
+  --primitive-color-yellow-500: #f59e0b;
+  --primitive-color-yellow-700: #b45309;
+
+  /* Border Width */
+  --primitive-border-width-0: 0px;
+  --primitive-border-width-25: 0.5px;
+  --primitive-border-width-50: 1px;
+  --primitive-border-width-100: 2px;
+  --primitive-border-width-150: 3px;
+  --primitive-border-width-200: 4px;
+
+  /* Breakpoints */
+  --primitive-breakpoint-xs: 375px;
+  --primitive-breakpoint-sm: 480px;
+  --primitive-breakpoint-md: 640px;
+  --primitive-breakpoint-lg: 768px;
+  --primitive-breakpoint-xl: 1024px;
+  --primitive-breakpoint-2xl: 1440px;
+
+  /* Focus Ring */
+  --primitive-focus-ring-offset: 2px;
+  --primitive-focus-ring-width: 2px;
+
+  /* Font - Letter Spacing */
+  --primitive-font-letter-spacing-tight: -0.01em;
+  --primitive-font-letter-spacing-normal: 0em;
+  --primitive-font-letter-spacing-relaxed: 0.01em;
+
+  /* Font - Line Height */
+  --primitive-font-line-height-compact: 1.25;
+  --primitive-font-line-height-normal: 1.5;
+  --primitive-font-line-height-relaxed: 1.75;
+
+  /* Font - Size */
+  --primitive-font-size-75: 12px;
+  --primitive-font-size-100: 14px;
+  --primitive-font-size-150: 16px;
+  --primitive-font-size-200: 18px;
+  --primitive-font-size-300: 20px;
+  --primitive-font-size-350: 28px;
+  --primitive-font-size-500: 24px;
+
+  /* Font - Weight */
+  --primitive-font-weight-regular: 400;
+  --primitive-font-weight-medium: 500;
+  --primitive-font-weight-semibold: 600;
+  --primitive-font-weight-bold: 700;
+
+  /* Opacity */
+  --primitive-opacity-subtle: 0.08;
+  --primitive-opacity-disabled: 0.4;
+  --primitive-opacity-overlay: 0.6;
+
+  /* Radius */
+  --primitive-radius-none: 0px;
+  --primitive-radius-sm: 4px;
+  --primitive-radius-md: 8px;
+  --primitive-radius-lg: 12px;
+  --primitive-radius-xl: 16px;
+  --primitive-radius-2xl: 24px;
+  --primitive-radius-full: 9999px;
+
+  /* Size (Dimension Scale) */
+  --primitive-size-0: 0px;
+  --primitive-size-50: 4px;
+  --primitive-size-100: 8px;
+  --primitive-size-150: 12px;
+  --primitive-size-200: 16px;
+  --primitive-size-250: 20px;
+  --primitive-size-300: 24px;
+  --primitive-size-350: 28px;
+  --primitive-size-400: 32px;
+  --primitive-size-450: 36px;
+  --primitive-size-500: 40px;
+  --primitive-size-550: 44px;
+  --primitive-size-600: 48px;
+  --primitive-size-650: 52px;
+  --primitive-size-700: 56px;
+  --primitive-size-750: 64px;
+  --primitive-size-800: 68px;
+  --primitive-size-850: 72px;
+  --primitive-size-900: 76px;
+  --primitive-size-950: 80px;
+  --primitive-size-1000: 84px;
+
+  /* Space (Spacing Scale) */
+  --primitive-space-0: 0px;
+  --primitive-space-25: 2px;
+  --primitive-space-50: 4px;
+  --primitive-space-75: 8px;
+  --primitive-space-100: 12px;
+  --primitive-space-150: 16px;
+  --primitive-space-200: 20px;
+  --primitive-space-250: 24px;
+  --primitive-space-300: 28px;
+  --primitive-space-400: 32px;
+  --primitive-space-500: 40px;
+  --primitive-space-600: 48px;
+  --primitive-space-700: 56px;
+  --primitive-space-800: 64px;
+  --primitive-space-900: 72px;
+  --primitive-space-1000: 80px;
+
+  /* Width */
+  --primitive-width-0: 0px;
+  --primitive-width-50: 40px;
+  --primitive-width-100: 80px;
+  --primitive-width-150: 120px;
+  --primitive-width-200: 160px;
+  --primitive-width-250: 200px;
+  --primitive-width-300: 240px;
+  --primitive-width-350: 280px;
+  --primitive-width-400: 320px;
+  --primitive-width-450: 360px;
+  --primitive-width-500: 400px;
+  --primitive-width-550: 440px;
+  --primitive-width-600: 480px;
+  --primitive-width-650: 520px;
+  --primitive-width-700: 560px;
+  --primitive-width-750: 640px;
+  --primitive-width-800: 680px;
+  --primitive-width-850: 720px;
+  --primitive-width-900: 760px;
+  --primitive-width-950: 800px;
+  --primitive-width-1000: 840px;
+
+  /* ============================================
+     SEMANTIC TOKENS 
+     ============================================ */
+
+  /* Brand Colors */
+  --semantic-brand-primary-default: var(--primitive-color-primary-500);
+  --semantic-brand-primary-hover: var(--primitive-color-primary-600);
+  --semantic-brand-primary-active: var(--primitive-color-primary-400);
+  --semantic-brand-primary-light: var(--primitive-color-primary-400);
+  --semantic-brand-primary-dark: var(--primitive-color-primary-600);
+  --semantic-brand-secondary-default: var(--primitive-color-secondary-900);
+  --semantic-brand-secondary-hover: var(--primitive-color-secondary-700);
+  --semantic-brand-secondary-active: var(--primitive-color-secondary-800);
+  --semantic-brand-secondary-light: var(--primitive-color-secondary-700);
+  --semantic-brand-secondary-dark: var(--primitive-color-secondary-900);
+
+  /* Status Colors */
+  --semantic-status-error-default: var(--primitive-color-red-500);
+  --semantic-status-error-light: var(--primitive-color-red-300);
+  --semantic-status-error-dark: var(--primitive-color-red-700);
+  --semantic-status-error-alpha: var(--primitive-color-red-300-alpha);
+  --semantic-status-success-default: var(--primitive-color-green-500);
+  --semantic-status-success-light: var(--primitive-color-green-300);
+  --semantic-status-success-dark: var(--primitive-color-green-700);
+  --semantic-status-success-alpha: var(--primitive-color-green-300-alpha);
+  --semantic-status-warning-default: var(--primitive-color-orange-500);
+  --semantic-status-warning-light: var(--primitive-color-orange-300);
+  --semantic-status-warning-dark: var(--primitive-color-orange-700);
+  --semantic-status-warning-alpha: var(--primitive-color-orange-300-alpha);
+  --semantic-status-info-default: var(--primitive-color-blue-500);
+  --semantic-status-info-light: var(--primitive-color-blue-300);
+  --semantic-status-info-dark: var(--primitive-color-blue-700);
+  --semantic-status-info-alpha: var(--primitive-color-blue-300-alpha);
+
+  /* Accent Colors */
+  --semantic-accent-green-default: var(--primitive-color-green-500);
+  --semantic-accent-green-light: var(--primitive-color-green-300);
+  --semantic-accent-green-dark: var(--primitive-color-green-700);
+  --semantic-accent-indigo-default: var(--primitive-color-indigo-500);
+  --semantic-accent-indigo-light: var(--primitive-color-indigo-300);
+  --semantic-accent-indigo-dark: var(--primitive-color-indigo-700);
+  --semantic-accent-navy-default: var(--primitive-color-navy-500);
+  --semantic-accent-navy-light: var(--primitive-color-navy-300);
+  --semantic-accent-navy-dark: var(--primitive-color-navy-700);
+  --semantic-accent-neutral-default: var(--primitive-color-neutral-400);
+  --semantic-accent-neutral-light: var(--primitive-color-neutral-300);
+  --semantic-accent-neutral-dark: var(--primitive-color-neutral-500);
+  --semantic-accent-orange-default: var(--primitive-color-orange-500);
+  --semantic-accent-orange-light: var(--primitive-color-orange-300);
+  --semantic-accent-orange-dark: var(--primitive-color-orange-700);
+  --semantic-accent-pink-default: var(--primitive-color-pink-500);
+  --semantic-accent-pink-light: var(--primitive-color-pink-300);
+  --semantic-accent-pink-dark: var(--primitive-color-pink-700);
+  --semantic-accent-purple-default: var(--primitive-color-purple-500);
+  --semantic-accent-purple-light: var(--primitive-color-purple-300);
+  --semantic-accent-purple-dark: var(--primitive-color-purple-700);
+  --semantic-accent-red-default: var(--primitive-color-red-500);
+  --semantic-accent-red-light: var(--primitive-color-red-300);
+  --semantic-accent-red-dark: var(--primitive-color-red-700);
+  --semantic-accent-sand-default: var(--primitive-color-sand-500);
+  --semantic-accent-sand-light: var(--primitive-color-sand-300);
+  --semantic-accent-sand-dark: var(--primitive-color-sand-700);
+  --semantic-accent-teal-default: var(--primitive-color-teal-500);
+  --semantic-accent-teal-light: var(--primitive-color-teal-300);
+  --semantic-accent-teal-dark: var(--primitive-color-teal-700);
+  --semantic-accent-yellow-default: var(--primitive-color-yellow-500);
+  --semantic-accent-yellow-light: var(--primitive-color-yellow-300);
+  --semantic-accent-yellow-dark: var(--primitive-color-yellow-700);
+  --semantic-accent-yellow-alpha: var(--primitive-color-yellow-300-alpha);
+
+  /* Border Colors */
+  --semantic-border-default: var(--primitive-color-neutral-400);
+  --semantic-border-subtle: var(--primitive-color-neutral-300);
+  --semantic-border-emphasis: var(--primitive-color-neutral-600);
+  --semantic-border-disabled: var(--primitive-color-neutral-200);
+  --semantic-border-focus: var(--primitive-color-blue-500);
+  --semantic-border-error: var(--primitive-color-red-500);
+
+  /* Surface Colors */
+  --semantic-surface-base: var(--primitive-color-neutral-100);
+  --semantic-surface-elevated: var(--primitive-color-neutral-50);
+  --semantic-surface-hover: var(--primitive-color-neutral-200);
+  --semantic-surface-active: var(--primitive-color-neutral-200);
+  --semantic-surface-overlay: var(--primitive-color-black-alpha-60);
+  --semantic-surface-transparent: #00000000;
+
+  /* Text Colors */
+  --semantic-text-primary: var(--primitive-color-neutral-900);
+  --semantic-text-secondary: var(--primitive-color-neutral-500);
+  --semantic-text-disabled: var(--primitive-color-neutral-400);
+  --semantic-text-inverse: var(--primitive-color-neutral-50);
+  --semantic-text-link: var(--primitive-color-blue-500);
+  --semantic-text-error: var(--primitive-color-red-500);
+
+  /* Border Width */
+  --semantic-border-width-none: var(--primitive-border-width-0);
+  --semantic-border-width-thin: var(--primitive-border-width-50);
+  --semantic-border-width-default: var(--primitive-border-width-50);
+  --semantic-border-width-thick: var(--primitive-border-width-100);
+
+  /* Border Radius */
+  --semantic-radius-none: var(--primitive-radius-none);
+  --semantic-radius-sm: var(--primitive-radius-sm);
+  --semantic-radius-md: var(--primitive-radius-md);
+  --semantic-radius-lg: var(--primitive-radius-lg);
+  --semantic-radius-full: var(--primitive-radius-full);
+
+  /* Spacing (Gap & Padding) */
+  --semantic-space-none: var(--primitive-space-0);
+  --semantic-space-tight: var(--primitive-space-50);
+  --semantic-space-compact: var(--primitive-space-75);
+  --semantic-space-default: var(--primitive-space-100);
+  --semantic-space-comfortable: var(--primitive-space-150);
+  --semantic-space-loose: var(--primitive-space-200);
+  --semantic-space-spacious: var(--primitive-space-400);
+
+  /* Icon Sizes */
+  --semantic-icon-xsmall: var(--primitive-size-150);
+  --semantic-icon-small: var(--primitive-size-200);
+  --semantic-icon-medium: var(--primitive-size-250);
+  --semantic-icon-default: var(--semantic-icon-medium);
+  --semantic-icon-large: var(--primitive-size-300);
+  --semantic-icon-xlarge: var(--primitive-size-350);
+
+  /* Component Heights */
+  --semantic-height-xxsmall: var(--primitive-size-350);
+  --semantic-height-xsmall: var(--primitive-size-400);
+  --semantic-height-small: var(--primitive-size-450);
+  --semantic-height-medium: var(--primitive-size-550);
+  --semantic-height-large: var(--primitive-size-650);
+  --semantic-height-xlarge: var(--primitive-size-750);
+  --semantic-height-xxlarge: var(--primitive-size-850);
+  --semantic-height-xxxlarge: var(--primitive-size-950);
+
+  /* Avatar Sizes */
+  --semantic-avatar-small: var(--primitive-size-400);
+  --semantic-avatar-medium: var(--primitive-size-500);
+  --semantic-avatar-default: var(--semantic-avatar-medium);
+  --semantic-avatar-large: var(--primitive-size-600);
+  --semantic-avatar-xlarge: var(--primitive-size-550);
+
+  /* Typography - Size */
+  --semantic-text-size-caption: var(--primitive-font-size-100);
+  --semantic-text-size-body-sm: var(--primitive-font-size-150);
+  --semantic-text-size-body: var(--primitive-font-size-200);
+  --semantic-text-size-h3: var(--primitive-font-size-300);
+  --semantic-text-size-h2: var(--primitive-font-size-500);
+  --semantic-text-size-h1: var(--primitive-font-size-350);
+
+  /* Typography - Weight */
+  --semantic-text-weight-light: var(--primitive-font-weight-regular);
+  --semantic-text-weight-regular: var(--primitive-font-weight-medium);
+  --semantic-text-weight-semibold: var(--primitive-font-weight-semibold);
+  --semantic-text-weight-bold: var(--primitive-font-weight-bold);
+
+  /* Width Scale */
+  --semantic-width-xxsmall: var(--primitive-width-50);
+  --semantic-width-xsmall: var(--primitive-width-100);
+  --semantic-width-small: var(--primitive-width-150);
+  --semantic-width-medium: var(--primitive-width-300);
+  --semantic-width-large: var(--primitive-width-450);
+  --semantic-width-xlarge: var(--primitive-width-500);
+  --semantic-width-xxlarge: var(--primitive-width-600);
+  --semantic-width-xxxlarge: var(--primitive-width-800);
+  --semantic-width-xxxxlarge: var(--primitive-width-1000);
+
+  /* ============================================
+     COMPONENT TOKENS - Component-specific
+     ============================================ */
+
+  /* Badge Component */
+  /* Badge - Colors - Primary */
+  --component-badge-bg-primary: var(--semantic-brand-primary-default);
+  --component-badge-text-primary: var(--semantic-text-inverse);
+
+  /* Badge - Colors - Secondary */
+  --component-badge-bg-secondary: var(--semantic-brand-secondary-default);
+  --component-badge-text-secondary: var(--semantic-text-inverse);
+
+  /* Badge - Colors - Neutral */
+  --component-badge-bg-neutral: var(--semantic-surface-elevated);
+  --component-badge-text-neutral: var(--semantic-text-primary);
+
+  /* Badge - Colors - Status */
+  --component-badge-bg-success: var(--semantic-status-success-alpha);
+  --component-badge-text-success: var(--semantic-status-success-dark);
+  --component-badge-bg-warning: var(--semantic-status-warning-alpha);
+  --component-badge-text-warning: var(--semantic-status-warning-dark);
+  --component-badge-bg-error: var(--semantic-status-error-alpha);
+  --component-badge-text-error: var(--semantic-status-error-dark);
+  --component-badge-bg-info: var(--semantic-status-info-alpha);
+  --component-badge-text-info: var(--semantic-status-info-dark);
+  --component-badge-bg-alert: var(--semantic-accent-yellow-alpha);
+  --component-badge-text-alert: var(--semantic-accent-yellow-dark);
+
+  /* Badge - Colors - Accents */
+  --component-badge-bg-green: var(--semantic-accent-green-default);
+  --component-badge-text-green: var(--semantic-text-primary);
+  --component-badge-bg-indigo: var(--semantic-accent-indigo-default);
+  --component-badge-text-indigo: var(--semantic-text-inverse);
+  --component-badge-bg-navy: var(--semantic-accent-navy-default);
+  --component-badge-text-navy: var(--semantic-text-inverse);
+  --component-badge-bg-orange: var(--semantic-accent-orange-default);
+  --component-badge-text-orange: var(--semantic-text-primary);
+  --component-badge-bg-pink: var(--semantic-accent-pink-default);
+  --component-badge-text-pink: var(--semantic-text-primary);
+  --component-badge-bg-purple: var(--semantic-accent-purple-default);
+  --component-badge-text-purple: var(--semantic-text-primary);
+  --component-badge-bg-red: var(--semantic-accent-red-default);
+  --component-badge-text-red: var(--semantic-text-primary);
+  --component-badge-bg-sand: var(--semantic-accent-sand-default);
+  --component-badge-text-sand: var(--semantic-text-primary);
+  --component-badge-bg-teal: var(--semantic-accent-teal-default);
+  --component-badge-text-teal: var(--semantic-text-primary);
+  --component-badge-bg-yellow: var(--semantic-accent-yellow-default);
+  --component-badge-text-yellow: var(--semantic-text-primary);
+
+  /* Badge - Sizing */
+  --component-badge-height: var(--semantic-height-xxsmall);
+  --component-badge-padding-inline: var(--semantic-space-default);
+  --component-badge-padding-block: var(--semantic-space-tight);
+  --component-badge-gap: var(--semantic-space-compact);
+  --component-badge-radius: var(--semantic-radius-sm);
+  --component-badge-icon-size: var(--semantic-icon-small);
+
+  /* Badge - Typography */
+  --component-badge-font-size: var(--semantic-text-size-caption);
+  --component-badge-font-weight: var(--semantic-text-weight-regular);
+
+  /* Button Component */
+  /* Button - Primary Variant */
+  --component-button-bg-primary-default: var(--semantic-brand-primary-default);
+  --component-button-bg-primary-hover: var(--semantic-brand-primary-hover);
+  --component-button-bg-primary-active: var(--semantic-brand-primary-active);
+  --component-button-text-primary-default: var(--semantic-text-inverse);
+  --component-button-text-primary-hover: var(--semantic-text-inverse);
+  --component-button-text-primary-active: var(--semantic-text-inverse);
+  --component-button-icon-primary-default: var(--semantic-text-inverse);
+  --component-button-icon-primary-hover: var(--semantic-text-inverse);
+  --component-button-icon-primary-disabled: var(--semantic-text-disabled);
+
+  /* Button - Secondary Variant */
+  --component-button-bg-secondary-default: var(
+    --semantic-brand-secondary-default
+  );
+  --component-button-bg-secondary-hover: var(--semantic-brand-secondary-hover);
+  --component-button-bg-secondary-active: var(
+    --semantic-brand-secondary-active
+  );
+  --component-button-text-secondary-default: var(--semantic-text-inverse);
+  --component-button-text-secondary-hover: var(--semantic-text-inverse);
+  --component-button-text-secondary-disabled: var(--semantic-text-disabled);
+  --component-button-icon-secondary-default: var(--semantic-text-inverse);
+  --component-button-icon-secondary-hover: var(--semantic-text-inverse);
+  --component-button-icon-secondary-disabled: var(--semantic-text-disabled);
+
+  /* Button - Outline Variant */
+  --component-button-bg-outline-default: var(--semantic-surface-transparent);
+  --component-button-bg-outline-hover: var(--semantic-surface-hover);
+  --component-button-bg-outline-active: var(--semantic-brand-primary-hover);
+  --component-button-border-outline-default: var(
+    --semantic-brand-secondary-default
+  );
+  --component-button-border-outline-hover: var(
+    --semantic-brand-secondary-hover
+  );
+  --component-button-border-outline-active: var(--semantic-surface-transparent);
+  --component-button-text-outline-default: var(
+    --semantic-brand-secondary-default
+  );
+  --component-button-text-outline-hover: var(--semantic-brand-secondary-hover);
+  --component-button-text-outline-active: var(--semantic-text-inverse);
+  --component-button-icon-outline-default: var(
+    --semantic-brand-secondary-default
+  );
+  --component-button-icon-outline-hover: var(--semantic-brand-secondary-hover);
+  --component-button-icon-outline-active: var(--semantic-surface-transparent);
+
+  /* Button - Destructive Variant */
+  --component-button-bg-destructive-default: var(
+    --semantic-surface-transparent
+  );
+  --component-button-bg-destructive-hover: var(--semantic-status-error-alpha);
+  --component-button-bg-destructive-disabled: var(
+    --semantic-surface-transparent
+  );
+  --component-button-border-destructive-default: var(
+    --semantic-status-error-default
+  );
+  --component-button-border-destructive-hover: var(
+    --semantic-status-error-dark
+  );
+  --component-button-border-destructive-disabled: var(
+    --semantic-status-error-alpha
+  );
+  --component-button-text-destructive-default: var(
+    --semantic-status-error-default
+  );
+  --component-button-text-destructive-hover: var(--semantic-status-error-dark);
+  --component-button-text-destructive-disabled: var(
+    --semantic-status-error-alpha
+  );
+  --component-button-icon-destructive-default: var(
+    --semantic-status-error-default
+  );
+  --component-button-icon-destructive-hover: var(--semantic-status-error-dark);
+  --component-button-icon-destructive-disabled: var(
+    --semantic-status-error-alpha
+  );
+
+  /* Button - Google Variant */
+  --component-button-bg-google-default: transparent;
+  --component-button-bg-google-hover: var(--semantic-surface-elevated);
+  --component-button-bg-google-active: var(--primitive-color-neutral-200);
+  --component-button-border-google-default: var(--primitive-color-neutral-900);
+  --component-button-border-google-hover: var(--primitive-color-neutral-900);
+  --component-button-border-google-active: var(--primitive-color-neutral-800);
+  --component-button-text-google-default: var(--semantic-text-primary);
+  --component-button-text-google-hover: var(--semantic-text-primary);
+  --component-button-text-google-active: var(--semantic-text-primary);
+
+  /* Button - Sizing */
+  --component-button-height-default: var(--semantic-height-medium);
+  --component-button-padding-inline: var(--semantic-space-default);
+  --component-button-padding-block: var(--semantic-space-tight);
+  --component-button-gap: var(--semantic-space-default);
+  --component-button-radius: var(--semantic-radius-md);
+  --component-button-border-width: var(--semantic-border-width-thin);
+  --component-button-icon-size: var(--semantic-icon-medium);
+  --component-button-icon-only-size-sm: var(--semantic-height-small);
+  --component-button-icon-only-size-md: var(--semantic-height-medium);
+
+  /* Button - Typography */
+  --component-button-font-size: var(--semantic-text-size-body);
+  --component-button-font-weight: var(--semantic-text-weight-regular);
+
+  /* Input Component */
+  --component-input-bg-default: var(--semantic-surface-elevated);
+  --component-input-bg-disabled: var(--semantic-surface-base);
+  --component-input-bg-hover: var(--semantic-surface-hover);
+  --component-input-border-default: var(--semantic-border-subtle);
+  --component-input-border-focus: var(--semantic-border-focus);
+  --component-input-border-error: var(--semantic-border-error);
+  --component-input-border-hover: var(--semantic-border-default);
+  --component-input-text-default: var(--semantic-text-primary);
+  --component-input-text-disabled: var(--semantic-text-disabled);
+  --component-input-label-default: var(--semantic-text-primary);
+  --component-input-label-error: var(--semantic-text-error);
+  --component-input-helper-default: var(--semantic-text-secondary);
+  --component-input-helper-error: var(--semantic-text-error);
+  --component-input-height-sm: var(--semantic-height-small);
+  --component-input-height-default: var(--semantic-height-medium);
+  --component-input-padding-inline: var(--semantic-space-default);
+  --component-input-padding-block: var(--semantic-space-tight);
+  --component-input-gap-default: var(--semantic-space-compact);
+  --component-input-gap-group: var(--semantic-space-tight);
+  --component-input-radius: var(--semantic-radius-md);
+  --component-input-border-width-default: var(--semantic-border-width-default);
+  --component-input-border-width-focus: var(--semantic-border-width-thick);
+  --component-input-border-width-error: var(--semantic-border-width-thick);
+  --component-input-icon-size-sm: var(--semantic-icon-small);
+  --component-input-icon-size-default: var(--semantic-icon-medium);
+  --component-input-font-size: var(--semantic-text-size-body);
+  --component-input-font-weight: var(--semantic-text-weight-light);
+  --component-input-label-font-size: var(--semantic-text-size-caption);
+  --component-input-label-font-weight: var(--semantic-text-weight-light);
+  --component-input-helper-font-size: var(--semantic-text-size-caption);
+  --component-input-helper-font-weight: var(--semantic-text-weight-light);
+
+  /* Page Layout */
+  --component-page-bg: var(--semantic-surface-base);
+  --component-page-padding-inline: var(--semantic-space-comfortable);
+  --component-page-padding-block: var(--semantic-space-loose);
+  --component-page-gap-tight: var(--semantic-space-default);
+  --component-page-gap-default: var(--semantic-space-comfortable);
+  --component-page-gap-comfortable: var(--semantic-space-loose);
+  --component-page-gap-section: var(--semantic-space-spacious);
+
+  /* Progress Component */
+  --component-progress-fill-bg: var(--semantic-brand-primary-default);
+  --component-progress-track-bg: var(--semantic-surface-hover);
+  --component-progress-height: var(--semantic-icon-xsmall);
+  --component-progress-radius-default: var(--semantic-radius-sm);
+  --component-progress-radius-none: var(--semantic-radius-none);
+
+  /* Other Components (Minimal structure) */
+  --component-filter-bg: var(--semantic-surface-elevated);
+  --component-filter-padding-block: var(--semantic-space-default);
+  --component-filter-padding-inline: var(--semantic-space-comfortable);
+  --component-filter-radius: var(--semantic-radius-lg);
+
+  --component-selector-bg-default: var(--semantic-surface-elevated);
+  --component-selector-bg-hover: var(--semantic-surface-elevated);
+  --component-selector-border-default: var(--semantic-border-subtle);
+  --component-selector-helper-default: var(--semantic-text-secondary);
+  --component-selector-height: var(--semantic-height-medium);
+  --component-selector-padding-inline: var(--semantic-space-default);
+  --component-selector-padding-block: var(--semantic-space-tight);
+  --component-selector-gap-default: var(--semantic-space-compact);
+  --component-selector-gap-group: var(--semantic-space-tight);
+  --component-selector-radius: var(--semantic-radius-sm);
+  --component-selector-border-width: var(--semantic-border-width-default);
+  --component-selector-helper-font-size: var(--semantic-text-size-caption);
+  --component-selector-helper-font-weight: var(--semantic-text-weight-light);
+}
+
+/* ============================================
+   CSS RESET
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: var(--primitive-font-line-height-normal);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   PAGE-SPECIFIC STYLES
+   ============================================ */
+
+/* Home Page */
+.title {
+  display: block;
+  background-color: red;
+  padding: var(--primitive-space-100);
+  border-radius: var(--primitive-radius-lg);
+}
+
+.header-container {
+  position: relative;
+  text-align: center;
+}
+
+.map-container {
+  padding: var(--primitive-space-150);
+  display: flex;
+  justify-content: center;
+  margin-top: var(--primitive-space-200);
+  height: 300px;
+}
+
+.map-img {
+  width: 75%;
+}
+
+.msg-title {
+  font-size: var(--primitive-font-size-350);
+  margin-top: var(--primitive-space-150);
+  padding: var(--primitive-space-150);
+}
+
+.side-img {
+  display: flex;
+  justify-content: end;
+  margin-top: var(--primitive-space-200);
+}
+
+.img-small {
+  display: block;
+  max-width: 20%;
+  height: auto;
+}
+
+/* Navigation */
+.navbar {
+  background-color: #263032;
+  color: white;
+  padding: var(--primitive-space-150);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .title {
+  font-weight: bold;
+  font-size: var(--primitive-font-size-200);
+  padding: var(--primitive-space-150);
+}
+
+.nav-links {
+  padding: var(--primitive-space-150);
+  margin-right: var(--primitive-space-150);
+}
+
+.navbar a {
+  color: white;
+  margin-right: var(--primitive-space-150);
+  text-decoration: none;
+  margin-left: var(--primitive-space-150);
+}
+
+.navbar a:hover {
+  color: rgb(203, 199, 199);
+  text-decoration: none;
+}
+
+.navbar a:last-child {
+  margin-right: 0;
+}
+
+.hamburger {
+  display: none;
+  font-size: var(--primitive-font-size-300);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .hamburger {
+    display: block;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .navbar .nav-links {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: var(--primitive-space-100);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: var(--primitive-space-100);
+  }
+
+  .navbar .nav-links.active {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  .navbar .nav-links a {
+    padding: var(--primitive-space-50) 0;
+  }
+}
+
+/* Page Content */
+.page-content {
+  padding: var(--primitive-space-200);
+}

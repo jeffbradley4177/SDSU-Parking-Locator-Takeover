@@ -5,7 +5,6 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import "./Button.css";
 
 export type ButtonVariant =
   | "primary"
@@ -32,10 +31,10 @@ const BASE_CLASSES = [
 
   // Shape & Border
   "rounded-[var(--component-button-radius)]",
-  "border",
+  "border-[length:var(--component-button-border-width)]",
 
   // Typography
-  "text-[var(--component-button-font-size)]",
+  "text-[length:var(--component-button-font-size)]",
   "font-[var(--component-button-font-weight)]",
   "leading-none",
 
