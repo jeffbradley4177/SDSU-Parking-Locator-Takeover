@@ -1,42 +1,33 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-
-// Fix default marker icon issue in Leaflet + Vite
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-});
+import { useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { H1, Text } from "@/shared/components/typography";
+import { configureLeafletIcons, DEFAULT_MAP_CONFIG } from "@/shared/utils";
+import { PARKING_LOT_LOCATIONS } from "@/shared/constants";
 
 export function Map() {
-  const sdsuCenter: [number, number] = [32.775, -117.071]; // SDSU coordinates
-
-  const parkingLots = [
-    { name: 'Parking Structure 1', coords: [32.7762, -117.0715] },
-    { name: 'Parking Structure 2', coords: [32.7745, -117.0702] },
-    { name: 'Parking 12', coords: [32.7768, -117.0728] },
-  ];
+  // Configure Leaflet icons once on mount
+  useEffect(() => {
+    configureLeafletIcons();
+  }, []);
 
   return (
-    <div>
-      <h1 style={{ marginBottom: "1rem" }}>SDSU Campus Map</h1>
-      <p style={{ marginBottom: "1rem" }}>Explore parking lots on the SDSU campus.</p>
+    <div className="p-[var(--component-page-padding-block)]">
+      <H1 className="mb-[var(--component-page-gap-default)]">SDSU Campus Map</H1>
+      <Text className="mb-[var(--component-page-gap-default)]">
+        Explore parking lots on the SDSU campus.
+      </Text>
 
       <MapContainer
-        center={sdsuCenter}
-        zoom={17}
-        style={{ height: "500px", width: "100%", borderRadius: "12px" }}
+        center={DEFAULT_MAP_CONFIG.center}
+        zoom={DEFAULT_MAP_CONFIG.zoom}
+        className="h-[500px] w-full rounded-[var(--component-map-radius)]"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution={DEFAULT_MAP_CONFIG.tileLayerAttribution}
+          url={DEFAULT_MAP_CONFIG.tileLayerUrl}
         />
-        {parkingLots.map((lot, index) => (
-          <Marker key={index} position={lot.coords as [number, number]}>
+        {PARKING_LOT_LOCATIONS.map((lot, index) => (
+          <Marker key={index} position={lot.coords}>
             <Popup>{lot.name}</Popup>
           </Marker>
         ))}

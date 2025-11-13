@@ -557,7 +557,7 @@ export const DismissibleDemo: Story = {
 
     return (
       <div className="flex flex-col gap-[var(--component-page-gap-default)] max-w-[500px]">
-        <p className="text-[length:var(--semantic-text-size-body-sm)] text-[color:var(--semantic-text-secondary)]">
+        <p className="text-[length:var(--component-typography-text-body-sm-size)] text-[color:var(--component-typography-color-secondary)]">
           Click on any badge to remove it:
         </p>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -572,7 +572,7 @@ export const DismissibleDemo: Story = {
           ))}
         </div>
         {tags.length === 0 && (
-          <p className="text-[length:var(--semantic-text-size-body-sm)] text-[color:var(--semantic-text-secondary)] italic">
+          <p className="text-[length:var(--component-typography-text-body-sm-size)] text-[color:var(--component-typography-color-secondary)] italic">
             All tags removed! Refresh to reset.
           </p>
         )}
@@ -630,7 +630,7 @@ export const RealWorldExamples: Story = {
     <div className="flex flex-col gap-[var(--component-page-gap-comfortable)] max-w-[600px]">
       {/* Parking lot status */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Parking Lot Status:
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -651,7 +651,7 @@ export const RealWorldExamples: Story = {
 
       {/* User roles */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           User Roles:
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -664,7 +664,7 @@ export const RealWorldExamples: Story = {
 
       {/* Categories - Using dismissible variants */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Selected Parking Structures (Dismissible):
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -697,7 +697,7 @@ export const RealWorldExamples: Story = {
 
       {/* Filter tags - Using dismissible variants */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Active Filters (Click to Remove):
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">

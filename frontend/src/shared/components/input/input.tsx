@@ -21,10 +21,10 @@ const BASE_CLASSES = [
   // Layout
   "flex items-center",
   "w-full",
-  "gap-[var(--component-input-gap-default)]",
+  "gap-[length:var(--component-input-gap-default)]",
 
   // Shape & Border - Using solid border style
-  "rounded-[var(--component-input-radius)]",
+  "rounded-[length:var(--component-input-radius)]",
   "border",
   "border-solid",
 
@@ -106,8 +106,6 @@ const SIZE_STYLES: Record<InputSize, string> = {
   default: [
     "min-h-[var(--component-input-height-default)]",
     "max-h-[var(--component-input-height-default)]",
-    "px-[var(--component-input-padding-inline)]",
-    "py-[var(--component-input-padding-block)]",
   ].join(" "),
 };
 
@@ -149,7 +147,13 @@ export const Input = memo(
     );
 
     return (
-      <div className={containerClasses}>
+      <div
+        className={containerClasses}
+        style={{
+          paddingInline: "var(--component-input-padding-inline)",
+          paddingBlock: "var(--component-input-padding-block)",
+        }}
+      >
         {/* Leading Icon */}
         {leadingIcon && <IconWrapper icon={leadingIcon} />}
 

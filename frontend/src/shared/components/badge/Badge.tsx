@@ -58,12 +58,10 @@ const BASE_CLASSES = [
   // Layout
   "inline-flex items-center",
   "min-h-[var(--component-badge-height)]",
-  "gap-[var(--component-badge-gap)]",
+  "gap-[length:var(--component-badge-gap)]",
 
   // Shape & Border
-  "rounded-[var(--component-badge-radius)]",
-  "px-[var(--component-badge-padding-inline)]",
-  "py-[var(--component-badge-padding-block)]",
+  "rounded-[length:var(--component-badge-radius)]",
 
   // Typography
   "text-[length:var(--component-badge-font-size)]",
@@ -323,6 +321,10 @@ export const Badge = memo(
         className={badgeClasses}
         role="status"
         onClick={handleClick}
+        style={{
+          paddingInline: "var(--component-badge-padding-inline)",
+          paddingBlock: "var(--component-badge-padding-block)",
+        }}
         {...props}
       >
         {leadingIcon && <IconWrapper icon={leadingIcon} />}

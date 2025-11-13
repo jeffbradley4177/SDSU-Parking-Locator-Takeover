@@ -27,10 +27,10 @@ const BASE_CLASSES = [
   // Layout
   "w-full flex self-stretch",
   "inline-flex items-center justify-center",
-  "gap-[var(--component-button-gap)]",
+  "gap-[length:var(--component-button-gap)]",
 
   // Shape & Border
-  "rounded-[var(--component-button-radius)]",
+  "rounded-[length:var(--component-button-radius)]",
   "border-[length:var(--component-button-border-width)]",
 
   // Typography
@@ -67,8 +67,10 @@ const ICON_WRAPPER_CLASSES = [
 
 // Size variants
 const SIZE_STYLES: Record<ButtonSize, string> = {
-  default:
-    "min-h-[var(--component-button-height-default)] px-[var(--component-button-padding-inline)] py-[var(--component-button-padding-block)]",
+  default: [
+    "min-h-[var(--component-button-height-default)]",
+    "max-h-[var(--component-button-height-default)]",
+  ].join(" "),
 };
 
 // Variant styles using component tokens
@@ -200,6 +202,10 @@ export const Button = memo(
         data-size={size}
         data-loading={isLoading || undefined}
         className={cn(buttonClasses, isLoading && "relative")}
+        style={{
+          paddingInline: "var(--component-button-padding-inline)",
+          paddingBlock: "var(--component-button-padding-block)",
+        }}
         {...rest}
       >
         {/* Centered loading spinner */}

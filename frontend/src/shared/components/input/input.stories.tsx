@@ -303,7 +303,7 @@ export const AllStates: Story = {
 export const LoginForm: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-default)] w-full">
-      <h2 className="text-[length:var(--semantic-text-size-h2)] font-[var(--semantic-text-weight-semibold)]">
+      <h2 className="text-[length:var(--component-typography-heading-h2-size)] font-[var(--component-typography-heading-weight-semibold)]">
         Sign In
       </h2>
       <Input

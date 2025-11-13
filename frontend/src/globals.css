@@ -8,6 +8,7 @@
   /* Colors - Alpha */
   --primitive-color-black-alpha-40: #00000066;
   --primitive-color-black-alpha-60: #00000099;
+  --primitive-color-transparent: #00000000;
 
   /* Colors - Blue */
   --primitive-color-blue-300: #5297b4;
@@ -94,18 +95,6 @@
   --primitive-color-sand-500: #f4f3ee;
   --primitive-color-sand-700: #c3c2be;
 
-  /* Colors - Secondary (Brand Gray) */
-  --primitive-color-secondary-50: #f5f5f5;
-  --primitive-color-secondary-100: #e5e5e5;
-  --primitive-color-secondary-200: #d4d4d4;
-  --primitive-color-secondary-300: #a3a3a3;
-  --primitive-color-secondary-400: #737373;
-  --primitive-color-secondary-500: #525252;
-  --primitive-color-secondary-600: #404040;
-  --primitive-color-secondary-700: #2d2828;
-  --primitive-color-secondary-800: #171717;
-  --primitive-color-secondary-900: #000000;
-
   /* Colors - Teal */
   --primitive-color-teal-300: #338384;
   --primitive-color-teal-500: #006466;
@@ -116,6 +105,22 @@
   --primitive-color-yellow-300-alpha: #fcd34d80;
   --primitive-color-yellow-500: #f59e0b;
   --primitive-color-yellow-700: #b45309;
+
+  /* Colors - Gray (Brand Gray) */
+  --primitive-color-gray-50: #f5f5f5;
+  --primitive-color-gray-100: #e5e5e5;
+  --primitive-color-gray-200: #d4d4d4;
+  --primitive-color-gray-300: #a3a3a3;
+  --primitive-color-gray-400: #737373;
+  --primitive-color-gray-500: #525252;
+  --primitive-color-gray-600: #404040;
+  --primitive-color-gray-700: #2d2828;
+  --primitive-color-gray-800: #171717;
+  --primitive-color-gray-900: #000000;
+
+  /* Colors - Navigation */
+  --primitive-color-navigation-bg: #263032;
+  --primitive-color-navigation-link-hover: #cbc7c7;
 
   /* Border Width */
   --primitive-border-width-0: 0px;
@@ -250,11 +255,11 @@
   --semantic-brand-primary-active: var(--primitive-color-primary-400);
   --semantic-brand-primary-light: var(--primitive-color-primary-400);
   --semantic-brand-primary-dark: var(--primitive-color-primary-600);
-  --semantic-brand-secondary-default: var(--primitive-color-secondary-900);
-  --semantic-brand-secondary-hover: var(--primitive-color-secondary-700);
-  --semantic-brand-secondary-active: var(--primitive-color-secondary-800);
-  --semantic-brand-secondary-light: var(--primitive-color-secondary-700);
-  --semantic-brand-secondary-dark: var(--primitive-color-secondary-900);
+  --semantic-brand-secondary-default: var(--primitive-color-gray-900);
+  --semantic-brand-secondary-hover: var(--primitive-color-gray-700);
+  --semantic-brand-secondary-active: var(--primitive-color-gray-800);
+  --semantic-brand-secondary-light: var(--primitive-color-gray-700);
+  --semantic-brand-secondary-dark: var(--primitive-color-gray-900);
 
   /* Status Colors */
   --semantic-status-error-default: var(--primitive-color-red-500);
@@ -322,9 +327,10 @@
   --semantic-surface-base: var(--primitive-color-neutral-100);
   --semantic-surface-elevated: var(--primitive-color-neutral-50);
   --semantic-surface-hover: var(--primitive-color-neutral-200);
-  --semantic-surface-active: var(--primitive-color-neutral-200);
+  --semantic-surface-active: var(--primitive-color-neutral-300);
   --semantic-surface-overlay: var(--primitive-color-black-alpha-60);
-  --semantic-surface-transparent: #00000000;
+  --semantic-surface-transparent: var(--primitive-color-transparent);
+  --semantic-surface-navigation: var(--primitive-color-navigation-bg);
 
   /* Text Colors */
   --semantic-text-primary: var(--primitive-color-neutral-900);
@@ -332,6 +338,7 @@
   --semantic-text-disabled: var(--primitive-color-neutral-400);
   --semantic-text-inverse: var(--primitive-color-neutral-50);
   --semantic-text-link: var(--primitive-color-blue-500);
+  --semantic-text-link-hover: var(--primitive-color-navigation-link-hover);
   --semantic-text-error: var(--primitive-color-red-500);
 
   /* Border Width */
@@ -379,7 +386,7 @@
   --semantic-avatar-medium: var(--primitive-size-500);
   --semantic-avatar-default: var(--semantic-avatar-medium);
   --semantic-avatar-large: var(--primitive-size-600);
-  --semantic-avatar-xlarge: var(--primitive-size-550);
+  --semantic-avatar-xlarge: var(--primitive-size-750);
 
   /* Typography - Size */
   --semantic-text-size-caption: var(--primitive-font-size-100);
@@ -618,12 +625,138 @@
   --component-page-gap-comfortable: var(--semantic-space-loose);
   --component-page-gap-section: var(--semantic-space-spacious);
 
+  /* Navigation Component */
+  --component-nav-bg: var(--semantic-surface-navigation);
+  --component-nav-text: var(--semantic-text-inverse);
+  --component-nav-text-hover: var(--semantic-text-link-hover);
+  --component-nav-padding: var(--semantic-space-comfortable);
+  --component-nav-gap: var(--semantic-space-default);
+  --component-nav-logo-font-size: var(--semantic-text-size-h3);
+  --component-nav-hamburger-font-size: var(--semantic-text-size-h2);
+
+  /* Table Component */
+  --component-table-cell-padding: var(--semantic-space-default);
+  --component-table-border-color: var(--semantic-border-default);
+  --component-table-row-hover-bg: var(--semantic-surface-hover);
+  --component-table-text-weight-bold: var(--semantic-text-weight-bold);
+
+  /* Dialog Component */
+  --component-dialog-bg: var(--semantic-surface-elevated);
+  --component-dialog-padding: var(--semantic-space-comfortable);
+  --component-dialog-gap: var(--semantic-space-default);
+  --component-dialog-radius: var(--semantic-radius-lg);
+  --component-dialog-heading-size: var(--semantic-text-size-h3);
+  --component-dialog-heading-weight: var(--semantic-text-weight-bold);
+  --component-dialog-button-success: var(--semantic-status-success-default);
+  --component-dialog-button-warning: var(--semantic-status-warning-default);
+  --component-dialog-button-error: var(--semantic-status-error-default);
+
+  /* Map Component */
+  --component-map-radius: var(--semantic-radius-lg);
+  --component-map-height-default: 300px;
+  --component-map-height-large: 500px;
+
   /* Progress Component */
   --component-progress-fill-bg: var(--semantic-brand-primary-default);
   --component-progress-track-bg: var(--semantic-surface-hover);
   --component-progress-height: var(--semantic-icon-xsmall);
   --component-progress-radius-default: var(--semantic-radius-sm);
   --component-progress-radius-none: var(--semantic-radius-none);
+
+  /* Typography Component */
+  --component-typography-heading-h1-size: var(--semantic-text-size-h1);
+  --component-typography-heading-h2-size: var(--semantic-text-size-h2);
+  --component-typography-heading-h3-size: var(--semantic-text-size-h3);
+  --component-typography-heading-weight-bold: var(--semantic-text-weight-bold);
+  --component-typography-heading-weight-semibold: var(--semantic-text-weight-semibold);
+  --component-typography-text-body-size: var(--semantic-text-size-body);
+  --component-typography-text-body-sm-size: var(--semantic-text-size-body-sm);
+  --component-typography-text-caption-size: var(--semantic-text-size-caption);
+  --component-typography-color-primary: var(--semantic-text-primary);
+  --component-typography-color-secondary: var(--semantic-text-secondary);
+  --component-typography-color-inverse: var(--semantic-text-inverse);
+  --component-typography-color-link: var(--semantic-text-link);
+  --component-typography-color-error: var(--semantic-text-error);
+
+  /* Drawer Component */
+  --component-drawer-bg: var(--semantic-surface-elevated);
+  --component-drawer-border: var(--semantic-border-subtle);
+  --component-drawer-title: var(--semantic-text-primary);
+  --component-drawer-handle: var(--semantic-border-default);
+  --component-drawer-scrim: var(--semantic-surface-overlay);
+  --component-drawer-header-bg: var(--semantic-surface-elevated);
+  --component-drawer-header-text: var(--semantic-text-primary);
+  --component-drawer-footer-bg: var(--semantic-surface-elevated);
+  --component-drawer-footer-text: var(--semantic-text-primary);
+  --component-drawer-radius: var(--semantic-radius-lg);
+  --component-drawer-padding-block: var(--semantic-space-default);
+  --component-drawer-padding-inline: var(--semantic-space-comfortable);
+
+  /* Popup Component */
+  --component-popup-bg: var(--semantic-surface-elevated);
+  --component-popup-border: var(--semantic-border-subtle);
+  --component-popup-text-title: var(--semantic-text-primary);
+  --component-popup-text-body: var(--semantic-text-primary);
+  --component-popup-text-secondary: var(--semantic-text-secondary);
+  --component-popup-text-divider: var(--semantic-border-subtle);
+  --component-popup-close-icon-default: var(--semantic-text-secondary);
+  --component-popup-close-icon-hover: var(--semantic-text-primary);
+  --component-popup-radius: var(--semantic-radius-lg);
+  --component-popup-border-width: var(--semantic-border-width-thin);
+  --component-popup-padding-inline: var(--semantic-space-default);
+  --component-popup-padding-block: var(--semantic-space-comfortable);
+  --component-popup-gap: var(--semantic-space-default);
+  --component-popup-close-size: var(--semantic-icon-medium);
+
+  /* Summary Tile Component */
+  --component-summary-tile-bg-default: var(--semantic-surface-elevated);
+  --component-summary-tile-bg-hover: var(--semantic-surface-elevated);
+  --component-summary-tile-bg-active: var(--semantic-surface-base);
+  --component-summary-tile-text-default: var(--semantic-text-primary);
+  --component-summary-tile-radius: var(--semantic-radius-lg);
+  --component-summary-tile-padding-block: var(--semantic-space-default);
+  --component-summary-tile-padding-inline: var(--semantic-space-comfortable);
+  --component-summary-tile-gap: var(--semantic-space-comfortable);
+  --component-summary-tile-font-size-title: var(--semantic-text-size-h2);
+  --component-summary-tile-font-size-description: var(--semantic-text-size-body);
+  --component-summary-tile-font-weight-title: var(--semantic-text-weight-regular);
+  --component-summary-tile-font-weight-default: var(--semantic-text-weight-light);
+
+  /* Tabs Component */
+  --component-tabs-bg: var(--semantic-surface-elevated);
+  --component-tabs-text: var(--semantic-text-primary);
+  --component-tabs-icon-color: var(--semantic-text-primary);
+  --component-tabs-icon-only-color: var(--semantic-text-primary);
+  --component-tabs-border-width: var(--semantic-border-width-thin);
+  --component-tabs-font-size: var(--semantic-text-size-body);
+  --component-tabs-font-weight: var(--semantic-text-weight-light);
+  --component-tabs-gap: var(--semantic-space-default);
+  --component-tabs-height: var(--semantic-height-medium);
+  --component-tabs-icon-size: var(--semantic-icon-medium);
+  --component-tabs-icon-only-size-sm: var(--semantic-height-small);
+  --component-tabs-icon-only-size-default: var(--semantic-height-medium);
+  --component-tabs-padding-block: var(--semantic-space-compact);
+  --component-tabs-padding-inline: var(--semantic-space-default);
+  --component-tabs-radius: var(--semantic-radius-md);
+
+  /* Timepicker Component */
+  --component-timepicker-bg: var(--semantic-surface-elevated);
+  --component-timepicker-cell-bg: var(--semantic-surface-base);
+  --component-timepicker-cell-border-default: var(--semantic-border-subtle);
+  --component-timepicker-cell-border-focus: var(--semantic-border-focus);
+  --component-timepicker-text: var(--semantic-text-primary);
+  --component-timepicker-radius: var(--semantic-radius-sm);
+  --component-timepicker-cell-radius: var(--semantic-radius-sm);
+  --component-timepicker-cell-height: var(--semantic-height-large);
+  --component-timepicker-font-size-label: var(--semantic-text-size-caption);
+  --component-timepicker-font-size-default: var(--semantic-text-size-h2);
+  --component-timepicker-font-weight-default: var(--semantic-text-weight-regular);
+  --component-timepicker-font-weight-label: var(--semantic-text-weight-bold);
+  --component-timepicker-item-height: var(--semantic-height-medium);
+  --component-timepicker-item-gap-block: var(--semantic-space-tight);
+  --component-timepicker-item-gap-inline: var(--semantic-space-compact);
+  --component-timepicker-padding-block: var(--semantic-space-default);
+  --component-timepicker-padding-inline: var(--semantic-space-comfortable);
 
   /* Other Components (Minimal structure) */
   --component-filter-bg: var(--semantic-surface-elevated);
@@ -667,6 +800,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   line-height: var(--primitive-font-line-height-normal);
+  background-color: var(--component-page-bg);
+  color: var(--semantic-text-primary);
 }
 
 button,
@@ -683,145 +818,4 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* ============================================
-   PAGE-SPECIFIC STYLES
-   ============================================ */
-
-/* Home Page */
-.title {
-  display: block;
-  background-color: red;
-  padding: var(--primitive-space-100);
-  border-radius: var(--primitive-radius-lg);
-}
-
-.header-container {
-  position: relative;
-  text-align: center;
-}
-
-.map-container {
-  padding: var(--primitive-space-150);
-  display: flex;
-  justify-content: center;
-  margin-top: var(--primitive-space-200);
-  height: 300px;
-}
-
-.map-img {
-  width: 75%;
-}
-
-.msg-title {
-  font-size: var(--primitive-font-size-350);
-  margin-top: var(--primitive-space-150);
-  padding: var(--primitive-space-150);
-}
-
-.side-img {
-  display: flex;
-  justify-content: end;
-  margin-top: var(--primitive-space-200);
-}
-
-.img-small {
-  display: block;
-  max-width: 20%;
-  height: auto;
-}
-
-/* Navigation */
-.navbar {
-  background-color: #263032;
-  color: white;
-  padding: var(--primitive-space-150);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar .title {
-  font-weight: bold;
-  font-size: var(--primitive-font-size-200);
-  padding: var(--primitive-space-150);
-}
-
-.nav-links {
-  padding: var(--primitive-space-150);
-  margin-right: var(--primitive-space-150);
-}
-
-.navbar a {
-  color: white;
-  margin-right: var(--primitive-space-150);
-  text-decoration: none;
-  margin-left: var(--primitive-space-150);
-}
-
-.navbar a:hover {
-  color: rgb(203, 199, 199);
-  text-decoration: none;
-}
-
-.navbar a:last-child {
-  margin-right: 0;
-}
-
-.hamburger {
-  display: none;
-  font-size: var(--primitive-font-size-300);
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-  }
-
-  .hamburger {
-    display: block;
-    order: 2;
-    margin-left: auto;
-  }
-
-  .navbar .nav-links {
-    order: 3;
-    display: flex;
-    flex-direction: column;
-    gap: var(--primitive-space-100);
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    margin-top: var(--primitive-space-100);
-  }
-
-  .navbar .nav-links.active {
-    max-height: 500px;
-    opacity: 1;
-  }
-
-  .navbar .nav-links a {
-    padding: var(--primitive-space-50) 0;
-  }
-}
-
-/* Page Content */
-.page-content {
-  padding: var(--primitive-space-200);
 }
