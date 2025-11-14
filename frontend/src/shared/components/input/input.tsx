@@ -117,14 +117,6 @@ const IconWrapper = memo(({ icon }: { icon: ReactNode }) => (
 ));
 IconWrapper.displayName = "IconWrapper";
 
-/**
- * ```tsx
- * <Input placeholder="Enter your email" />
- * <Input error placeholder="Invalid email" />
- * <Input leadingIcon={<SearchIcon />} placeholder="Search..." />
- * <Input trailingIcon={<CheckIcon />} placeholder="Verified" />
- * ```
- */
 export const Input = memo(
   forwardRef<HTMLInputElement, InputProps>(function Input(
     {
