@@ -4,7 +4,7 @@ import { H1, Text } from "@/shared/components/typography";
 import { configureLeafletIcons, DEFAULT_MAP_CONFIG } from "@/shared/utils";
 import { PARKING_LOT_LOCATIONS } from "@/shared/constants";
 
-export function Map() {
+export const Map = () => {
   // Configure Leaflet icons once on mount
   useEffect(() => {
     configureLeafletIcons();

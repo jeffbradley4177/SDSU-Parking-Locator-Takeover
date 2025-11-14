@@ -583,6 +583,26 @@
   --component-button-font-size: var(--semantic-text-size-body);
   --component-button-font-weight: var(--semantic-text-weight-regular);
 
+  /* Icon Component */
+  /* Icon - Sizing */
+  --component-icon-size-xs: var(--semantic-icon-xsmall);
+  --component-icon-size-sm: var(--semantic-icon-small);
+  --component-icon-size-md: var(--semantic-icon-medium);
+  --component-icon-size-lg: var(--semantic-icon-large);
+  --component-icon-size-xl: var(--semantic-icon-xlarge);
+  --component-icon-size-2xl: var(--semantic-icon-xxlarge);
+
+  /* Icon - Colors */
+  --component-icon-color-primary: var(--semantic-text-primary);
+  --component-icon-color-secondary: var(--semantic-text-secondary);
+  --component-icon-color-tertiary: var(--semantic-text-tertiary);
+  --component-icon-color-inverse: var(--semantic-text-inverse);
+  --component-icon-color-disabled: var(--semantic-text-disabled);
+  --component-icon-color-success: var(--semantic-status-success-default);
+  --component-icon-color-warning: var(--semantic-status-warning-default);
+  --component-icon-color-error: var(--semantic-status-error-default);
+  --component-icon-color-info: var(--semantic-status-info-default);
+
   /* Input Component */
   --component-input-bg-default: var(--semantic-surface-elevated);
   --component-input-bg-disabled: var(--semantic-surface-base);

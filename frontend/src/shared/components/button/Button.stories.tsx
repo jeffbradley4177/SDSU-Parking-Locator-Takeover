@@ -1,48 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ButtonProps } from "./Button";
 import { Button, type ButtonVariant } from "./Button";
+import { Icon } from "../icon/Icon";
 
-// Icon components for stories
-const HomeIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-const TrashIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 22" fill="none">
-    <path
-      d="M6.82041 5.61538V4.84615C6.82041 3.82609 7.22563 2.84781 7.94692 2.12651C8.66821 1.40522 9.6465 1 10.6666 1C11.6866 1 12.6649 1.40522 13.3862 2.12651C14.1075 2.84781 14.5127 3.82609 14.5127 4.84615V5.61538M1.43579 5.61538H19.8973M8.16656 9.28402V18.3965M13.1666 9.28402V18.3965M3.74348 5.61538H17.5896V19.4615C17.5896 19.8696 17.4276 20.2609 17.139 20.5494C16.8505 20.8379 16.4592 21 16.0512 21H5.28195C4.87392 21 4.48261 20.8379 4.19409 20.5494C3.90557 20.2609 3.74348 19.8696 3.74348 19.4615V5.61538Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ArrowRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
+// Google Icon is custom and not in Box Icons, so we keep it as SVG
 const GoogleIcon = () => (
   <svg
     width="24"
@@ -309,7 +270,7 @@ export const Disabled: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <HomeIcon />,
+    leadingIcon: <Icon name="home" />,
     children: "Go Home",
   },
   parameters: {
@@ -326,7 +287,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <ArrowRightIcon />,
+    trailingIcon: <Icon name="arrow-right" />,
     children: "Continue",
   },
   parameters: {
@@ -343,8 +304,8 @@ export const WithTrailingIcon: Story = {
  */
 export const WithBothIcons: Story = {
   args: {
-    leadingIcon: <HomeIcon />,
-    trailingIcon: <ArrowRightIcon />,
+    leadingIcon: <Icon name="home" />,
+    trailingIcon: <Icon name="arrow-right" />,
     children: "Home & Continue",
   },
   parameters: {
@@ -361,7 +322,7 @@ export const WithBothIcons: Story = {
  */
 export const IconOnly: Story = {
   args: {
-    leadingIcon: <TrashIcon />,
+    leadingIcon: <Icon name="trash" />,
     children: undefined,
     "aria-label": "Delete",
   },
@@ -381,7 +342,7 @@ export const IconOnly: Story = {
 export const DestructiveWithIcon: Story = {
   args: {
     variant: "destructive",
-    leadingIcon: <TrashIcon />,
+    leadingIcon: <Icon name="trash" />,
     children: "Delete Account",
   },
   parameters: {
@@ -400,11 +361,11 @@ export const InteractiveDemo: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-comfortable)]">
       <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-        <Button variant="primary" leadingIcon={<HomeIcon />}>
+        <Button variant="primary" leadingIcon={<Icon name="home" />}>
           Home
         </Button>
         <Button variant="secondary">Cancel</Button>
-        <Button variant="outline" trailingIcon={<ArrowRightIcon />}>
+        <Button variant="outline" trailingIcon={<Icon name="arrow-right" />}>
           Next
         </Button>
       </div>
@@ -413,7 +374,7 @@ export const InteractiveDemo: Story = {
         <Button variant="primary" isLoading>
           Saving...
         </Button>
-        <Button variant="destructive" leadingIcon={<TrashIcon />}>
+        <Button variant="destructive" leadingIcon={<Icon name="trash" />}>
           Delete
         </Button>
         <Button variant="outline" disabled>

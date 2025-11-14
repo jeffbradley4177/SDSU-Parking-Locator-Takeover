@@ -1,109 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Input, type InputSize } from "./input";
-
-// Example icon components for stories (using inline SVG)
-const SearchIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM18 18l-4-4"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const MailIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M3 3h14c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M19 5l-9 6-9-6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const LockIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect
-      x="3"
-      y="9"
-      width="14"
-      height="10"
-      rx="2"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-    <path
-      d="M6 9V6a4 4 0 0 1 8 0v3"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M16 6L7.5 14.5L4 11"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const AlertIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 6a1 1 0 112 0v4a1 1 0 11-2 0V6zm1 9a1 1 0 100-2 1 1 0 000 2z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
+import { Input, type InputSize } from "./Input";
+import { Icon } from "../icon/Icon";
 
 const SIZE_OPTIONS: InputSize[] = ["default"];
 
@@ -216,7 +113,7 @@ export const Default: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <SearchIcon />,
+    leadingIcon: <Icon name="search" size="md" />,
     placeholder: "Search...",
   },
 };
@@ -226,7 +123,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <CheckIcon />,
+    trailingIcon: <Icon name="check" size="md" />,
     placeholder: "Verified input",
   },
 };
@@ -236,8 +133,8 @@ export const WithTrailingIcon: Story = {
  */
 export const WithBothIcons: Story = {
   args: {
-    leadingIcon: <MailIcon />,
-    trailingIcon: <CheckIcon />,
+    leadingIcon: <Icon name="email" size="md" />,
+    trailingIcon: <Icon name="check" size="md" />,
     placeholder: "verified@email.com",
   },
 };
@@ -269,8 +166,8 @@ export const ErrorWithIcon: Story = {
   args: {
     type: "password",
     placeholder: "Enter password",
-    leadingIcon: <LockIcon />,
-    trailingIcon: <AlertIcon />,
+    leadingIcon: <Icon name="lock" size="md" />,
+    trailingIcon: <Icon name="error-circle" size="md" />,
     error: true,
   },
 };
@@ -282,8 +179,8 @@ export const AllStates: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-default)] w-full">
       <Input placeholder="Default state" />
-      <Input placeholder="With leading icon" leadingIcon={<SearchIcon />} />
-      <Input placeholder="With trailing icon" trailingIcon={<CheckIcon />} />
+      <Input placeholder="With leading icon" leadingIcon={<Icon name="search" size="md" />} />
+      <Input placeholder="With trailing icon" trailingIcon={<Icon name="check" size="md" />} />
       <Input placeholder="Disabled state" disabled />
       <Input placeholder="Error state" error />
     </div>
@@ -309,12 +206,12 @@ export const LoginForm: Story = {
       <Input
         type="email"
         placeholder="your.email@sdsu.edu"
-        leadingIcon={<MailIcon />}
+        leadingIcon={<Icon name="email" size="md" />}
       />
       <Input
         type="password"
         placeholder="Enter your password"
-        leadingIcon={<LockIcon />}
+        leadingIcon={<Icon name="lock" size="md" />}
       />
     </div>
   ),
@@ -336,14 +233,14 @@ export const ValidationExample: Story = {
       <Input
         type="email"
         placeholder="invalid-email"
-        leadingIcon={<MailIcon />}
+        leadingIcon={<Icon name="email" size="md" />}
         error
       />
       <Input
         type="password"
         placeholder="123"
-        leadingIcon={<LockIcon />}
-        trailingIcon={<AlertIcon />}
+        leadingIcon={<Icon name="lock" size="md" />}
+        trailingIcon={<Icon name="error-circle" size="md" />}
         error
       />
       <Input placeholder="ab" error />

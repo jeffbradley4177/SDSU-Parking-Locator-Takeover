@@ -1,4 +1,5 @@
-import { HomeMap } from "../features/parking/components/ParkingMap";
+import { HomeMap } from "@/features/parking/components/map/ParkingMap";
+import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
 import { H1 } from "@/shared/components/typography";
 
 export const Home = () => {
@@ -13,6 +14,14 @@ export const Home = () => {
           <HomeMap />
         </div>
       </div>
+
+      <section className="mt-[var(--component-page-gap-comfortable)] p-[var(--component-page-padding-inline)]">
+        <h2 className="mb-[var(--component-page-gap-default)]">SDSU Parking Availability</h2>
+        <p className="mb-[var(--component-page-gap-default)] opacity-85">
+          View current parking lot conditions and help keep the information updated by submitting your own report.
+        </p>
+        <ParkingLotList />
+      </section>
     </div>
   );
 };

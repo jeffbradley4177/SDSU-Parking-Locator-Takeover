@@ -1,5 +1,2 @@
 export const AdminDashboard = () => {
-  return (
-    
-  );
 };

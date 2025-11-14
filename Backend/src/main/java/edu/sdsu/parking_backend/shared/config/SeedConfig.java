@@ -1,4 +1,4 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.shared.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,15 +7,20 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import edu.sdsu.parking_backend.features.user.repository.UserRepository;
+import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
+import edu.sdsu.parking_backend.features.user.model.Student;
+
 @Configuration
 public class SeedConfig
 {
 
     private static final Logger log = LoggerFactory.getLogger(SeedConfig.class);
-    private final UserRepo userRepo;
-    private final ParkingLotRepo parkingLotRepo;
+    private final UserRepository userRepo;
+    private final ParkingLotRepository parkingLotRepo;
 
-    public SeedConfig(UserRepo userRep, ParkingLotRepo parkingLotRepo)
+    public SeedConfig(UserRepository userRep, ParkingLotRepository parkingLotRepo)
     {
         this.userRepo       = userRep;
         this.parkingLotRepo = parkingLotRepo;

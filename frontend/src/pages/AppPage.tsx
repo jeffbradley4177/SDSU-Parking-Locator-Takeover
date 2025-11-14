@@ -3,8 +3,8 @@ import { Home } from "./Home";
 import { Map } from "./Map";
 import { About } from "./About";
 import { Profile } from "./Profile";
-import Message from "../shared/components/Message";
-// import { ParkingLotList } from "../features/parking/components/ParkingLotList";
+import { Message } from "@/shared/components/Message";
+import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
 import { RootLayout } from "../layouts";
 
 function AppPage() {
