@@ -1,4 +1,4 @@
-import { Badge } from "@/shared/components/badge/Badge";
+import { Badge } from "@/shared/components/badge";
 
 export const LotStatusBadge = () => {
 

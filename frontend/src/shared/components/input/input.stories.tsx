@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input, type InputSize } from "./Input";
-import { Icon } from "../icon/Icon";
+import { Icon } from "@/shared/components/icon";
 
 const SIZE_OPTIONS: InputSize[] = ["default"];
 

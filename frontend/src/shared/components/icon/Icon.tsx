@@ -1,8 +1,7 @@
 import { cn } from "@/lib/cn";
 import { forwardRef, memo, type ComponentPropsWithoutRef } from "react";
-import type { IconBaseProps } from "react-icons";
+import { IconBaseProps } from "react-icons";
 
-// Import all the Box Icons we'll use
 import {
   BiMap,
   BiMapAlt,
@@ -11,6 +10,7 @@ import {
   BiMapPin,
   BiDirections,
   BiCar,
+  BiParking,
   BiSquare,
   BiSquareRounded,
   BiGrid,
@@ -87,8 +87,8 @@ import {
   BiCog,
   BiDotsHorizontal,
   BiDotsVertical,
+  BiInfo,
   BiInfoCircle,
-  BiInfoSquare,
   BiHelpCircle,
   BiPhone,
   BiPhoneCall,
@@ -131,6 +131,7 @@ const ICON_MAP = {
 
   // Parking
   car: BiCar,
+  parking: BiParking,
   square: BiSquare,
   "square-rounded": BiSquareRounded,
   grid: BiGrid,
@@ -223,9 +224,8 @@ const ICON_MAP = {
   "dots-vertical": BiDotsVertical,
 
   // Information
+  info: BiInfo,
   "info-circle": BiInfoCircle,
-  "info-square": BiInfoSquare,
-  info: BiInfoCircle,
   help: BiHelpCircle,
   phone: BiPhone,
   "phone-call": BiPhoneCall,
@@ -342,8 +342,24 @@ export const Icon = memo(
     const IconComponent = ICON_MAP[name];
 
     if (!IconComponent) {
-      console.warn(`Icon "${name}" not found in ICON_MAP`);
-      return null;
+      // Development warning
+      if (import.meta.env.DEV) {
+        console.error(
+          `[Icon] Icon "${name}" not found in ICON_MAP. Available icons: ${Object.keys(ICON_MAP).join(", ")}`
+        );
+      }
+
+      // Render error state in development, nothing in production
+      return import.meta.env.DEV ? (
+        <span
+          ref={ref}
+          className={cn(BASE_CLASSES, SIZE_STYLES[size], "text-red-500")}
+          title={`Icon "${name}" not found`}
+          {...rest}
+        >
+          ?
+        </span>
+      ) : null;
     }
 
     // Compute icon classes using component tokens
@@ -371,5 +387,3 @@ export const Icon = memo(
 );
 
 Icon.displayName = "Icon";
-
-export default Icon;

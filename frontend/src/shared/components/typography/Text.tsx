@@ -63,7 +63,7 @@ export const Text = ({
       className={cn(
         variantStyles[variant],
         colorStyles[color],
-        "leading-[var(--primitive-font-line-height-normal)]",
+        "leading-[var(--component-typography-line-height-normal)]",
         className,
       )}
       {...props}

@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { HomeMap } from "./ParkingMap";
+import { ParkingMapView } from "./ParkingMapView";
 
 /**
- * HomeMap displays an interactive Leaflet map with parking lot markers.
+ * ParkingMapView displays an interactive Leaflet map with parking lot markers.
+ * This is a feature-specific wrapper around the base Map component.
  */
 const meta = {
-  title: "Features/Parking/Map/ParkingMap",
-  component: HomeMap,
+  title: "Features/Parking/Map/ParkingMapView",
+  component: ParkingMapView,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -17,10 +18,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof HomeMap>;
+} satisfies Meta<typeof ParkingMapView>;
 
 export default meta;
-type Story = StoryObj<typeof HomeMap>;
+type Story = StoryObj<typeof ParkingMapView>;
 
 export const Default: Story = {
   name: "Campus Parking Map",
@@ -45,7 +46,7 @@ export const InPageContext: Story = {
         </p>
       </header>
       <div className="rounded-lg overflow-hidden shadow-lg">
-        <HomeMap />
+        <ParkingMapView size="default" />
       </div>
       <div className="mt-4 text-sm text-[var(--component-typography-color-secondary)]">
         <p>Map tiles © OpenStreetMap contributors</p>
@@ -77,7 +78,7 @@ export const Features: Story = {
         </ul>
       </div>
       <div className="rounded-lg overflow-hidden shadow-lg">
-        <HomeMap />
+        <ParkingMapView size="default" />
       </div>
     </div>
   ),
@@ -124,7 +125,7 @@ export const ParkingLots: Story = {
         ))}
       </div>
       <div className="rounded-lg overflow-hidden shadow-lg">
-        <HomeMap />
+        <ParkingMapView size="large" />
       </div>
     </div>
   ),

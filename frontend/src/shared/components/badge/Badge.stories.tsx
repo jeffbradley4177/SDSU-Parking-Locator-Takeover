@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Badge, type BadgeVariant } from "./Badge";
-import { Icon } from "../icon/Icon";
+import { Icon } from "@/shared/components/icon";
 
 // Custom dot icon for badge status indicators
 const DotIcon = () => (

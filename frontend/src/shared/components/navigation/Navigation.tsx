@@ -2,6 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/cn";
 
+export interface NavigationLink {
+  to: string;
+  label: string;
+}
+
+export interface NavigationProps {
+  brandName?: string;
+  brandLink?: string;
+  links: NavigationLink[];
+}
+
 // Navigation bar styles
 const NAV_CLASSES = [
   "bg-[var(--component-nav-bg)]",
@@ -47,7 +58,11 @@ const NAV_LINK_CLASSES = [
   "max-md:py-[var(--component-nav-gap)] max-md:mx-0",
 ].join(" ");
 
-export function Navigation() {
+export function Navigation({
+  brandName = "SDSU Parking Locator",
+  brandLink = "/",
+  links,
+}: NavigationProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -57,8 +72,8 @@ export function Navigation() {
   return (
     <nav className={NAV_CLASSES}>
       {/* Logo */}
-      <Link to="/" className={LOGO_CLASSES}>
-        SDSU Parking Locator
+      <Link to={brandLink} className={LOGO_CLASSES}>
+        {brandName}
       </Link>
 
       {/* Hamburger button */}
@@ -73,18 +88,11 @@ export function Navigation() {
           isOpen ? "max-md:max-h-[500px] max-md:opacity-100" : "max-md:max-h-0 max-md:opacity-0"
         )}
       >
-        <Link to="/" className={NAV_LINK_CLASSES}>
-          Home
-        </Link>
-        <Link to="/map" className={NAV_LINK_CLASSES}>
-          Map
-        </Link>
-        <Link to="/about" className={NAV_LINK_CLASSES}>
-          About
-        </Link>
-        <Link to="/profile" className={NAV_LINK_CLASSES}>
-          Profile
-        </Link>
+        {links.map((link) => (
+          <Link key={link.to} to={link.to} className={NAV_LINK_CLASSES}>
+            {link.label}
+          </Link>
+        ))}
       </div>
     </nav>
   );

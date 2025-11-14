@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
-import { Navigation } from "./Navigation";
+import { Navigation, type NavigationLink } from "./Navigation";
+
+const defaultLinks: NavigationLink[] = [
+  { to: "/", label: "Home" },
+  { to: "/map", label: "Map" },
+  { to: "/about", label: "About" },
+  { to: "/profile", label: "Profile" },
+];
 
 /**
  * Navigation bar component with responsive hamburger menu.
@@ -14,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Main navigation bar for the application. Includes SDSU branding, navigation links, and responsive hamburger menu for mobile devices. Uses design system tokens for consistent styling.",
+          "Main navigation bar for the application. Includes customizable branding, navigation links, and responsive hamburger menu for mobile devices. Uses design system tokens for consistent styling.",
       },
     },
   },
@@ -25,6 +32,9 @@ const meta = {
       </BrowserRouter>
     ),
   ],
+  args: {
+    links: defaultLinks,
+  },
 } satisfies Meta<typeof Navigation>;
 
 export default meta;

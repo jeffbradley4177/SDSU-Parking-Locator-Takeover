@@ -16,7 +16,7 @@ function AppPage() {
           element={
             <>
               <Home />
-              <Message />
+              <Message title="Here to help you find parking urgently" />
               <section style={{ marginTop: "2rem" }}>
                 <h1 style={{ marginBottom: "1rem" }}>SDSU Parking Availability</h1>
                 <p style={{ marginBottom: "1rem", opacity: 0.85 }}>

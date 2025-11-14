@@ -1,4 +1,4 @@
-import { HomeMap } from "@/features/parking/components/map/ParkingMap";
+import { ParkingMapView } from "@/features/parking/components/map";
 import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
 import { H1 } from "@/shared/components/typography";
 
@@ -9,9 +9,9 @@ export const Home = () => {
         <H1>Welcome to the SDSU Parking Locator</H1>
       </div>
 
-      <div className="p-[var(--component-page-padding-inline)] flex justify-center mt-[var(--component-page-gap-comfortable)] h-[var(--component-map-height-default)]">
+      <div className="p-[var(--component-page-padding-inline)] flex justify-center mt-[var(--component-page-gap-comfortable)]">
         <div className="w-3/4">
-          <HomeMap />
+          <ParkingMapView size="default" />
         </div>
       </div>
 

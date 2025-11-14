@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ReportVerificationList } from "./ReportVerificationList";
 
 /**
- * ReportVerificationList manages pending user reports.
- * 
  * **Status:** Placeholder - needs implementation
  */
 const meta = {

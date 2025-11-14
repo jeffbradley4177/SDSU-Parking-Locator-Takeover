@@ -1,14 +1,23 @@
 import L from "leaflet";
 
 /**
+ * Type definition for Leaflet Icon.Default with _getIconUrl property
+ */
+interface LeafletIconDefault extends L.Icon.Default {
+  _getIconUrl?: () => string;
+}
+
+/**
  * Configure Leaflet default marker icons for use with Vite/bundlers.
  * This fixes the default marker icon issue in Leaflet when used with modern bundlers.
  *
  * Call this function once before rendering any Leaflet maps.
  */
 export function configureLeafletIcons(): void {
+  const defaultIcon = L.Icon.Default.prototype as LeafletIconDefault;
+
   // Remove the default icon URL getter
-  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  delete defaultIcon._getIconUrl;
 
   // Set the default icon URLs from CDN
   L.Icon.Default.mergeOptions({

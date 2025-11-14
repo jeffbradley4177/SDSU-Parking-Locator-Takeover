@@ -1,6 +1,12 @@
-function Message() {
-  const name = "Here to help you find parking urgently";
-  return <h1 className="msg-title">{name}</h1>;
+import { cn } from "@/lib/cn";
+
+export interface MessageProps {
+  title: string;
+  className?: string;
+}
+
+function Message({ title, className }: MessageProps) {
+  return <h1 className={cn("msg-title", className)}>{title}</h1>;
 }
 
 export default Message;

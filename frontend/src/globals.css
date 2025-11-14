@@ -203,6 +203,8 @@
   --primitive-size-900: 76px;
   --primitive-size-950: 80px;
   --primitive-size-1000: 84px;
+  --primitive-size-1100: 300px;
+  --primitive-size-1200: 500px;
 
   /* Space (Spacing Scale) */
   --primitive-space-0: 0px;
@@ -335,6 +337,7 @@
   /* Text Colors */
   --semantic-text-primary: var(--primitive-color-neutral-900);
   --semantic-text-secondary: var(--primitive-color-neutral-500);
+  --semantic-text-tertiary: var(--primitive-color-neutral-400);
   --semantic-text-disabled: var(--primitive-color-neutral-400);
   --semantic-text-inverse: var(--primitive-color-neutral-50);
   --semantic-text-link: var(--primitive-color-blue-500);
@@ -370,6 +373,7 @@
   --semantic-icon-default: var(--semantic-icon-medium);
   --semantic-icon-large: var(--primitive-size-300);
   --semantic-icon-xlarge: var(--primitive-size-350);
+  --semantic-icon-xxlarge: var(--primitive-size-500);
 
   /* Component Heights */
   --semantic-height-xxsmall: var(--primitive-size-350);
@@ -380,6 +384,8 @@
   --semantic-height-xlarge: var(--primitive-size-750);
   --semantic-height-xxlarge: var(--primitive-size-850);
   --semantic-height-xxxlarge: var(--primitive-size-950);
+  --semantic-height-map-default: var(--primitive-size-1100);
+  --semantic-height-map-large: var(--primitive-size-1200);
 
   /* Avatar Sizes */
   --semantic-avatar-small: var(--primitive-size-400);
@@ -558,12 +564,12 @@
   );
 
   /* Button - Google Variant */
-  --component-button-bg-google-default: transparent;
+  --component-button-bg-google-default: var(--semantic-surface-transparent);
   --component-button-bg-google-hover: var(--semantic-surface-elevated);
-  --component-button-bg-google-active: var(--primitive-color-neutral-200);
-  --component-button-border-google-default: var(--primitive-color-neutral-900);
-  --component-button-border-google-hover: var(--primitive-color-neutral-900);
-  --component-button-border-google-active: var(--primitive-color-neutral-800);
+  --component-button-bg-google-active: var(--semantic-surface-hover);
+  --component-button-border-google-default: var(--semantic-text-primary);
+  --component-button-border-google-hover: var(--semantic-text-primary);
+  --component-button-border-google-active: var(--semantic-border-emphasis);
   --component-button-text-google-default: var(--semantic-text-primary);
   --component-button-text-google-hover: var(--semantic-text-primary);
   --component-button-text-google-active: var(--semantic-text-primary);
@@ -673,8 +679,23 @@
 
   /* Map Component */
   --component-map-radius: var(--semantic-radius-lg);
-  --component-map-height-default: 300px;
-  --component-map-height-large: 500px;
+  --component-map-height-default: var(--semantic-height-map-default);
+  --component-map-height-large: var(--semantic-height-map-large);
+
+  /* Google Maps Component */
+  --component-googlemaps-radius: var(--semantic-radius-lg);
+  --component-googlemaps-height-default: var(--semantic-height-map-default);
+  --component-googlemaps-height-large: var(--semantic-height-map-large);
+  --component-googlemaps-error-bg: var(--primitive-color-neutral-100);
+  --component-googlemaps-error-border: var(--semantic-border-default);
+  --component-googlemaps-error-text-primary: var(--component-typography-color-primary);
+  --component-googlemaps-error-text-secondary: var(--component-typography-color-secondary);
+  --component-googlemaps-marker-size: var(--primitive-size-400);
+  --component-googlemaps-marker-bg: var(--semantic-color-primary);
+  --component-googlemaps-marker-border: var(--semantic-border-emphasis);
+  --component-googlemaps-marker-text-color: var(--semantic-text-inverse);
+  --component-googlemaps-marker-text-size: var(--primitive-font-size-75);
+  --component-googlemaps-marker-text-weight: var(--primitive-font-weight-bold);
 
   /* Progress Component */
   --component-progress-fill-bg: var(--semantic-brand-primary-default);
@@ -692,6 +713,9 @@
   --component-typography-text-body-size: var(--semantic-text-size-body);
   --component-typography-text-body-sm-size: var(--semantic-text-size-body-sm);
   --component-typography-text-caption-size: var(--semantic-text-size-caption);
+  --component-typography-line-height-normal: var(--primitive-font-line-height-normal);
+  --component-typography-line-height-tight: var(--primitive-font-line-height-tight);
+  --component-typography-line-height-loose: var(--primitive-font-line-height-loose);
   --component-typography-color-primary: var(--semantic-text-primary);
   --component-typography-color-secondary: var(--semantic-text-secondary);
   --component-typography-color-inverse: var(--semantic-text-inverse);
