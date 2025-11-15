@@ -100,8 +100,6 @@ const ICON_CATEGORIES = {
   ],
   Information: [
     "info-circle",
-    "info-square",
-    "info",
     "help",
     "phone",
     "phone-call",

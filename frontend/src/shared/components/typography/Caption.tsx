@@ -1,19 +1,7 @@
-/**
- * Caption Component
- *
- * Small text for captions, labels, and helper text
- */
-
 import { cn } from "@/lib/cn";
 import { type ComponentPropsWithoutRef } from "react";
 
 export interface CaptionProps extends ComponentPropsWithoutRef<"small"> {
-  /**
-   * Caption color variant
-   * - secondary: Muted text (default)
-   * - primary: Primary text color
-   * - error: Error text color
-   */
   color?: "secondary" | "primary" | "error";
 }
 
@@ -23,16 +11,6 @@ const colorStyles = {
   error: "text-[var(--component-typography-color-error)]",
 };
 
-/**
- * Caption Component
- *
- * @example
- * ```tsx
- * <Caption>Helper text</Caption>
- * <Caption color="error">Error message</Caption>
- * <Caption color="primary">Important note</Caption>
- * ```
- */
 export const Caption = ({
   children,
   className,

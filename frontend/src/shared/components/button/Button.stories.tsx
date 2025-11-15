@@ -45,6 +45,7 @@ const VARIANT_OPTIONS: ButtonVariant[] = [
   "outline",
   "destructive",
   "google",
+  "teal",
 ];
 
 const meta = {
@@ -182,6 +183,16 @@ export const Google: Story = {
     variant: "google",
     leadingIcon: <GoogleIcon />,
     children: "Sign in with Google",
+  },
+};
+
+/**
+ * Teal button variant - accent color alternative
+ */
+export const Teal: Story = {
+  args: {
+    variant: "teal",
+    children: "Teal Button",
   },
 };
 

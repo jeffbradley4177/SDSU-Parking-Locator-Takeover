@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="hospitalbuilding" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 227.6584 180" enable-background="new 0 0 227.6584 180" xml:space="preserve">
+<g>
+	<path fill="none" d="M159.6584,8h-92v88v76h24v-40h44v40h24V96V8z M143.6584,88h-16v16h-24V88h-16V64h16V48h24v16h16V88z"/>
+	<rect x="99.6584" y="140" fill="none" width="28" height="32"/>
+	<path fill="none" d="M15.6584,104v68h44v-68H15.6584z M51.6584,152h-28v-8h28V152z M51.6584,136h-28v-8h28V136z M51.6584,120h-28
+		v-8h28V120z"/>
+	<polygon fill="none" points="119.6584,56 111.6584,56 111.6584,72 95.6584,72 95.6584,80 111.6584,80 111.6584,96 119.6584,96 
+		119.6584,80 135.6584,80 135.6584,72 119.6584,72 	"/>
+	<path fill="none" d="M167.6584,104v68h44v-68H167.6584z M203.6584,152h-28v-8h28V152z M203.6584,136h-28v-8h28V136z M203.6584,120
+		h-28v-8h28V120z"/>
+	<path d="M127.6584,48h-24v16h-16v24h16v16h24V88h16V64h-16V48z M135.6584,72v8h-16v16h-8V80h-16v-8h16V56h8v16H135.6584z"/>
+	<rect x="23.6584" y="112" width="28" height="8"/>
+	<rect x="23.6584" y="128" width="28" height="8"/>
+	<rect x="23.6584" y="144" width="28" height="8"/>
+	<rect x="175.6584" y="112" width="28" height="8"/>
+	<rect x="175.6584" y="128" width="28" height="8"/>
+	<rect x="175.6584" y="144" width="28" height="8"/>
+	<path d="M219.6584,172V96h-52V8h20V0h-20h-108h-20v8h20v88h-52v76H0v8h7.6584h52h8h24h44h24h8h52h8v-8H219.6584z M15.6584,172v-68
+		h44v68H15.6584z M99.6584,172v-32h28v32H99.6584z M135.6584,172v-40h-44v40h-24V96V8h92v88v76H135.6584z M167.6584,172v-68h44v68
+		H167.6584z"/>
+</g>
+</svg>

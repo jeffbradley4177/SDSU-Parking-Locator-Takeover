@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="gridlayout" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 216 216" enable-background="new 0 0 216 216" xml:space="preserve">
+<g>
+	<rect x="60" y="112" fill="none" width="44" height="44"/>
+	<rect x="8" y="60" fill="none" width="44" height="44"/>
+	<rect x="8" y="112" fill="none" width="44" height="44"/>
+	<rect x="112" y="112" fill="none" width="44" height="44"/>
+	<rect x="164" y="112" fill="none" width="44" height="44"/>
+	<rect x="60" y="60" fill="none" width="44" height="44"/>
+	<rect x="164" y="60" fill="none" width="44" height="44"/>
+	<rect x="112" y="60" fill="none" width="44" height="44"/>
+	<rect x="8" y="164" fill="none" width="44" height="44"/>
+	<rect x="60" y="164" fill="none" width="44" height="44"/>
+	<rect x="164" y="164" fill="none" width="44" height="44"/>
+	<rect x="112" y="164" fill="none" width="44" height="44"/>
+	<rect x="60" y="8" fill="none" width="44" height="44"/>
+	<rect x="164" y="8" fill="none" width="44" height="44"/>
+	<rect x="112" y="8" fill="none" width="44" height="44"/>
+	<rect x="8" y="8" fill="none" width="44" height="44"/>
+	<path d="M212,0h-52h-52H56H4C1.7891,0,0,1.7912,0,4v52v52v52v52c0,2.2088,1.7891,4,4,4h52h52h52h52c2.2107,0,4-1.7912,4-4v-52v-52
+		V56V4C216,1.7912,214.2107,0,212,0z M208,104h-44V60h44V104z M156,104h-44V60h44V104z M104,104H60V60h44V104z M52,104H8V60h44V104z
+		 M8,112h44v44H8V112z M60,112h44v44H60V112z M112,112h44v44h-44V112z M164,112h44v44h-44V112z M208,52h-44V8h44V52z M156,52h-44V8
+		h44V52z M104,52H60V8h44V52z M8,8h44v44H8V8z M8,164h44v44H8V164z M60,164h44v44H60V164z M112,164h44v44h-44V164z M208,208h-44v-44
+		h44V208z"/>
+</g>
+</svg>

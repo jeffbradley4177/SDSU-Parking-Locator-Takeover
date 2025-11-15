@@ -11,7 +11,8 @@ export type ButtonVariant =
   | "secondary"
   | "outline"
   | "destructive"
-  | "google";
+  | "google"
+  | "teal";
 export type ButtonSize = "default";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
@@ -139,6 +140,17 @@ const VARIANT_STYLES: Record<ButtonVariant, string> = {
     // Active State
     "active:bg-[var(--component-button-bg-google-active)]",
     "active:border-[var(--component-button-border-google-active)]",
+  ].join(" "),
+
+  teal: [
+    // Default State
+    "border-transparent",
+    "bg-[var(--component-button-bg-teal-default)]",
+    "text-[var(--component-button-text-teal-default)]",
+    // Hover State
+    "hover:bg-[var(--component-button-bg-teal-hover)]",
+    // Active State
+    "active:bg-[var(--component-button-bg-teal-active)]",
   ].join(" "),
 };
 

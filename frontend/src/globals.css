@@ -1,4 +1,22 @@
+/* Tailwind CSS v4 - must be imported first */
 @import "tailwindcss";
+
+/* SDSU Official Fonts */
+@font-face {
+  font-family: 'Tiempos Headline';
+  src: url('@/shared/assets/fonts/tiempos-headline/tiempos-headline-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('@/shared/assets/fonts/proxima-nova/proxima-nova-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ============================================
@@ -166,6 +184,10 @@
   --primitive-font-weight-medium: 500;
   --primitive-font-weight-semibold: 600;
   --primitive-font-weight-bold: 700;
+
+  /* Font - Family (SDSU Brand) */
+  --primitive-font-family-headline: 'Tiempos Headline', Georgia, Cambria, 'Times New Roman', serif;
+  --primitive-font-family-body: 'Proxima Nova', Montserrat, Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Opacity */
   --primitive-opacity-subtle: 0.08;
@@ -408,6 +430,10 @@
   --semantic-text-weight-semibold: var(--primitive-font-weight-semibold);
   --semantic-text-weight-bold: var(--primitive-font-weight-bold);
 
+  /* Typography - Font Family */
+  --semantic-typography-font-family-heading: var(--primitive-font-family-headline);
+  --semantic-typography-font-family-body: var(--primitive-font-family-body);
+
   /* Width Scale */
   --semantic-width-xxsmall: var(--primitive-width-50);
   --semantic-width-xsmall: var(--primitive-width-100);
@@ -574,6 +600,17 @@
   --component-button-text-google-hover: var(--semantic-text-primary);
   --component-button-text-google-active: var(--semantic-text-primary);
 
+  /* Button - Teal Variant */
+  --component-button-bg-teal-default: var(--semantic-accent-teal-default);
+  --component-button-bg-teal-hover: var(--semantic-accent-teal-dark);
+  --component-button-bg-teal-active: var(--semantic-accent-teal-light);
+  --component-button-text-teal-default: var(--semantic-text-inverse);
+  --component-button-text-teal-hover: var(--semantic-text-inverse);
+  --component-button-text-teal-active: var(--semantic-text-inverse);
+  --component-button-icon-teal-default: var(--semantic-text-inverse);
+  --component-button-icon-teal-hover: var(--semantic-text-inverse);
+  --component-button-icon-teal-disabled: var(--semantic-text-disabled);
+
   /* Button - Sizing */
   --component-button-height-default: var(--semantic-height-medium);
   --component-button-padding-inline: var(--semantic-space-default);
@@ -661,10 +698,42 @@
   --component-nav-hamburger-font-size: var(--semantic-text-size-h2);
 
   /* Table Component */
-  --component-table-cell-padding: var(--semantic-space-default);
-  --component-table-border-color: var(--semantic-border-default);
+  /* Table - Colors - Background States */
+  --component-table-bg: var(--semantic-surface-base);
+  --component-table-header-bg: var(--semantic-surface-elevated);
+  --component-table-row-bg-default: var(--semantic-surface-base);
+  --component-table-row-bg-striped: var(--semantic-surface-elevated);
   --component-table-row-hover-bg: var(--semantic-surface-hover);
+  --component-table-row-selected-bg: var(--semantic-brand-primary-default);
+
+  /* Table - Colors - Text */
+  --component-table-text-default: var(--semantic-text-primary);
+  --component-table-text-secondary: var(--semantic-text-secondary);
+  --component-table-header-text: var(--semantic-text-primary);
+  --component-table-row-selected-text: var(--semantic-text-inverse);
+
+  /* Table - Colors - Borders */
+  --component-table-border-color: var(--semantic-border-default);
+  --component-table-border-width: var(--semantic-border-width-thin);
+  --component-table-header-border: var(--semantic-border-default);
+  --component-table-header-border-width: var(--semantic-border-width-thick);
+
+  /* Table - Sizing - Spacing */
+  --component-table-cell-padding: var(--semantic-space-default);
+  --component-table-cell-padding-block: var(--semantic-space-default);
+  --component-table-cell-padding-inline: var(--semantic-space-default);
+  --component-table-header-padding-block: var(--semantic-space-comfortable);
+  --component-table-header-padding-inline: var(--semantic-space-default);
+  --component-table-radius: var(--semantic-radius-md);
+
+  /* Table - Typography */
+  --component-table-font-size: var(--semantic-text-size-body);
+  --component-table-font-weight: var(--semantic-text-weight-light);
+  --component-table-header-font-size: var(--semantic-text-size-body);
+  --component-table-header-font-weight: var(--semantic-text-weight-bold);
   --component-table-text-weight-bold: var(--semantic-text-weight-bold);
+  --component-table-caption-font-size: var(--semantic-text-size-caption);
+  --component-table-caption-text: var(--semantic-text-secondary);
 
   /* Dialog Component */
   --component-dialog-bg: var(--semantic-surface-elevated);
@@ -698,11 +767,118 @@
   --component-googlemaps-marker-text-weight: var(--primitive-font-weight-bold);
 
   /* Progress Component */
+  /* Progress - Colors - Default State */
   --component-progress-fill-bg: var(--semantic-brand-primary-default);
   --component-progress-track-bg: var(--semantic-surface-hover);
+
+  /* Progress - Colors - Variant Fills */
+  --component-progress-fill-success: var(--semantic-status-success-default);
+  --component-progress-fill-warning: var(--semantic-status-warning-default);
+  --component-progress-fill-error: var(--semantic-status-error-default);
+  --component-progress-fill-info: var(--semantic-status-info-default);
+
+  /* Progress - Colors - Text & Labels */
+  --component-progress-text-default: var(--semantic-text-primary);
+  --component-progress-text-secondary: var(--semantic-text-secondary);
+  --component-progress-border: var(--semantic-border-subtle);
+
+  /* Progress - Sizing - Height Variants */
   --component-progress-height: var(--semantic-icon-xsmall);
+  --component-progress-height-sm: var(--semantic-space-compact);
+  --component-progress-height-md: var(--semantic-icon-xsmall);
+  --component-progress-height-lg: var(--semantic-icon-small);
+
+  /* Progress - Sizing - Radius */
   --component-progress-radius-default: var(--semantic-radius-sm);
   --component-progress-radius-none: var(--semantic-radius-none);
+  --component-progress-radius-full: var(--semantic-radius-full);
+
+  /* Progress - Sizing - Spacing & Dimensions */
+  --component-progress-gap: var(--semantic-space-compact);
+  --component-progress-padding-inline: var(--semantic-space-tight);
+  --component-progress-border-width: var(--semantic-border-width-thin);
+
+  /* Progress - Typography */
+  --component-progress-font-size: var(--semantic-text-size-caption);
+  --component-progress-font-weight: var(--semantic-text-weight-regular);
+  --component-progress-percentage-font-weight: var(--semantic-text-weight-semibold);
+
+  /* Message Component */
+  /* Message - Colors - Variant Backgrounds */
+  --component-message-bg-info: var(--semantic-status-info-alpha);
+  --component-message-bg-success: var(--semantic-status-success-alpha);
+  --component-message-bg-warning: var(--semantic-status-warning-alpha);
+  --component-message-bg-error: var(--semantic-status-error-alpha);
+  --component-message-bg-neutral: var(--semantic-surface-elevated);
+
+  /* Message - Colors - Variant Borders */
+  --component-message-border-info: var(--semantic-status-info-default);
+  --component-message-border-success: var(--semantic-status-success-default);
+  --component-message-border-warning: var(--semantic-status-warning-default);
+  --component-message-border-error: var(--semantic-status-error-default);
+  --component-message-border-neutral: var(--semantic-border-default);
+
+  /* Message - Colors - Variant Text */
+  --component-message-text-info: var(--semantic-status-info-dark);
+  --component-message-text-success: var(--semantic-status-success-dark);
+  --component-message-text-warning: var(--semantic-status-warning-dark);
+  --component-message-text-error: var(--semantic-status-error-dark);
+  --component-message-text-neutral: var(--semantic-text-primary);
+
+  /* Message - Colors - Variant Icons */
+  --component-message-icon-info: var(--semantic-status-info-default);
+  --component-message-icon-success: var(--semantic-status-success-default);
+  --component-message-icon-warning: var(--semantic-status-warning-default);
+  --component-message-icon-error: var(--semantic-status-error-default);
+  --component-message-icon-neutral: var(--semantic-text-secondary);
+
+  /* Message - Colors - Close Button */
+  --component-message-close-default: var(--semantic-text-secondary);
+  --component-message-close-hover: var(--semantic-text-primary);
+
+  /* Message - Sizing - Layout */
+  --component-message-padding-block: var(--semantic-space-default);
+  --component-message-padding-inline: var(--semantic-space-comfortable);
+  --component-message-gap: var(--semantic-space-default);
+  --component-message-radius: var(--semantic-radius-md);
+  --component-message-border-width: var(--semantic-border-width-thin);
+  --component-message-border-left-width: var(--semantic-border-width-thick);
+
+  /* Message - Sizing - Icons */
+  --component-message-icon-size: var(--semantic-icon-medium);
+  --component-message-close-size: var(--semantic-icon-small);
+
+  /* Message - Typography - Title */
+  --component-message-title-font-size: var(--semantic-text-size-body);
+  --component-message-title-font-weight: var(--semantic-text-weight-semibold);
+
+  /* Message - Typography - Body */
+  --component-message-body-font-size: var(--semantic-text-size-body-sm);
+  --component-message-body-font-weight: var(--semantic-text-weight-light);
+  --component-message-body-text: var(--semantic-text-secondary);
+
+  /* Logo Component */
+  /* Logo - Sizing */
+  --component-logo-size-xs: var(--primitive-size-400);
+  --component-logo-size-sm: var(--primitive-size-500);
+  --component-logo-size-md: var(--primitive-size-650);
+  --component-logo-size-lg: var(--primitive-size-800);
+  --component-logo-size-xl: var(--primitive-size-1000);
+
+  /* Logo - Clear Space */
+  --component-logo-clear-space: var(--semantic-space-default);
+
+  /* Logo - Colors */
+  --component-logo-color-red: var(--semantic-brand-primary-default);
+  --component-logo-color-black: var(--semantic-text-primary);
+  --component-logo-color-white: var(--semantic-text-inverse);
+
+  /* Monogram - Sizing */
+  --component-monogram-size-xs: var(--primitive-size-300);
+  --component-monogram-size-sm: var(--primitive-size-400);
+  --component-monogram-size-md: var(--primitive-size-500);
+  --component-monogram-size-lg: var(--primitive-size-600);
+  --component-monogram-size-xl: var(--primitive-size-750);
 
   /* Typography Component */
   --component-typography-heading-h1-size: var(--semantic-text-size-h1);
@@ -721,6 +897,8 @@
   --component-typography-color-inverse: var(--semantic-text-inverse);
   --component-typography-color-link: var(--semantic-text-link);
   --component-typography-color-error: var(--semantic-text-error);
+  --component-typography-heading-font-family: var(--semantic-typography-font-family-heading);
+  --component-typography-body-font-family: var(--semantic-typography-font-family-body);
 
   /* Drawer Component */
   --component-drawer-bg: var(--semantic-surface-elevated);
@@ -802,11 +980,118 @@
   --component-timepicker-padding-block: var(--semantic-space-default);
   --component-timepicker-padding-inline: var(--semantic-space-comfortable);
 
-  /* Other Components (Minimal structure) */
+  /* Filter Component */
+  /* Filter - Colors - Container */
   --component-filter-bg: var(--semantic-surface-elevated);
+  --component-filter-bg-hover: var(--semantic-surface-hover);
+  --component-filter-border: var(--semantic-border-subtle);
+  --component-filter-text: var(--semantic-text-primary);
+
+  /* Filter - Colors - Filter Chips/Items */
+  --component-filter-chip-bg-default: var(--semantic-surface-base);
+  --component-filter-chip-bg-hover: var(--semantic-surface-hover);
+  --component-filter-chip-bg-selected: var(--semantic-brand-primary-default);
+  --component-filter-chip-text-default: var(--semantic-text-primary);
+  --component-filter-chip-text-selected: var(--semantic-text-inverse);
+  --component-filter-chip-border-default: var(--semantic-border-default);
+  --component-filter-chip-border-selected: var(--semantic-brand-primary-default);
+
+  /* Filter - Colors - Clear/Reset Actions */
+  --component-filter-clear-text-default: var(--semantic-text-secondary);
+  --component-filter-clear-text-hover: var(--semantic-brand-primary-default);
+  --component-filter-clear-icon: var(--semantic-text-secondary);
+
+  /* Filter - Colors - Count Badge */
+  --component-filter-count-bg: var(--semantic-brand-primary-default);
+  --component-filter-count-text: var(--semantic-text-inverse);
+
+  /* Filter - Sizing - Container */
   --component-filter-padding-block: var(--semantic-space-default);
   --component-filter-padding-inline: var(--semantic-space-comfortable);
   --component-filter-radius: var(--semantic-radius-lg);
+  --component-filter-gap: var(--semantic-space-default);
+  --component-filter-border-width: var(--semantic-border-width-thin);
+
+  /* Filter - Sizing - Chips */
+  --component-filter-chip-height: var(--semantic-height-small);
+  --component-filter-chip-padding-inline: var(--semantic-space-default);
+  --component-filter-chip-padding-block: var(--semantic-space-tight);
+  --component-filter-chip-gap: var(--semantic-space-compact);
+  --component-filter-chip-radius: var(--semantic-radius-full);
+  --component-filter-chip-border-width: var(--semantic-border-width-thin);
+
+  /* Filter - Sizing - Icons */
+  --component-filter-icon-size: var(--semantic-icon-small);
+  --component-filter-count-size: var(--semantic-icon-xsmall);
+
+  /* Filter - Typography */
+  --component-filter-font-size: var(--semantic-text-size-body-sm);
+  --component-filter-font-weight: var(--semantic-text-weight-regular);
+  --component-filter-chip-font-size: var(--semantic-text-size-caption);
+  --component-filter-chip-font-weight: var(--semantic-text-weight-regular);
+
+  /* Pattern Component */
+  /* Pattern - Opacity Levels */
+  --component-pattern-opacity-subtle: var(--primitive-opacity-subtle);
+  --component-pattern-opacity-light: 0.15;
+  --component-pattern-opacity-medium: 0.35;
+  --component-pattern-opacity-high: 0.65;
+
+  /* Pattern - Tint Colors */
+  --component-pattern-tint-red: var(--semantic-brand-primary-default);
+  --component-pattern-tint-red-alpha: rgba(212, 23, 53, 0.2);
+  --component-pattern-tint-teal: var(--semantic-accent-teal-default);
+  --component-pattern-tint-teal-alpha: rgba(0, 100, 102, 0.2);
+  --component-pattern-tint-dark: var(--semantic-surface-overlay);
+  --component-pattern-tint-light: rgba(255, 255, 255, 0.9);
+
+  /* Pattern - Sizing */
+  --component-pattern-divider-height-sm: var(--primitive-size-100);
+  --component-pattern-divider-height-md: var(--primitive-size-200);
+  --component-pattern-divider-height-lg: var(--primitive-size-400);
+
+  /* Pattern - Spacing */
+  --component-pattern-margin-block: var(--semantic-space-comfortable);
+
+  /* Ornament Component */
+  /* Ornament - Sizing */
+  --component-ornament-size-xs: var(--primitive-size-200);
+  --component-ornament-size-sm: var(--primitive-size-300);
+  --component-ornament-size-md: var(--primitive-size-500);
+  --component-ornament-size-lg: var(--primitive-size-700);
+  --component-ornament-size-xl: var(--primitive-size-950);
+
+  /* Ornament - Spacing */
+  --component-ornament-spacing-xs: var(--semantic-space-compact);
+  --component-ornament-spacing-sm: var(--semantic-space-default);
+  --component-ornament-spacing-md: var(--semantic-space-comfortable);
+  --component-ornament-spacing-lg: var(--semantic-space-loose);
+  --component-ornament-spacing-xl: var(--semantic-space-spacious);
+
+  /* Ornament - Colors */
+  --component-ornament-color-primary: var(--semantic-text-primary);
+  --component-ornament-color-secondary: var(--semantic-text-secondary);
+  --component-ornament-color-inverse: var(--semantic-text-inverse);
+  --component-ornament-color-brand: var(--semantic-brand-primary-default);
+
+  /* Text Divider - Specific */
+  --component-text-divider-height: var(--primitive-size-100);
+  --component-text-divider-margin-block: var(--semantic-space-loose);
+
+  /* Pull Quote - Specific */
+  --component-pull-quote-font-size: var(--semantic-text-size-h3);
+  --component-pull-quote-font-weight: var(--semantic-text-weight-semibold);
+  --component-pull-quote-padding: var(--semantic-space-comfortable);
+  --component-pull-quote-border-width: var(--semantic-border-width-thick);
+
+  /* Drop Cap - Specific */
+  --component-drop-cap-font-size: var(--primitive-font-size-500);
+  --component-drop-cap-font-weight: var(--semantic-text-weight-bold);
+  --component-drop-cap-color: var(--semantic-brand-primary-default);
+  --component-drop-cap-margin: var(--semantic-space-compact);
+
+  /* Section Header - Specific */
+  --component-section-header-ornament-gap: var(--semantic-space-default);
 
   --component-selector-bg-default: var(--semantic-surface-elevated);
   --component-selector-bg-hover: var(--semantic-surface-elevated);
@@ -841,8 +1126,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--semantic-typography-font-family-body);
   line-height: var(--primitive-font-line-height-normal);
   background-color: var(--component-page-bg);
   color: var(--semantic-text-primary);

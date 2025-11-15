@@ -1,19 +1,7 @@
-/**
- * Link Component
- *
- * Semantic link component with consistent styling
- */
-
 import { cn } from "@/lib/cn";
 import { type ComponentPropsWithoutRef } from "react";
 
 export interface LinkProps extends ComponentPropsWithoutRef<"a"> {
-  /**
-   * Link variant
-   * - default: Standard link with underline on hover
-   * - inline: Inline link within text
-   * - button: Link styled like a button (no underline)
-   */
   variant?: "default" | "inline" | "button";
 }
 
@@ -40,16 +28,6 @@ const variantStyles = {
   ].join(" "),
 };
 
-/**
- * Link Component
- *
- * @example
- * ```tsx
- * <Link href="/about">About</Link>
- * <Link href="/contact" variant="inline">Contact Us</Link>
- * <Link href="/dashboard" variant="button">Go to Dashboard</Link>
- * ```
- */
 export const Link = ({
   children,
   className,

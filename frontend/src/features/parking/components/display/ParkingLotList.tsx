@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef } from "react";
-import { cn } from "@/lib/cn";
 import type { Lot, LotStatus } from "@/shared/types";
 
 export const ParkingLotList = () => {

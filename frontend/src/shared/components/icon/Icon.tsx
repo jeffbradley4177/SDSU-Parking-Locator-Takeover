@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 import { forwardRef, memo, type ComponentPropsWithoutRef } from "react";
-import { IconBaseProps } from "react-icons";
+import type { IconBaseProps } from "react-icons";
 
 import {
   BiMap,
@@ -10,7 +10,6 @@ import {
   BiMapPin,
   BiDirections,
   BiCar,
-  BiParking,
   BiSquare,
   BiSquareRounded,
   BiGrid,
@@ -87,7 +86,6 @@ import {
   BiCog,
   BiDotsHorizontal,
   BiDotsVertical,
-  BiInfo,
   BiInfoCircle,
   BiHelpCircle,
   BiPhone,
@@ -131,7 +129,6 @@ const ICON_MAP = {
 
   // Parking
   car: BiCar,
-  parking: BiParking,
   square: BiSquare,
   "square-rounded": BiSquareRounded,
   grid: BiGrid,
@@ -224,7 +221,7 @@ const ICON_MAP = {
   "dots-vertical": BiDotsVertical,
 
   // Information
-  info: BiInfo,
+  info: BiInfoCircle,
   "info-circle": BiInfoCircle,
   help: BiHelpCircle,
   phone: BiPhone,

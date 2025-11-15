@@ -1,29 +1,8 @@
-/**
- * Text Component
- *
- * Body text component with consistent styling from design tokens
- */
-
 import { cn } from "@/lib/cn";
 import { type ComponentPropsWithoutRef } from "react";
 
 export interface TextProps extends ComponentPropsWithoutRef<"p"> {
-  /**
-   * Text variant
-   * - body: Default body text
-   * - body-sm: Small body text
-   * - caption: Smaller caption text
-   */
   variant?: "body" | "body-sm" | "caption";
-
-  /**
-   * Text color variant
-   * - primary: Default text color
-   * - secondary: Muted text color
-   * - inverse: Light text (for dark backgrounds)
-   * - link: Link color
-   * - error: Error text color
-   */
   color?: "primary" | "secondary" | "inverse" | "link" | "error";
 }
 
@@ -41,16 +20,6 @@ const colorStyles = {
   error: "text-[var(--component-typography-color-error)]",
 };
 
-/**
- * Text Component
- *
- * @example
- * ```tsx
- * <Text>Default body text</Text>
- * <Text variant="caption" color="secondary">Small muted text</Text>
- * <Text variant="body-sm">Small body text</Text>
- * ```
- */
 export const Text = ({
   children,
   className,

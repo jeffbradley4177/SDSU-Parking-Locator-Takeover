@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="bigthumbnaillayout" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 212 212" enable-background="new 0 0 212 212" xml:space="preserve">
+<g>
+	<rect x="8" y="8" fill="none" width="84" height="84"/>
+	<rect x="120" y="120" fill="none" width="84" height="84"/>
+	<rect x="8" y="120" fill="none" width="84" height="84"/>
+	<rect x="120" y="8" fill="none" width="84" height="84"/>
+	<path d="M96,0H4C1.7891,0,0,1.7912,0,4v92c0,2.2088,1.7891,4,4,4h92c2.2107,0,4-1.7912,4-4V4C100,1.7912,98.2107,0,96,0z M92,92H8
+		V8h84V92z"/>
+	<path d="M208,0h-92c-2.2109,0-4,1.7912-4,4v92c0,2.2088,1.7891,4,4,4h92c2.2107,0,4-1.7912,4-4V4C212,1.7912,210.2107,0,208,0z
+		 M204,92h-84V8h84V92z"/>
+	<path d="M96,112H4c-2.2109,0-4,1.7912-4,4v92c0,2.2088,1.7891,4,4,4h92c2.2107,0,4-1.7912,4-4v-92C100,113.7912,98.2107,112,96,112
+		z M92,204H8v-84h84V204z"/>
+	<path d="M208,112h-92c-2.2109,0-4,1.7912-4,4v92c0,2.2088,1.7891,4,4,4h92c2.2107,0,4-1.7912,4-4v-92
+		C212,113.7912,210.2107,112,208,112z M204,204h-84v-84h84V204z"/>
+</g>
+</svg>
