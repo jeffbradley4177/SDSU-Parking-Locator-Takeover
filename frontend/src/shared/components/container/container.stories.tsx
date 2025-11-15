@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SummaryTile } from "./SummaryTile";
+import { SummaryTile } from "./container";
 
 const meta = {
   title: "UI/SummaryTile",
