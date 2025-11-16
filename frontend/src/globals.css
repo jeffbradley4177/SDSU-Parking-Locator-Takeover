@@ -1,6 +1,16 @@
 /* Tailwind CSS v4 - must be imported first */
 @import "tailwindcss";
 
+/* Breakpoints */
+@theme {
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 640px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1440px;
+}
+
 /* SDSU Official Fonts */
 @font-face {
   font-family: 'Tiempos Headline';
@@ -388,6 +398,17 @@
   --semantic-space-loose: var(--primitive-space-200);
   --semantic-space-spacious: var(--primitive-space-400);
 
+  /* Responsive Spacing - Mobile First */
+  --semantic-space-mobile-tight: var(--primitive-space-75); 
+  --semantic-space-mobile-default: var(--primitive-space-100);
+  --semantic-space-mobile-comfortable: var(--primitive-space-150);
+  --semantic-space-mobile-spacious: var(--primitive-space-250);
+
+  --semantic-space-desktop-tight: var(--primitive-space-100);
+  --semantic-space-desktop-default: var(--primitive-space-150);
+  --semantic-space-desktop-comfortable: var(--primitive-space-200); 
+  --semantic-space-desktop-spacious: var(--primitive-space-400);
+
   /* Icon Sizes */
   --semantic-icon-xsmall: var(--primitive-size-150);
   --semantic-icon-small: var(--primitive-size-200);
@@ -423,6 +444,23 @@
   --semantic-text-size-h3: var(--primitive-font-size-300);
   --semantic-text-size-h2: var(--primitive-font-size-500);
   --semantic-text-size-h1: var(--primitive-font-size-350);
+
+  /* Responsive Typography - Mobile First */
+  /* Mobile font sizes (375px base) */
+  --semantic-text-size-mobile-caption: var(--primitive-font-size-75);  
+  --semantic-text-size-mobile-body-sm: var(--primitive-font-size-100); 
+  --semantic-text-size-mobile-body: var(--primitive-font-size-150);    
+  --semantic-text-size-mobile-h3: var(--primitive-font-size-200);      
+  --semantic-text-size-mobile-h2: var(--primitive-font-size-300);     
+  --semantic-text-size-mobile-h1: var(--primitive-font-size-500);   
+
+  /* Desktop font sizes (768px+) */
+  --semantic-text-size-desktop-caption: var(--primitive-font-size-100);
+  --semantic-text-size-desktop-body-sm: var(--primitive-font-size-150); 
+  --semantic-text-size-desktop-body: var(--primitive-font-size-200); 
+  --semantic-text-size-desktop-h3: var(--primitive-font-size-300); 
+  --semantic-text-size-desktop-h2: var(--primitive-font-size-500);
+  --semantic-text-size-desktop-h1: var(--primitive-font-size-350); 
 
   /* Typography - Weight */
   --semantic-text-weight-light: var(--primitive-font-weight-regular);
@@ -679,14 +717,29 @@
   --component-input-helper-font-size: var(--semantic-text-size-caption);
   --component-input-helper-font-weight: var(--semantic-text-weight-light);
 
-  /* Page Layout */
+  /* Page Layout - Mobile First */
   --component-page-bg: var(--semantic-surface-base);
-  --component-page-padding-inline: var(--semantic-space-comfortable);
-  --component-page-padding-block: var(--semantic-space-loose);
+  --component-page-padding-inline-mobile: var(--semantic-space-mobile-comfortable);
+  --component-page-padding-block-mobile: var(--semantic-space-mobile-default);
+  --component-page-padding-inline-desktop: var(--semantic-space-desktop-spacious); 
+  --component-page-padding-block-desktop: var(--semantic-space-desktop-comfortable); 
   --component-page-gap-tight: var(--semantic-space-default);
   --component-page-gap-default: var(--semantic-space-comfortable);
   --component-page-gap-comfortable: var(--semantic-space-loose);
   --component-page-gap-section: var(--semantic-space-spacious);
+
+  /* Container Component - Mobile First */
+  --component-container-padding-mobile: var(--semantic-space-mobile-comfortable); 
+  --component-container-padding-desktop: var(--semantic-space-desktop-comfortable);
+  --component-container-max-width-sm: 640px;
+  --component-container-max-width-md: 768px;
+  --component-container-max-width-lg: 1024px;
+  --component-container-max-width-xl: 1280px;
+  --component-container-max-width-full: 100%;
+
+  /* Touch Targets - Mobile Optimization */
+  --component-touch-target-min: var(--primitive-size-550); 
+  --component-touch-target-comfortable: var(--primitive-size-600);
 
   /* Navigation Component */
   --component-nav-bg: var(--semantic-surface-navigation);
