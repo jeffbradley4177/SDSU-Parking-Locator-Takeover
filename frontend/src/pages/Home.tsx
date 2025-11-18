@@ -1,27 +1,31 @@
 import { ParkingMapView } from "@/features/parking/components/map";
 import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
-import { H1 } from "@/shared/components/typography";
 
 export const Home = () => {
   return (
-    <div>
-      <div className="relative text-center">
-        <H1>Welcome to the SDSU Parking Locator</H1>
+    <div className="fixed inset-0 top-[var(--component-nav-height)]">
+      {/* Fullscreen Map Background */}
+      <div className="absolute inset-0 z-0">
+        <ParkingMapView mapStyle="light" />
       </div>
 
-      <div className="p-[var(--component-page-padding-inline)] flex justify-center mt-[var(--component-page-gap-comfortable)]">
-        <div className="w-3/4">
-          <ParkingMapView size="default" />
+      {/* Overlay Content */}
+      <div className="relative z-20 pointer-events-none h-full">
+        {/* Parking Lot List Overlay */}
+        <div className="absolute bottom-[var(--component-page-gap-comfortable)] left-[var(--component-page-padding-inline)] right-[var(--component-page-padding-inline)] pointer-events-auto">
+          <div className="bg-white/95 backdrop-blur-sm shadow-2xl rounded-lg border border-gray-200 max-h-[60vh] overflow-auto">
+            <section className="p-[var(--component-page-padding-inline)]">
+              <h2 className="mb-[var(--component-page-gap-default)] text-xl font-semibold">
+                SDSU Parking Availability
+              </h2>
+              <p className="mb-[var(--component-page-gap-default)] opacity-85 text-sm">
+                View current parking lot conditions and help keep the information updated by submitting your own report.
+              </p>
+              <ParkingLotList />
+            </section>
+          </div>
         </div>
       </div>
-
-      <section className="mt-[var(--component-page-gap-comfortable)] p-[var(--component-page-padding-inline)]">
-        <h2 className="mb-[var(--component-page-gap-default)]">SDSU Parking Availability</h2>
-        <p className="mb-[var(--component-page-gap-default)] opacity-85">
-          View current parking lot conditions and help keep the information updated by submitting your own report.
-        </p>
-        <ParkingLotList />
-      </section>
     </div>
   );
 };

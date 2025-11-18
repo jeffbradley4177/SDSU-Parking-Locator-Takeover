@@ -26,8 +26,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 // Base button styles using component tokens
 const BASE_CLASSES = [
   // Layout
-  "w-full flex self-stretch",
-  "inline-flex items-center justify-center",
+  "w-full inline-flex self-stretch items-center justify-center",
   "gap-[length:var(--component-button-gap)]",
 
   // Shape & Border
@@ -40,17 +39,17 @@ const BASE_CLASSES = [
   "leading-none",
 
   // Transitions
-  "transition-colors duration-150",
+  "transition-colors duration-[var(--component-button-transition-duration)]",
 
   // Focus States
   "focus-visible:outline",
-  "focus-visible:outline-2",
+  "focus-visible:outline-[length:var(--component-button-focus-outline-width)]",
   "focus-visible:outline-[var(--border-color-focus)]",
-  "focus-visible:outline-offset-2",
+  "focus-visible:outline-[length:var(--component-button-focus-outline-offset)]",
 
   // Disabled States
   "disabled:pointer-events-none",
-  "disabled:opacity-40",
+  "disabled:opacity-[var(--component-button-disabled-opacity)]",
 ].join(" ");
 
 // Icon wrapper styles
@@ -157,7 +156,7 @@ const VARIANT_STYLES: Record<ButtonVariant, string> = {
 // Memoized spinner component
 const Spinner = memo(() => (
   <span className={cn(ICON_WRAPPER_CLASSES, "animate-spin")} aria-hidden="true">
-    <span className="h-full w-full rounded-full border-2 border-current border-t-transparent" />
+    <span className="h-full w-full rounded-[var(--component-button-spinner-radius)] border-[length:var(--component-button-spinner-border-width)] border-current border-t-transparent" />
   </span>
 ));
 Spinner.displayName = "Spinner";
@@ -235,7 +234,7 @@ export const Button = memo(
           <span
             className={cn(
               "inline-flex items-center justify-center",
-              isLoading && "opacity-0",
+              isLoading && "opacity-[var(--component-button-loading-content-opacity)]",
             )}
           >
             {children}

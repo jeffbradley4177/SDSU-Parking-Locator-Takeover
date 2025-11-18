@@ -34,7 +34,7 @@ const BASE_CLASSES = [
   "leading-none",
 
   // Transitions
-  "transition-all duration-150",
+  "transition-all duration-[var(--component-input-transition-duration)]",
 
   // Default State - Background & Border Colors
   "bg-[var(--component-input-bg-default)]",
@@ -46,7 +46,7 @@ const BASE_CLASSES = [
   "hover:border-[var(--component-input-border-hover)]",
 
   // Focus Within State
-  "focus-within:border-2",
+  "focus-within:border-[length:var(--component-input-border-width-focus)]",
   "focus-within:border-[var(--component-input-border-focus)]",
 
   // Disabled State
@@ -57,7 +57,7 @@ const BASE_CLASSES = [
 
 // Error state classes
 const ERROR_CLASSES = [
-  "!border-2",
+  "!border-[length:var(--component-input-border-width-error)]",
   "!border-[var(--component-input-border-error)]",
   "focus-within:!border-[var(--component-input-border-error)]",
 ].join(" ");
@@ -91,8 +91,8 @@ const ICON_WRAPPER_CLASSES = [
   "inline-flex shrink-0 items-center justify-center",
 
   // Fixed sizing - 20px icons
-  "h-5",
-  "w-5",
+  "h-[var(--component-input-icon-size-default)]",
+  "w-[var(--component-input-icon-size-default)]",
 
   // Color
   "text-[var(--component-input-text-default)]",

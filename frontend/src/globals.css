@@ -28,21 +28,63 @@
   font-display: swap;
 }
 
-:root {
-  /* ============================================
-     PRIMITIVES - Raw values
-     ============================================ */
+/* ============================================
+   CSS RESET
+   ============================================ */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--semantic-typography-font-family-body);
+  line-height: var(--semantic-line-height-normal);
+  background-color: var(--component-page-bg);
+  color: var(--semantic-text-primary);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  /* Font - Family (SDSU Brand) */
+  --primitive-font-family-headline: 'Tiempos Headline', Georgia, Cambria, 'Times New Roman', serif;
+  --primitive-font-family-body: 'Proxima Nova', Montserrat, Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
   /* Colors - Alpha */
   --primitive-color-black-alpha-40: #00000066;
   --primitive-color-black-alpha-60: #00000099;
   --primitive-color-transparent: #00000000;
 
-  /* Colors - Blue */
+  /* Colors - Blue (5-shade system: 50, 300, 500, 700, 900) */
+  --primitive-color-blue-50: #e6f4f8;
   --primitive-color-blue-300: #5297b4;
   --primitive-color-blue-300-alpha: #5297b480;
   --primitive-color-blue-500: #277da1;
   --primitive-color-blue-700: #1f6481;
+  --primitive-color-blue-900: #0d3240;
 
   /* Colors - Gold */
   --primitive-color-gold-50: #fff8e6;
@@ -57,20 +99,28 @@
   --primitive-color-gold-900: #6d4710;
 
   /* Colors - Green */
+  --primitive-color-green-50: #e8f5f1;
   --primitive-color-green-300: #68bba2;
   --primitive-color-green-300-alpha: #68bba280;
   --primitive-color-green-500: #42aa8b;
   --primitive-color-green-700: #35886f;
+  --primitive-color-green-900: #1a4438;
 
   /* Colors - Indigo */
+  --primitive-color-indigo-50: #f3f0f3;
   --primitive-color-indigo-300: #714770;
+  --primitive-color-indigo-300-alpha: #71477080;
   --primitive-color-indigo-500: #4d194d;
   --primitive-color-indigo-700: #3d143d;
+  --primitive-color-indigo-900: #1f0a1f;
 
   /* Colors - Navy */
+  --primitive-color-navy-50: #eceff2;
   --primitive-color-navy-300: #4d596a;
+  --primitive-color-navy-300-alpha: #4d596a80;
   --primitive-color-navy-500: #212f45;
   --primitive-color-navy-700: #1a2637;
+  --primitive-color-navy-900: #0d131c;
 
   /* Colors - Neutral */
   --primitive-color-neutral-50: #ffffff;
@@ -85,15 +135,20 @@
   --primitive-color-neutral-900: #000000;
 
   /* Colors - Orange */
+  --primitive-color-orange-50: #fef4ed;
   --primitive-color-orange-300: #fa9c6e;
   --primitive-color-orange-300-alpha: #fa9c6e80;
   --primitive-color-orange-500: #f9844a;
   --primitive-color-orange-700: #c7693b;
+  --primitive-color-orange-900: #63341e;
 
   /* Colors - Pink */
+  --primitive-color-pink-50: #fbeef6;
   --primitive-color-pink-300: #de5c9c;
+  --primitive-color-pink-300-alpha: #de5c9c80;
   --primitive-color-pink-500: #d63384;
   --primitive-color-pink-700: #ab2869;
+  --primitive-color-pink-900: #561435;
 
   /* Colors - Primary (Brand Red) */
   --primitive-color-primary-50: #fff1f3;
@@ -102,37 +157,52 @@
   --primitive-color-primary-300: #ff97aa;
   --primitive-color-primary-400: #f05b6f;
   --primitive-color-primary-500: #d41735;
+  --primitive-color-primary-500-alpha-20: #d4173533;
   --primitive-color-primary-600: #a6192e;
   --primitive-color-primary-700: #870c22;
   --primitive-color-primary-800: #69091b;
   --primitive-color-primary-900: #4e0715;
 
   /* Colors - Purple */
+  --primitive-color-purple-50: #f5f1f4;
   --primitive-color-purple-300: #a673a3;
+  --primitive-color-purple-300-alpha: #a673a380;
   --primitive-color-purple-500: #90518c;
   --primitive-color-purple-700: #734170;
+  --primitive-color-purple-900: #3a2138;
 
   /* Colors - Red */
+  --primitive-color-red-50: #fff2f2;
   --primitive-color-red-300: #ff8989;
   --primitive-color-red-300-alpha: #ff898980;
   --primitive-color-red-500: #e05050;
   --primitive-color-red-700: #cc5555;
+  --primitive-color-red-900: #662b2b;
 
   /* Colors - Sand */
+  --primitive-color-sand-50: #fcfcfb;
   --primitive-color-sand-300: #f6f5f1;
+  --primitive-color-sand-300-alpha: #f6f5f180;
   --primitive-color-sand-500: #f4f3ee;
   --primitive-color-sand-700: #c3c2be;
+  --primitive-color-sand-900: #62615f;
 
   /* Colors - Teal */
+  --primitive-color-teal-50: #e6f1f1;
   --primitive-color-teal-300: #338384;
+  --primitive-color-teal-300-alpha: #33838480;
   --primitive-color-teal-500: #006466;
+  --primitive-color-teal-500-alpha-20: #00646633;
   --primitive-color-teal-700: #005252;
+  --primitive-color-teal-900: #002929;
 
   /* Colors - Yellow */
+  --primitive-color-yellow-50: #fef9e6;
   --primitive-color-yellow-300: #fcd34d;
   --primitive-color-yellow-300-alpha: #fcd34d80;
   --primitive-color-yellow-500: #f59e0b;
   --primitive-color-yellow-700: #b45309;
+  --primitive-color-yellow-900: #5a2a05;
 
   /* Colors - Gray (Brand Gray) */
   --primitive-color-gray-50: #f5f5f5;
@@ -146,9 +216,8 @@
   --primitive-color-gray-800: #171717;
   --primitive-color-gray-900: #000000;
 
-  /* Colors - Navigation */
-  --primitive-color-navigation-bg: #263032;
-  --primitive-color-navigation-link-hover: #cbc7c7;
+  /* Colors - White Alpha */
+  --primitive-color-white-alpha-90: #ffffffe6;
 
   /* Border Width */
   --primitive-border-width-0: 0px;
@@ -158,13 +227,12 @@
   --primitive-border-width-150: 3px;
   --primitive-border-width-200: 4px;
 
-  /* Breakpoints */
-  --primitive-breakpoint-xs: 375px;
-  --primitive-breakpoint-sm: 480px;
-  --primitive-breakpoint-md: 640px;
-  --primitive-breakpoint-lg: 768px;
-  --primitive-breakpoint-xl: 1024px;
-  --primitive-breakpoint-2xl: 1440px;
+  /* Animation Duration */
+  --primitive-duration-instant: 0ms;
+  --primitive-duration-fast: 150ms;
+  --primitive-duration-normal: 200ms;
+  --primitive-duration-slow: 300ms;
+  --primitive-duration-slower: 500ms;
 
   /* Focus Ring */
   --primitive-focus-ring-offset: 2px;
@@ -195,14 +263,16 @@
   --primitive-font-weight-semibold: 600;
   --primitive-font-weight-bold: 700;
 
-  /* Font - Family (SDSU Brand) */
-  --primitive-font-family-headline: 'Tiempos Headline', Georgia, Cambria, 'Times New Roman', serif;
-  --primitive-font-family-body: 'Proxima Nova', Montserrat, Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
   /* Opacity */
+  --primitive-opacity-hidden: 0;
   --primitive-opacity-subtle: 0.08;
+  --primitive-opacity-light: 0.15;
+  --primitive-opacity-medium: 0.35;
   --primitive-opacity-disabled: 0.4;
   --primitive-opacity-overlay: 0.6;
+  --primitive-opacity-high: 0.65;
+  --primitive-opacity-hover: 0.8;
+  --primitive-opacity-prominent: 0.9;
 
   /* Radius */
   --primitive-radius-none: 0px;
@@ -237,6 +307,7 @@
   --primitive-size-1000: 84px;
   --primitive-size-1100: 300px;
   --primitive-size-1200: 500px;
+  --primitive-size-full: 100%;
 
   /* Space (Spacing Scale) */
   --primitive-space-0: 0px;
@@ -278,10 +349,10 @@
   --primitive-width-900: 760px;
   --primitive-width-950: 800px;
   --primitive-width-1000: 840px;
-
-  /* ============================================
-     SEMANTIC TOKENS 
-     ============================================ */
+  --primitive-width-1050: 880px;
+  --primitive-width-1100: 1024px;
+  --primitive-width-1150: 1280px;
+  --primitive-width-full: 100%;
 
   /* Brand Colors */
   --semantic-brand-primary-default: var(--primitive-color-primary-500);
@@ -314,40 +385,77 @@
   --semantic-status-info-alpha: var(--primitive-color-blue-300-alpha);
 
   /* Accent Colors */
-  --semantic-accent-green-default: var(--primitive-color-green-500);
+  --semantic-accent-blue-lightest: var(--primitive-color-blue-50);
+  --semantic-accent-blue-light: var(--primitive-color-blue-300);
+  --semantic-accent-blue-default: var(--primitive-color-blue-500);
+  --semantic-accent-blue-dark: var(--primitive-color-blue-700);
+  --semantic-accent-blue-darkest: var(--primitive-color-blue-900);
+  --semantic-accent-green-lightest: var(--primitive-color-green-50);
   --semantic-accent-green-light: var(--primitive-color-green-300);
+  --semantic-accent-green-default: var(--primitive-color-green-500);
   --semantic-accent-green-dark: var(--primitive-color-green-700);
-  --semantic-accent-indigo-default: var(--primitive-color-indigo-500);
+  --semantic-accent-green-darkest: var(--primitive-color-green-900);
+  --semantic-accent-indigo-lightest: var(--primitive-color-indigo-50);
   --semantic-accent-indigo-light: var(--primitive-color-indigo-300);
+  --semantic-accent-indigo-default: var(--primitive-color-indigo-500);
   --semantic-accent-indigo-dark: var(--primitive-color-indigo-700);
-  --semantic-accent-navy-default: var(--primitive-color-navy-500);
+  --semantic-accent-indigo-darkest: var(--primitive-color-indigo-900);
+  --semantic-accent-navy-lightest: var(--primitive-color-navy-50);
   --semantic-accent-navy-light: var(--primitive-color-navy-300);
+  --semantic-accent-navy-default: var(--primitive-color-navy-500);
   --semantic-accent-navy-dark: var(--primitive-color-navy-700);
+  --semantic-accent-navy-darkest: var(--primitive-color-navy-900);
   --semantic-accent-neutral-default: var(--primitive-color-neutral-400);
   --semantic-accent-neutral-light: var(--primitive-color-neutral-300);
   --semantic-accent-neutral-dark: var(--primitive-color-neutral-500);
-  --semantic-accent-orange-default: var(--primitive-color-orange-500);
+  --semantic-accent-orange-lightest: var(--primitive-color-orange-50);
   --semantic-accent-orange-light: var(--primitive-color-orange-300);
+  --semantic-accent-orange-default: var(--primitive-color-orange-500);
   --semantic-accent-orange-dark: var(--primitive-color-orange-700);
-  --semantic-accent-pink-default: var(--primitive-color-pink-500);
+  --semantic-accent-orange-darkest: var(--primitive-color-orange-900);
+  --semantic-accent-pink-lightest: var(--primitive-color-pink-50);
   --semantic-accent-pink-light: var(--primitive-color-pink-300);
+  --semantic-accent-pink-default: var(--primitive-color-pink-500);
   --semantic-accent-pink-dark: var(--primitive-color-pink-700);
-  --semantic-accent-purple-default: var(--primitive-color-purple-500);
+  --semantic-accent-pink-darkest: var(--primitive-color-pink-900);
+  --semantic-accent-purple-lightest: var(--primitive-color-purple-50);
   --semantic-accent-purple-light: var(--primitive-color-purple-300);
+  --semantic-accent-purple-default: var(--primitive-color-purple-500);
   --semantic-accent-purple-dark: var(--primitive-color-purple-700);
-  --semantic-accent-red-default: var(--primitive-color-red-500);
+  --semantic-accent-purple-darkest: var(--primitive-color-purple-900);
+  --semantic-accent-red-lightest: var(--primitive-color-red-50);
   --semantic-accent-red-light: var(--primitive-color-red-300);
+  --semantic-accent-red-default: var(--primitive-color-red-500);
   --semantic-accent-red-dark: var(--primitive-color-red-700);
-  --semantic-accent-sand-default: var(--primitive-color-sand-500);
+  --semantic-accent-red-darkest: var(--primitive-color-red-900);
+  --semantic-accent-sand-lightest: var(--primitive-color-sand-50);
   --semantic-accent-sand-light: var(--primitive-color-sand-300);
+  --semantic-accent-sand-default: var(--primitive-color-sand-500);
   --semantic-accent-sand-dark: var(--primitive-color-sand-700);
-  --semantic-accent-teal-default: var(--primitive-color-teal-500);
+  --semantic-accent-sand-darkest: var(--primitive-color-sand-900);
+  --semantic-accent-teal-lightest: var(--primitive-color-teal-50);
   --semantic-accent-teal-light: var(--primitive-color-teal-300);
+  --semantic-accent-teal-default: var(--primitive-color-teal-500);
   --semantic-accent-teal-dark: var(--primitive-color-teal-700);
-  --semantic-accent-yellow-default: var(--primitive-color-yellow-500);
+  --semantic-accent-teal-darkest: var(--primitive-color-teal-900);
+  --semantic-accent-yellow-lightest: var(--primitive-color-yellow-50);
   --semantic-accent-yellow-light: var(--primitive-color-yellow-300);
+  --semantic-accent-yellow-default: var(--primitive-color-yellow-500);
   --semantic-accent-yellow-dark: var(--primitive-color-yellow-700);
+  --semantic-accent-yellow-darkest: var(--primitive-color-yellow-900);
   --semantic-accent-yellow-alpha: var(--primitive-color-yellow-300-alpha);
+  --semantic-accent-blue-alpha: var(--primitive-color-blue-300-alpha);
+  --semantic-accent-green-alpha: var(--primitive-color-green-300-alpha);
+  --semantic-accent-orange-alpha: var(--primitive-color-orange-300-alpha);
+  --semantic-accent-indigo-alpha: var(--primitive-color-indigo-300-alpha);
+  --semantic-accent-navy-alpha: var(--primitive-color-navy-300-alpha);
+  --semantic-accent-pink-alpha: var(--primitive-color-pink-300-alpha);
+  --semantic-accent-purple-alpha: var(--primitive-color-purple-300-alpha);
+  --semantic-accent-red-alpha: var(--primitive-color-red-300-alpha);
+  --semantic-accent-sand-alpha: var(--primitive-color-sand-300-alpha);
+  --semantic-accent-teal-alpha: var(--primitive-color-teal-300-alpha);
+
+  /* ===== LAYOUT ===== */
 
   /* Border Colors */
   --semantic-border-default: var(--primitive-color-neutral-400);
@@ -364,7 +472,7 @@
   --semantic-surface-active: var(--primitive-color-neutral-300);
   --semantic-surface-overlay: var(--primitive-color-black-alpha-60);
   --semantic-surface-transparent: var(--primitive-color-transparent);
-  --semantic-surface-navigation: var(--primitive-color-navigation-bg);
+  --semantic-surface-navigation: var(--primitive-color-neutral-50);
 
   /* Text Colors */
   --semantic-text-primary: var(--primitive-color-neutral-900);
@@ -373,13 +481,13 @@
   --semantic-text-disabled: var(--primitive-color-neutral-400);
   --semantic-text-inverse: var(--primitive-color-neutral-50);
   --semantic-text-link: var(--primitive-color-blue-500);
-  --semantic-text-link-hover: var(--primitive-color-navigation-link-hover);
   --semantic-text-error: var(--primitive-color-red-500);
 
   /* Border Width */
   --semantic-border-width-none: var(--primitive-border-width-0);
   --semantic-border-width-thin: var(--primitive-border-width-50);
   --semantic-border-width-default: var(--primitive-border-width-50);
+  --semantic-border-width-medium: var(--primitive-border-width-100);
   --semantic-border-width-thick: var(--primitive-border-width-100);
 
   /* Border Radius */
@@ -388,6 +496,40 @@
   --semantic-radius-md: var(--primitive-radius-md);
   --semantic-radius-lg: var(--primitive-radius-lg);
   --semantic-radius-full: var(--primitive-radius-full);
+
+  /* Focus Ring */
+  --semantic-focus-ring-offset: var(--primitive-focus-ring-offset);
+  --semantic-focus-ring-width: var(--primitive-focus-ring-width);
+
+  /* Letter Spacing */
+  --semantic-letter-spacing-tight: var(--primitive-font-letter-spacing-tight);
+  --semantic-letter-spacing-normal: var(--primitive-font-letter-spacing-normal);
+  --semantic-letter-spacing-relaxed: var(--primitive-font-letter-spacing-relaxed);
+
+  /* Line Height */
+  --semantic-line-height-compact: var(--primitive-font-line-height-compact);
+  --semantic-line-height-normal: var(--primitive-font-line-height-normal);
+  --semantic-line-height-relaxed: var(--primitive-font-line-height-relaxed);
+
+  /* Opacity */
+  --semantic-opacity-hidden: var(--primitive-opacity-hidden);
+  --semantic-opacity-subtle: var(--primitive-opacity-subtle);
+  --semantic-opacity-light: var(--primitive-opacity-light);
+  --semantic-opacity-medium: var(--primitive-opacity-medium);
+  --semantic-opacity-disabled: var(--primitive-opacity-disabled);
+  --semantic-opacity-overlay: var(--primitive-opacity-overlay);
+  --semantic-opacity-high: var(--primitive-opacity-high);
+  --semantic-opacity-hover: var(--primitive-opacity-hover);
+  --semantic-opacity-prominent: var(--primitive-opacity-prominent);
+
+  /* Animation Duration */
+  --semantic-duration-instant: var(--primitive-duration-instant);
+  --semantic-duration-fast: var(--primitive-duration-fast);
+  --semantic-duration-normal: var(--primitive-duration-normal);
+  --semantic-duration-slow: var(--primitive-duration-slow);
+  --semantic-duration-slower: var(--primitive-duration-slower);
+
+  /* ===== SPACING & SIZING ===== */
 
   /* Spacing (Gap & Padding) */
   --semantic-space-none: var(--primitive-space-0);
@@ -398,22 +540,10 @@
   --semantic-space-loose: var(--primitive-space-200);
   --semantic-space-spacious: var(--primitive-space-400);
 
-  /* Responsive Spacing - Mobile First */
-  --semantic-space-mobile-tight: var(--primitive-space-75); 
-  --semantic-space-mobile-default: var(--primitive-space-100);
-  --semantic-space-mobile-comfortable: var(--primitive-space-150);
-  --semantic-space-mobile-spacious: var(--primitive-space-250);
-
-  --semantic-space-desktop-tight: var(--primitive-space-100);
-  --semantic-space-desktop-default: var(--primitive-space-150);
-  --semantic-space-desktop-comfortable: var(--primitive-space-200); 
-  --semantic-space-desktop-spacious: var(--primitive-space-400);
-
   /* Icon Sizes */
   --semantic-icon-xsmall: var(--primitive-size-150);
   --semantic-icon-small: var(--primitive-size-200);
   --semantic-icon-medium: var(--primitive-size-250);
-  --semantic-icon-default: var(--semantic-icon-medium);
   --semantic-icon-large: var(--primitive-size-300);
   --semantic-icon-xlarge: var(--primitive-size-350);
   --semantic-icon-xxlarge: var(--primitive-size-500);
@@ -427,40 +557,24 @@
   --semantic-height-xlarge: var(--primitive-size-750);
   --semantic-height-xxlarge: var(--primitive-size-850);
   --semantic-height-xxxlarge: var(--primitive-size-950);
-  --semantic-height-map-default: var(--primitive-size-1100);
+  --semantic-height-map-default: var(--primitive-size-full);
   --semantic-height-map-large: var(--primitive-size-1200);
 
   /* Avatar Sizes */
   --semantic-avatar-small: var(--primitive-size-400);
   --semantic-avatar-medium: var(--primitive-size-500);
-  --semantic-avatar-default: var(--semantic-avatar-medium);
   --semantic-avatar-large: var(--primitive-size-600);
   --semantic-avatar-xlarge: var(--primitive-size-750);
 
+  /* ===== TYPOGRAPHY ===== */
+
   /* Typography - Size */
-  --semantic-text-size-caption: var(--primitive-font-size-100);
-  --semantic-text-size-body-sm: var(--primitive-font-size-150);
-  --semantic-text-size-body: var(--primitive-font-size-200);
-  --semantic-text-size-h3: var(--primitive-font-size-300);
-  --semantic-text-size-h2: var(--primitive-font-size-500);
-  --semantic-text-size-h1: var(--primitive-font-size-350);
-
-  /* Responsive Typography - Mobile First */
-  /* Mobile font sizes (375px base) */
-  --semantic-text-size-mobile-caption: var(--primitive-font-size-75);  
-  --semantic-text-size-mobile-body-sm: var(--primitive-font-size-100); 
-  --semantic-text-size-mobile-body: var(--primitive-font-size-150);    
-  --semantic-text-size-mobile-h3: var(--primitive-font-size-200);      
-  --semantic-text-size-mobile-h2: var(--primitive-font-size-300);     
-  --semantic-text-size-mobile-h1: var(--primitive-font-size-500);   
-
-  /* Desktop font sizes (768px+) */
-  --semantic-text-size-desktop-caption: var(--primitive-font-size-100);
-  --semantic-text-size-desktop-body-sm: var(--primitive-font-size-150); 
-  --semantic-text-size-desktop-body: var(--primitive-font-size-200); 
-  --semantic-text-size-desktop-h3: var(--primitive-font-size-300); 
-  --semantic-text-size-desktop-h2: var(--primitive-font-size-500);
-  --semantic-text-size-desktop-h1: var(--primitive-font-size-350); 
+  --semantic-text-size-caption: var(--primitive-font-size-75);
+  --semantic-text-size-body-sm: var(--primitive-font-size-100);
+  --semantic-text-size-body: var(--primitive-font-size-150);
+  --semantic-text-size-h3: var(--primitive-font-size-200);
+  --semantic-text-size-h2: var(--primitive-font-size-300);
+  --semantic-text-size-h1: var(--primitive-font-size-500);
 
   /* Typography - Weight */
   --semantic-text-weight-light: var(--primitive-font-weight-regular);
@@ -482,10 +596,11 @@
   --semantic-width-xxlarge: var(--primitive-width-600);
   --semantic-width-xxxlarge: var(--primitive-width-800);
   --semantic-width-xxxxlarge: var(--primitive-width-1000);
-
-  /* ============================================
-     COMPONENT TOKENS - Component-specific
-     ============================================ */
+  --semantic-width-container-sm: var(--primitive-width-750);
+  --semantic-width-container-md: var(--primitive-width-1050);
+  --semantic-width-container-lg: var(--primitive-width-1100);
+  --semantic-width-container-xl: var(--primitive-width-1150);
+  --semantic-width-full: var(--primitive-width-full);
 
   /* Badge Component */
   /* Badge - Colors - Primary */
@@ -546,6 +661,14 @@
   --component-badge-font-size: var(--semantic-text-size-caption);
   --component-badge-font-weight: var(--semantic-text-weight-regular);
 
+  /* Badge - Dismissible States */
+  --component-badge-hover-opacity: var(--semantic-opacity-hover);
+  --component-badge-transition-duration: var(--semantic-duration-normal);
+
+  /* Badge - Close Icon */
+  --component-badge-close-icon-size: var(--semantic-icon-medium);
+  --component-badge-close-icon-stroke-width: var(--semantic-border-width-default);
+
   /* Button Component */
   /* Button - Primary Variant */
   --component-button-bg-primary-default: var(--semantic-brand-primary-default);
@@ -600,12 +723,8 @@
     --semantic-surface-transparent
   );
   --component-button-bg-destructive-hover: var(--semantic-status-error-alpha);
-  --component-button-bg-destructive-disabled: var(
-    --semantic-surface-transparent
-  );
-  --component-button-border-destructive-default: var(
-    --semantic-status-error-default
-  );
+  --component-button-bg-destructive-disabled: var(--semantic-surface-transparent);
+  --component-button-border-destructive-default: var(--semantic-status-error-default);
   --component-button-border-destructive-hover: var(
     --semantic-status-error-dark
   );
@@ -664,6 +783,23 @@
   --component-button-font-size: var(--semantic-text-size-body);
   --component-button-font-weight: var(--semantic-text-weight-regular);
 
+  /* Button - Focus States */
+  --component-button-focus-outline-width: var(--semantic-border-width-medium);
+  --component-button-focus-outline-offset: var(--semantic-border-width-medium);
+
+  /* Button - Disabled States */
+  --component-button-disabled-opacity: var(--semantic-opacity-disabled);
+
+  /* Button - Transitions */
+  --component-button-transition-duration: var(--semantic-duration-normal);
+
+  /* Button - Spinner */
+  --component-button-spinner-border-width: var(--semantic-border-width-medium);
+  --component-button-spinner-radius: var(--semantic-radius-full);
+
+  /* Button - Loading States */
+  --component-button-loading-content-opacity: var(--semantic-opacity-hidden);
+
   /* Icon Component */
   /* Icon - Sizing */
   --component-icon-size-xs: var(--semantic-icon-xsmall);
@@ -717,38 +853,116 @@
   --component-input-helper-font-size: var(--semantic-text-size-caption);
   --component-input-helper-font-weight: var(--semantic-text-weight-light);
 
+  /* Input - Transitions */
+  --component-input-transition-duration: var(--semantic-duration-normal);
+
   /* Page Layout - Mobile First */
   --component-page-bg: var(--semantic-surface-base);
-  --component-page-padding-inline-mobile: var(--semantic-space-mobile-comfortable);
-  --component-page-padding-block-mobile: var(--semantic-space-mobile-default);
-  --component-page-padding-inline-desktop: var(--semantic-space-desktop-spacious); 
-  --component-page-padding-block-desktop: var(--semantic-space-desktop-comfortable); 
+  --component-page-padding-inline: var(--semantic-space-comfortable);
+  --component-page-padding-block: var(--semantic-space-default);
   --component-page-gap-tight: var(--semantic-space-default);
   --component-page-gap-default: var(--semantic-space-comfortable);
   --component-page-gap-comfortable: var(--semantic-space-loose);
   --component-page-gap-section: var(--semantic-space-spacious);
 
   /* Container Component - Mobile First */
-  --component-container-padding-mobile: var(--semantic-space-mobile-comfortable); 
-  --component-container-padding-desktop: var(--semantic-space-desktop-comfortable);
-  --component-container-max-width-sm: 640px;
-  --component-container-max-width-md: 768px;
-  --component-container-max-width-lg: 1024px;
-  --component-container-max-width-xl: 1280px;
-  --component-container-max-width-full: 100%;
-
+  --component-container-padding: var(--semantic-space-comfortable);
+  --component-container-max-width-sm: var(--semantic-width-container-sm);
+  --component-container-max-width-md: var(--semantic-width-container-md);
+  --component-container-max-width-lg: var(--semantic-width-container-lg);
+  --component-container-max-width-xl: var(--semantic-width-container-xl);
+  --component-container-min-width-sm: var(--semantic-width-container-sm);
+  --component-container-min-width-md: var(--semantic-width-container-md);
+  --component-container-min-width-lg: var(--semantic-width-container-lg);
+  --component-container-min-width-xl: var(--semantic-width-container-xl);
+  --component-container-max-width-full: var(--semantic-width-full);
+  --component-container-gap-tight: var(--semantic-space-tight);
+  --component-container-gap-compact: var(--semantic-space-compact);
+  --component-container-gap-default: var(--semantic-space-default);
+  --component-container-gap-comfortable: var(--semantic-space-comfortable);
+  --component-container-gap-loose: var(--semantic-space-loose);
+  --component-container-gap-spacious: var(--semantic-space-spacious);
+  --component-container-radius-none: var(--semantic-radius-none);
+  --component-container-radius-sm: var(--semantic-radius-sm);
+  --component-container-radius-md: var(--semantic-radius-md);
+  --component-container-radius-lg: var(--semantic-radius-lg);
+  
   /* Touch Targets - Mobile Optimization */
-  --component-touch-target-min: var(--primitive-size-550); 
-  --component-touch-target-comfortable: var(--primitive-size-600);
+  --component-touch-target-min: var(--semantic-height-medium);
+  --component-touch-target-comfortable: var(--semantic-height-large);
 
   /* Navigation Component */
   --component-nav-bg: var(--semantic-surface-navigation);
-  --component-nav-text: var(--semantic-text-inverse);
-  --component-nav-text-hover: var(--semantic-text-link-hover);
+  --component-nav-text: var(--semantic-text-primary);
+  --component-nav-text-hover: var(--semantic-text-link);
+  --component-nav-radius: var(--semantic-radius-none);
+  --component-nav-icon: var(--semantic-text-primary);
   --component-nav-padding: var(--semantic-space-comfortable);
   --component-nav-gap: var(--semantic-space-default);
-  --component-nav-logo-font-size: var(--semantic-text-size-h3);
-  --component-nav-hamburger-font-size: var(--semantic-text-size-h2);
+  --component-nav-width: var(--semantic-width-full);
+  --component-nav-height: var(--semantic-height-medium);
+  --component-nav-padding-block: var(--semantic-space-default);
+  --component-nav-padding-inline: var(--semantic-space-comfortable);
+
+  /* Action List Item Component */
+  /* Action List Item - Background Colors */
+  --component-action-list-item-bg-default: var(--semantic-surface-transparent);
+  --component-action-list-item-bg-hover: var(--semantic-surface-hover);
+  --component-action-list-item-bg-active: var(--semantic-surface-active);
+  --component-action-list-item-bg-selected: var(--semantic-surface-active);
+  --component-action-list-item-bg-disabled: var(--semantic-surface-transparent);
+  --component-action-list-item-bg-destructive-default: var(--semantic-surface-transparent);
+  --component-action-list-item-bg-destructive-hover: var(--primitive-color-red-50);
+  --component-action-list-item-bg-destructive-active: var(--primitive-color-red-100);
+  --component-action-list-item-bg-info-default: var(--semantic-surface-transparent);
+  --component-action-list-item-bg-info-hover: var(--primitive-color-blue-50);
+  --component-action-list-item-bg-info-active: var(--primitive-color-blue-100);
+  --component-action-list-item-bg-warning-default: var(--semantic-surface-transparent);
+  --component-action-list-item-bg-warning-hover: var(--primitive-color-yellow-50);
+  --component-action-list-item-bg-warning-active: var(--primitive-color-yellow-100);
+
+  /* Action List Item - Text Colors */
+  --component-action-list-item-text-default: var(--semantic-text-primary);
+  --component-action-list-item-text-hover: var(--semantic-text-primary);
+  --component-action-list-item-text-active: var(--semantic-text-primary);
+  --component-action-list-item-text-selected: var(--semantic-text-primary);
+  --component-action-list-item-text-disabled: var(--semantic-text-disabled);
+  --component-action-list-item-text-helper: var(--semantic-text-secondary);
+  --component-action-list-item-text-destructive: var(--semantic-text-error);
+  --component-action-list-item-text-info: var(--semantic-text-link);
+  --component-action-list-item-text-warning: var(--primitive-color-yellow-700);
+
+  /* Action List Item - Icon Colors */
+  --component-action-list-item-icon-default: var(--semantic-border-subtle);
+  --component-action-list-item-icon-hover: var(--semantic-text-primary);
+  --component-action-list-item-icon-active: var(--semantic-text-primary);
+  --component-action-list-item-icon-selected: var(--semantic-text-primary);
+  --component-action-list-item-icon-disabled: var(--semantic-text-disabled);
+  --component-action-list-item-icon-destructive: var(--semantic-text-error);
+  --component-action-list-item-icon-info: var(--semantic-text-link);
+  --component-action-list-item-icon-warning: var(--primitive-color-yellow-700);
+
+  /* Action List Item - Sizing */
+  --component-action-list-item-height-min: var(--semantic-height-large);
+  --component-action-list-item-icon-size: var(--semantic-icon-medium);
+  --component-action-list-item-selected-indicator-size: var(--semantic-icon-small);
+
+  /* Action List Item - Spacing */
+  --component-action-list-item-padding-block: var(--semantic-space-compact);
+  --component-action-list-item-padding-inline: var(--semantic-space-compact);
+  --component-action-list-item-gap: var(--semantic-space-tight);
+  --component-action-list-item-selected-indicator-gutter: var(--semantic-space-comfortable);
+
+  /* Action List Item - Typography */
+  --component-action-list-item-text-size-default: var(--semantic-text-size-body);
+  --component-action-list-item-text-size-title: var(--semantic-text-size-small);
+  --component-action-list-item-text-size-description: var(--semantic-text-size-caption);
+  --component-action-list-item-text-weight-default: var(--semantic-text-weight-light);
+  --component-action-list-item-text-weight-title: var(--semantic-text-weight-normal);
+
+  /* Action List Item - Border & Effects */
+  --component-action-list-item-radius: var(--semantic-radius-md);
+  --component-action-list-item-focus-ring-width: var(--semantic-border-width-thick);
 
   /* Table Component */
   /* Table - Colors - Background States */
@@ -804,20 +1018,58 @@
   --component-map-height-default: var(--semantic-height-map-default);
   --component-map-height-large: var(--semantic-height-map-large);
 
+  /* Tab Component */
+  /* Tab - Sizing */
+  --component-tab-height: var(--semantic-height-medium);
+  --component-tab-padding-inline: var(--semantic-space-default);
+  --component-tab-padding-block: var(--semantic-space-tight);
+  --component-tab-gap: var(--semantic-space-compact);
+  --component-tab-radius: var(--semantic-radius-md);
+  --component-tab-icon-size: var(--semantic-icon-medium);
+  --component-tab-indicator-height: var(--semantic-space-tight);
+
+  /* Tab - Typography */
+  --component-tab-font-size: var(--semantic-text-size-body);
+  --component-tab-font-weight: var(--semantic-text-weight-medium);
+
+  /* Tab - Focus States */
+  --component-tab-focus-outline-width: var(--semantic-border-width-medium);
+  --component-tab-focus-outline-offset: var(--semantic-border-width-medium);
+
+  /* Tab - Disabled States */
+  --component-tab-disabled-opacity: var(--semantic-opacity-disabled);
+
+  /* Tab - Transitions */
+  --component-tab-transition-duration: var(--semantic-duration-normal);
+
+  /* Tab - Colors - Active State */
+  --component-tab-bg-active: var(--semantic-surface-elevated);
+  --component-tab-text-active: var(--semantic-brand-primary-default);
+  --component-tab-border-active: var(--semantic-brand-primary-default);
+
+  /* Tab - Colors - Inactive State */
+  --component-tab-bg-inactive: transparent;
+  --component-tab-text-inactive: var(--semantic-text-secondary);
+  --component-tab-border-inactive: transparent;
+
+  /* Tab - Colors - Hover State */
+  --component-tab-bg-hover: var(--semantic-surface-hover);
+  --component-tab-text-hover: var(--semantic-text-primary);
+
   /* Google Maps Component */
   --component-googlemaps-radius: var(--semantic-radius-lg);
   --component-googlemaps-height-default: var(--semantic-height-map-default);
   --component-googlemaps-height-large: var(--semantic-height-map-large);
-  --component-googlemaps-error-bg: var(--primitive-color-neutral-100);
+  --component-googlemaps-error-bg: var(--semantic-surface-base);
   --component-googlemaps-error-border: var(--semantic-border-default);
-  --component-googlemaps-error-text-primary: var(--component-typography-color-primary);
-  --component-googlemaps-error-text-secondary: var(--component-typography-color-secondary);
-  --component-googlemaps-marker-size: var(--primitive-size-400);
-  --component-googlemaps-marker-bg: var(--semantic-color-primary);
+  --component-googlemaps-error-text-primary: var(--semantic-text-primary);
+  --component-googlemaps-error-text-secondary: var(--semantic-text-secondary);
+  --component-googlemaps-marker-size: var(--semantic-icon-large);
+  --component-googlemaps-marker-bg: var(--semantic-brand-primary-default);
   --component-googlemaps-marker-border: var(--semantic-border-emphasis);
   --component-googlemaps-marker-text-color: var(--semantic-text-inverse);
-  --component-googlemaps-marker-text-size: var(--primitive-font-size-75);
-  --component-googlemaps-marker-text-weight: var(--primitive-font-weight-bold);
+  --component-googlemaps-marker-text-size: var(--semantic-text-size-caption);
+  --component-googlemaps-marker-text-weight: var(--semantic-text-weight-bold);
 
   /* Progress Component */
   /* Progress - Colors - Default State */
@@ -912,11 +1164,11 @@
 
   /* Logo Component */
   /* Logo - Sizing */
-  --component-logo-size-xs: var(--primitive-size-400);
-  --component-logo-size-sm: var(--primitive-size-500);
-  --component-logo-size-md: var(--primitive-size-650);
-  --component-logo-size-lg: var(--primitive-size-800);
-  --component-logo-size-xl: var(--primitive-size-1000);
+  --component-logo-size-xs: var(--semantic-height-xsmall);
+  --component-logo-size-sm: var(--semantic-height-small);
+  --component-logo-size-md: var(--semantic-height-large);
+  --component-logo-size-lg: var(--semantic-height-xxlarge);
+  --component-logo-size-xl: var(--semantic-height-xxxlarge);
 
   /* Logo - Clear Space */
   --component-logo-clear-space: var(--semantic-space-default);
@@ -927,11 +1179,11 @@
   --component-logo-color-white: var(--semantic-text-inverse);
 
   /* Monogram - Sizing */
-  --component-monogram-size-xs: var(--primitive-size-300);
-  --component-monogram-size-sm: var(--primitive-size-400);
-  --component-monogram-size-md: var(--primitive-size-500);
-  --component-monogram-size-lg: var(--primitive-size-600);
-  --component-monogram-size-xl: var(--primitive-size-750);
+  --component-monogram-size-xs: var(--semantic-icon-large);
+  --component-monogram-size-sm: var(--semantic-height-xsmall);
+  --component-monogram-size-md: var(--semantic-height-small);
+  --component-monogram-size-lg: var(--semantic-height-large);
+  --component-monogram-size-xl: var(--semantic-height-xlarge);
 
   /* Typography Component */
   --component-typography-heading-h1-size: var(--semantic-text-size-h1);
@@ -942,9 +1194,9 @@
   --component-typography-text-body-size: var(--semantic-text-size-body);
   --component-typography-text-body-sm-size: var(--semantic-text-size-body-sm);
   --component-typography-text-caption-size: var(--semantic-text-size-caption);
-  --component-typography-line-height-normal: var(--primitive-font-line-height-normal);
-  --component-typography-line-height-tight: var(--primitive-font-line-height-tight);
-  --component-typography-line-height-loose: var(--primitive-font-line-height-loose);
+  --component-typography-line-height-normal: var(--semantic-line-height-normal);
+  --component-typography-line-height-compact: var(--semantic-line-height-compact);
+  --component-typography-line-height-relaxed: var(--semantic-line-height-relaxed);
   --component-typography-color-primary: var(--semantic-text-primary);
   --component-typography-color-secondary: var(--semantic-text-secondary);
   --component-typography-color-inverse: var(--semantic-text-inverse);
@@ -1010,7 +1262,7 @@
   --component-tabs-icon-size: var(--semantic-icon-medium);
   --component-tabs-icon-only-size-sm: var(--semantic-height-small);
   --component-tabs-icon-only-size-default: var(--semantic-height-medium);
-  --component-tabs-padding-block: var(--semantic-space-compact);
+  --component-tabs-padding-block: var(--semantic-space-tight);
   --component-tabs-padding-inline: var(--semantic-space-default);
   --component-tabs-radius: var(--semantic-radius-md);
 
@@ -1085,34 +1337,34 @@
 
   /* Pattern Component */
   /* Pattern - Opacity Levels */
-  --component-pattern-opacity-subtle: var(--primitive-opacity-subtle);
-  --component-pattern-opacity-light: 0.15;
-  --component-pattern-opacity-medium: 0.35;
-  --component-pattern-opacity-high: 0.65;
+  --component-pattern-opacity-subtle: var(--semantic-opacity-subtle);
+  --component-pattern-opacity-light: var(--semantic-opacity-light);
+  --component-pattern-opacity-medium: var(--semantic-opacity-medium);
+  --component-pattern-opacity-high: var(--semantic-opacity-high);
 
   /* Pattern - Tint Colors */
   --component-pattern-tint-red: var(--semantic-brand-primary-default);
-  --component-pattern-tint-red-alpha: rgba(212, 23, 53, 0.2);
+  --component-pattern-tint-red-alpha: var(--semantic-status-error-alpha);
   --component-pattern-tint-teal: var(--semantic-accent-teal-default);
-  --component-pattern-tint-teal-alpha: rgba(0, 100, 102, 0.2);
+  --component-pattern-tint-teal-alpha: var(--semantic-accent-teal-alpha);
   --component-pattern-tint-dark: var(--semantic-surface-overlay);
-  --component-pattern-tint-light: rgba(255, 255, 255, 0.9);
+  --component-pattern-tint-light: var(--semantic-surface-elevated);
 
   /* Pattern - Sizing */
-  --component-pattern-divider-height-sm: var(--primitive-size-100);
-  --component-pattern-divider-height-md: var(--primitive-size-200);
-  --component-pattern-divider-height-lg: var(--primitive-size-400);
+  --component-pattern-divider-height-sm: var(--semantic-space-compact);
+  --component-pattern-divider-height-md: var(--semantic-space-default);
+  --component-pattern-divider-height-lg: var(--semantic-space-loose);
 
   /* Pattern - Spacing */
   --component-pattern-margin-block: var(--semantic-space-comfortable);
 
   /* Ornament Component */
   /* Ornament - Sizing */
-  --component-ornament-size-xs: var(--primitive-size-200);
-  --component-ornament-size-sm: var(--primitive-size-300);
-  --component-ornament-size-md: var(--primitive-size-500);
-  --component-ornament-size-lg: var(--primitive-size-700);
-  --component-ornament-size-xl: var(--primitive-size-950);
+  --component-ornament-size-xs: var(--semantic-icon-small);
+  --component-ornament-size-sm: var(--semantic-icon-large);
+  --component-ornament-size-md: var(--semantic-height-small);
+  --component-ornament-size-lg: var(--semantic-height-large);
+  --component-ornament-size-xl: var(--semantic-height-xxxlarge);
 
   /* Ornament - Spacing */
   --component-ornament-spacing-xs: var(--semantic-space-compact);
@@ -1128,7 +1380,7 @@
   --component-ornament-color-brand: var(--semantic-brand-primary-default);
 
   /* Text Divider - Specific */
-  --component-text-divider-height: var(--primitive-size-100);
+  --component-text-divider-height: var(--semantic-space-compact);
   --component-text-divider-margin-block: var(--semantic-space-loose);
 
   /* Pull Quote - Specific */
@@ -1138,7 +1390,7 @@
   --component-pull-quote-border-width: var(--semantic-border-width-thick);
 
   /* Drop Cap - Specific */
-  --component-drop-cap-font-size: var(--primitive-font-size-500);
+  --component-drop-cap-font-size: var(--semantic-text-size-h2);
   --component-drop-cap-font-weight: var(--semantic-text-weight-bold);
   --component-drop-cap-color: var(--semantic-brand-primary-default);
   --component-drop-cap-margin: var(--semantic-space-compact);
@@ -1162,41 +1414,30 @@
 }
 
 /* ============================================
-   CSS RESET
+   RESPONSIVE OVERRIDES - Tablet & Desktop (640px+)
+   
+   STRATEGY:
+   - Base tokens in :root are mobile-first (375px+)
+   - Override tokens at 640px+ for tablet & desktop experience
+   - Only redefine tokens that change at breakpoint
+   - Components use single token name (e.g., --semantic-space-comfortable)
    ============================================ */
+@media (min-width: 640px) {
+  :root {
+    /* Typography - Tablet & Desktop Sizes */
+    --semantic-text-size-caption: var(--primitive-font-size-100);
+    --semantic-text-size-body-sm: var(--primitive-font-size-150);
+    --semantic-text-size-body: var(--primitive-font-size-200);
+    --semantic-text-size-h3: var(--primitive-font-size-300);
+    --semantic-text-size-h2: var(--primitive-font-size-500);
+    --semantic-text-size-h1: var(--primitive-font-size-350);
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    /* Spacing - Tablet & Desktop Scale */
+    --semantic-space-comfortable: var(--primitive-space-200);
+    --semantic-space-spacious: var(--primitive-space-400);
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: var(--semantic-typography-font-family-body);
-  line-height: var(--primitive-font-line-height-normal);
-  background-color: var(--component-page-bg);
-  color: var(--semantic-text-primary);
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
+    /* Page Layout - Tablet & Desktop Adjustments */
+    --component-page-padding-inline: var(--semantic-space-spacious);
+    --component-page-padding-block: var(--semantic-space-loose);
+  }
 }

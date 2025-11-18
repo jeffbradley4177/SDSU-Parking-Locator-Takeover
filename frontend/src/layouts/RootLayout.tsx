@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navigation, type NavigationLink } from "@/shared/components/navigation";
+import { Navigation, type NavigationLink } from "@/features/navigation";
 
 const navigationLinks: NavigationLink[] = [
   { to: "/", label: "Home" },

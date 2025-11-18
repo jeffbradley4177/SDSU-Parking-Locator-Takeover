@@ -290,7 +290,7 @@ export interface IconProps
 // Base icon classes
 const BASE_CLASSES = [
   // Layout
-  "inline-flex shrink-0 items-center justify-center",
+  "inline-flex shrink-0",
 
   // SVG child sizing
   "[&>svg]:h-full [&>svg]:w-full",
