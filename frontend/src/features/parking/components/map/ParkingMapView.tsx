@@ -1,6 +1,6 @@
 import { Map, type MapProps } from "@/shared/components/map";
 import { PARKING_LOT_LOCATIONS } from "@/shared/constants";
-import { SDSU_CENTER_COORDS, DEFAULT_MAP_CONFIG } from "@/shared/utils";
+import { SDSU_CENTER_COORDS, DEFAULT_MAP_CONFIG, tealMarkerIcon } from "@/shared/utils";
 
 export interface ParkingMapViewProps extends Omit<MapProps, "center" | "markers"> {
   /** Override default center (defaults to SDSU campus center) */
@@ -15,11 +15,14 @@ export function ParkingMapView({
   zoom = DEFAULT_MAP_CONFIG.zoom,
   ...props
 }: ParkingMapViewProps) {
+  const tealIcon = tealMarkerIcon();
+  
   const markers = showParkingLots
     ? PARKING_LOT_LOCATIONS.map((lot) => ({
         position: lot.coords,
         popup: lot.name,
         key: lot.name,
+        icon: tealIcon,
       }))
     : [];
 

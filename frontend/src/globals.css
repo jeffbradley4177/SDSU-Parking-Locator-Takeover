@@ -69,13 +69,20 @@ svg {
 }
 
 :root {
+  /* ============================================
+     PRIMITIVE TOKENS
+     Foundation-level tokens using raw values only.
+     These should never reference other tokens.
+     ============================================ */
+
   /* Font - Family (SDSU Brand) */
   --primitive-font-family-headline: 'Tiempos Headline', Georgia, Cambria, 'Times New Roman', serif;
   --primitive-font-family-body: 'Proxima Nova', Montserrat, Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
-  /* Colors - Alpha */
+
+  /* Colors - Alpha Variants */
   --primitive-color-black-alpha-40: #00000066;
   --primitive-color-black-alpha-60: #00000099;
+  --primitive-color-white-alpha-90: #ffffffe6;
   --primitive-color-transparent: #00000000;
 
   /* Colors - Blue (5-shade system: 50, 300, 500, 700, 900) */
@@ -97,6 +104,18 @@ svg {
   --primitive-color-gold-700: #b88019;
   --primitive-color-gold-800: #8f6114;
   --primitive-color-gold-900: #6d4710;
+
+  /* Colors - Gray (Brand Gray) */
+  --primitive-color-gray-50: #f5f5f5;
+  --primitive-color-gray-100: #e5e5e5;
+  --primitive-color-gray-200: #d4d4d4;
+  --primitive-color-gray-300: #a3a3a3;
+  --primitive-color-gray-400: #737373;
+  --primitive-color-gray-500: #525252;
+  --primitive-color-gray-600: #404040;
+  --primitive-color-gray-700: #2d2828;
+  --primitive-color-gray-800: #171717;
+  --primitive-color-gray-900: #000000;
 
   /* Colors - Green */
   --primitive-color-green-50: #e8f5f1;
@@ -203,21 +222,6 @@ svg {
   --primitive-color-yellow-500: #f59e0b;
   --primitive-color-yellow-700: #b45309;
   --primitive-color-yellow-900: #5a2a05;
-
-  /* Colors - Gray (Brand Gray) */
-  --primitive-color-gray-50: #f5f5f5;
-  --primitive-color-gray-100: #e5e5e5;
-  --primitive-color-gray-200: #d4d4d4;
-  --primitive-color-gray-300: #a3a3a3;
-  --primitive-color-gray-400: #737373;
-  --primitive-color-gray-500: #525252;
-  --primitive-color-gray-600: #404040;
-  --primitive-color-gray-700: #2d2828;
-  --primitive-color-gray-800: #171717;
-  --primitive-color-gray-900: #000000;
-
-  /* Colors - White Alpha */
-  --primitive-color-white-alpha-90: #ffffffe6;
 
   /* Border Width */
   --primitive-border-width-0: 0px;
@@ -354,6 +358,12 @@ svg {
   --primitive-width-1150: 1280px;
   --primitive-width-full: 100%;
 
+  /* ============================================
+     SEMANTIC TOKENS
+     Context-aware tokens that reference primitives only.
+     These add meaning and intent to primitive values.
+     ============================================ */
+
   /* Brand Colors */
   --semantic-brand-primary-default: var(--primitive-color-primary-500);
   --semantic-brand-primary-hover: var(--primitive-color-primary-600);
@@ -367,20 +377,24 @@ svg {
   --semantic-brand-secondary-dark: var(--primitive-color-gray-900);
 
   /* Status Colors */
-  --semantic-status-error-default: var(--primitive-color-red-500);
+  --semantic-status-error-lightest: var(--primitive-color-red-50);
   --semantic-status-error-light: var(--primitive-color-red-300);
+  --semantic-status-error-default: var(--primitive-color-red-500);
   --semantic-status-error-dark: var(--primitive-color-red-700);
   --semantic-status-error-alpha: var(--primitive-color-red-300-alpha);
-  --semantic-status-success-default: var(--primitive-color-green-500);
+  --semantic-status-success-lightest: var(--primitive-color-green-50);
   --semantic-status-success-light: var(--primitive-color-green-300);
+  --semantic-status-success-default: var(--primitive-color-green-500);
   --semantic-status-success-dark: var(--primitive-color-green-700);
   --semantic-status-success-alpha: var(--primitive-color-green-300-alpha);
-  --semantic-status-warning-default: var(--primitive-color-orange-500);
+  --semantic-status-warning-lightest: var(--primitive-color-orange-50);
   --semantic-status-warning-light: var(--primitive-color-orange-300);
+  --semantic-status-warning-default: var(--primitive-color-orange-500);
   --semantic-status-warning-dark: var(--primitive-color-orange-700);
   --semantic-status-warning-alpha: var(--primitive-color-orange-300-alpha);
-  --semantic-status-info-default: var(--primitive-color-blue-500);
+  --semantic-status-info-lightest: var(--primitive-color-blue-50);
   --semantic-status-info-light: var(--primitive-color-blue-300);
+  --semantic-status-info-default: var(--primitive-color-blue-500);
   --semantic-status-info-dark: var(--primitive-color-blue-700);
   --semantic-status-info-alpha: var(--primitive-color-blue-300-alpha);
 
@@ -390,70 +404,70 @@ svg {
   --semantic-accent-blue-default: var(--primitive-color-blue-500);
   --semantic-accent-blue-dark: var(--primitive-color-blue-700);
   --semantic-accent-blue-darkest: var(--primitive-color-blue-900);
+  --semantic-accent-blue-alpha: var(--primitive-color-blue-300-alpha);
   --semantic-accent-green-lightest: var(--primitive-color-green-50);
   --semantic-accent-green-light: var(--primitive-color-green-300);
   --semantic-accent-green-default: var(--primitive-color-green-500);
   --semantic-accent-green-dark: var(--primitive-color-green-700);
   --semantic-accent-green-darkest: var(--primitive-color-green-900);
+  --semantic-accent-green-alpha: var(--primitive-color-green-300-alpha);
   --semantic-accent-indigo-lightest: var(--primitive-color-indigo-50);
   --semantic-accent-indigo-light: var(--primitive-color-indigo-300);
   --semantic-accent-indigo-default: var(--primitive-color-indigo-500);
   --semantic-accent-indigo-dark: var(--primitive-color-indigo-700);
   --semantic-accent-indigo-darkest: var(--primitive-color-indigo-900);
+  --semantic-accent-indigo-alpha: var(--primitive-color-indigo-300-alpha);
   --semantic-accent-navy-lightest: var(--primitive-color-navy-50);
   --semantic-accent-navy-light: var(--primitive-color-navy-300);
   --semantic-accent-navy-default: var(--primitive-color-navy-500);
   --semantic-accent-navy-dark: var(--primitive-color-navy-700);
   --semantic-accent-navy-darkest: var(--primitive-color-navy-900);
-  --semantic-accent-neutral-default: var(--primitive-color-neutral-400);
+  --semantic-accent-navy-alpha: var(--primitive-color-navy-300-alpha);
   --semantic-accent-neutral-light: var(--primitive-color-neutral-300);
+  --semantic-accent-neutral-default: var(--primitive-color-neutral-400);
   --semantic-accent-neutral-dark: var(--primitive-color-neutral-500);
   --semantic-accent-orange-lightest: var(--primitive-color-orange-50);
   --semantic-accent-orange-light: var(--primitive-color-orange-300);
   --semantic-accent-orange-default: var(--primitive-color-orange-500);
   --semantic-accent-orange-dark: var(--primitive-color-orange-700);
   --semantic-accent-orange-darkest: var(--primitive-color-orange-900);
+  --semantic-accent-orange-alpha: var(--primitive-color-orange-300-alpha);
   --semantic-accent-pink-lightest: var(--primitive-color-pink-50);
   --semantic-accent-pink-light: var(--primitive-color-pink-300);
   --semantic-accent-pink-default: var(--primitive-color-pink-500);
   --semantic-accent-pink-dark: var(--primitive-color-pink-700);
   --semantic-accent-pink-darkest: var(--primitive-color-pink-900);
+  --semantic-accent-pink-alpha: var(--primitive-color-pink-300-alpha);
   --semantic-accent-purple-lightest: var(--primitive-color-purple-50);
   --semantic-accent-purple-light: var(--primitive-color-purple-300);
   --semantic-accent-purple-default: var(--primitive-color-purple-500);
   --semantic-accent-purple-dark: var(--primitive-color-purple-700);
   --semantic-accent-purple-darkest: var(--primitive-color-purple-900);
+  --semantic-accent-purple-alpha: var(--primitive-color-purple-300-alpha);
   --semantic-accent-red-lightest: var(--primitive-color-red-50);
   --semantic-accent-red-light: var(--primitive-color-red-300);
   --semantic-accent-red-default: var(--primitive-color-red-500);
   --semantic-accent-red-dark: var(--primitive-color-red-700);
   --semantic-accent-red-darkest: var(--primitive-color-red-900);
+  --semantic-accent-red-alpha: var(--primitive-color-red-300-alpha);
   --semantic-accent-sand-lightest: var(--primitive-color-sand-50);
   --semantic-accent-sand-light: var(--primitive-color-sand-300);
   --semantic-accent-sand-default: var(--primitive-color-sand-500);
   --semantic-accent-sand-dark: var(--primitive-color-sand-700);
   --semantic-accent-sand-darkest: var(--primitive-color-sand-900);
+  --semantic-accent-sand-alpha: var(--primitive-color-sand-300-alpha);
   --semantic-accent-teal-lightest: var(--primitive-color-teal-50);
   --semantic-accent-teal-light: var(--primitive-color-teal-300);
   --semantic-accent-teal-default: var(--primitive-color-teal-500);
   --semantic-accent-teal-dark: var(--primitive-color-teal-700);
   --semantic-accent-teal-darkest: var(--primitive-color-teal-900);
+  --semantic-accent-teal-alpha: var(--primitive-color-teal-300-alpha);
   --semantic-accent-yellow-lightest: var(--primitive-color-yellow-50);
   --semantic-accent-yellow-light: var(--primitive-color-yellow-300);
   --semantic-accent-yellow-default: var(--primitive-color-yellow-500);
   --semantic-accent-yellow-dark: var(--primitive-color-yellow-700);
   --semantic-accent-yellow-darkest: var(--primitive-color-yellow-900);
   --semantic-accent-yellow-alpha: var(--primitive-color-yellow-300-alpha);
-  --semantic-accent-blue-alpha: var(--primitive-color-blue-300-alpha);
-  --semantic-accent-green-alpha: var(--primitive-color-green-300-alpha);
-  --semantic-accent-orange-alpha: var(--primitive-color-orange-300-alpha);
-  --semantic-accent-indigo-alpha: var(--primitive-color-indigo-300-alpha);
-  --semantic-accent-navy-alpha: var(--primitive-color-navy-300-alpha);
-  --semantic-accent-pink-alpha: var(--primitive-color-pink-300-alpha);
-  --semantic-accent-purple-alpha: var(--primitive-color-purple-300-alpha);
-  --semantic-accent-red-alpha: var(--primitive-color-red-300-alpha);
-  --semantic-accent-sand-alpha: var(--primitive-color-sand-300-alpha);
-  --semantic-accent-teal-alpha: var(--primitive-color-teal-300-alpha);
 
   /* ===== LAYOUT ===== */
 
@@ -473,6 +487,12 @@ svg {
   --semantic-surface-overlay: var(--primitive-color-black-alpha-60);
   --semantic-surface-transparent: var(--primitive-color-transparent);
   --semantic-surface-navigation: var(--primitive-color-neutral-50);
+  --semantic-surface-destructive-subtle: var(--primitive-color-red-50);
+  --semantic-surface-destructive-light: var(--primitive-color-red-100);
+  --semantic-surface-info-subtle: var(--primitive-color-blue-50);
+  --semantic-surface-info-light: var(--primitive-color-blue-100);
+  --semantic-surface-warning-subtle: var(--primitive-color-yellow-50);
+  --semantic-surface-warning-light: var(--primitive-color-yellow-100);
 
   /* Text Colors */
   --semantic-text-primary: var(--primitive-color-neutral-900);
@@ -482,6 +502,7 @@ svg {
   --semantic-text-inverse: var(--primitive-color-neutral-50);
   --semantic-text-link: var(--primitive-color-blue-500);
   --semantic-text-error: var(--primitive-color-red-500);
+  --semantic-text-warning: var(--primitive-color-yellow-700);
 
   /* Border Width */
   --semantic-border-width-none: var(--primitive-border-width-0);
@@ -559,6 +580,10 @@ svg {
   --semantic-height-xxxlarge: var(--primitive-size-950);
   --semantic-height-map-default: var(--primitive-size-full);
   --semantic-height-map-large: var(--primitive-size-1200);
+  --semantic-height-drawer-collapsed: var(--primitive-size-500);
+  --semantic-height-drawer-partial: 40vh;
+  --semantic-height-drawer-full: 85vh;
+  --semantic-height-drawer-handle: var(--primitive-size-50);
 
   /* Avatar Sizes */
   --semantic-avatar-small: var(--primitive-size-400);
@@ -601,6 +626,13 @@ svg {
   --semantic-width-container-lg: var(--primitive-width-1100);
   --semantic-width-container-xl: var(--primitive-width-1150);
   --semantic-width-full: var(--primitive-width-full);
+  --semantic-width-drawer-handle: var(--primitive-size-500);
+
+  /* ============================================
+     COMPONENT TOKENS
+     Component-specific tokens that reference semantic tokens only.
+     These define the visual properties of UI components.
+     ============================================ */
 
   /* Badge Component */
   /* Badge - Colors - Primary */
@@ -867,6 +899,8 @@ svg {
 
   /* Container Component - Mobile First */
   --component-container-padding: var(--semantic-space-comfortable);
+  --component-container-padding-mobile: var(--semantic-space-default);
+  --component-container-padding-desktop: var(--semantic-space-comfortable);
   --component-container-max-width-sm: var(--semantic-width-container-sm);
   --component-container-max-width-md: var(--semantic-width-container-md);
   --component-container-max-width-lg: var(--semantic-width-container-lg);
@@ -875,6 +909,7 @@ svg {
   --component-container-min-width-md: var(--semantic-width-container-md);
   --component-container-min-width-lg: var(--semantic-width-container-lg);
   --component-container-min-width-xl: var(--semantic-width-container-xl);
+  --component-container-min-width-full: var(--semantic-width-full);
   --component-container-max-width-full: var(--semantic-width-full);
   --component-container-gap-tight: var(--semantic-space-tight);
   --component-container-gap-compact: var(--semantic-space-compact);
@@ -912,14 +947,14 @@ svg {
   --component-action-list-item-bg-selected: var(--semantic-surface-active);
   --component-action-list-item-bg-disabled: var(--semantic-surface-transparent);
   --component-action-list-item-bg-destructive-default: var(--semantic-surface-transparent);
-  --component-action-list-item-bg-destructive-hover: var(--primitive-color-red-50);
-  --component-action-list-item-bg-destructive-active: var(--primitive-color-red-100);
+  --component-action-list-item-bg-destructive-hover: var(--semantic-surface-destructive-subtle);
+  --component-action-list-item-bg-destructive-active: var(--semantic-surface-destructive-light);
   --component-action-list-item-bg-info-default: var(--semantic-surface-transparent);
-  --component-action-list-item-bg-info-hover: var(--primitive-color-blue-50);
-  --component-action-list-item-bg-info-active: var(--primitive-color-blue-100);
+  --component-action-list-item-bg-info-hover: var(--semantic-surface-info-subtle);
+  --component-action-list-item-bg-info-active: var(--semantic-surface-info-light);
   --component-action-list-item-bg-warning-default: var(--semantic-surface-transparent);
-  --component-action-list-item-bg-warning-hover: var(--primitive-color-yellow-50);
-  --component-action-list-item-bg-warning-active: var(--primitive-color-yellow-100);
+  --component-action-list-item-bg-warning-hover: var(--semantic-surface-warning-subtle);
+  --component-action-list-item-bg-warning-active: var(--semantic-surface-warning-light);
 
   /* Action List Item - Text Colors */
   --component-action-list-item-text-default: var(--semantic-text-primary);
@@ -930,7 +965,7 @@ svg {
   --component-action-list-item-text-helper: var(--semantic-text-secondary);
   --component-action-list-item-text-destructive: var(--semantic-text-error);
   --component-action-list-item-text-info: var(--semantic-text-link);
-  --component-action-list-item-text-warning: var(--primitive-color-yellow-700);
+  --component-action-list-item-text-warning: var(--semantic-text-warning);
 
   /* Action List Item - Icon Colors */
   --component-action-list-item-icon-default: var(--semantic-border-subtle);
@@ -940,7 +975,7 @@ svg {
   --component-action-list-item-icon-disabled: var(--semantic-text-disabled);
   --component-action-list-item-icon-destructive: var(--semantic-text-error);
   --component-action-list-item-icon-info: var(--semantic-text-link);
-  --component-action-list-item-icon-warning: var(--primitive-color-yellow-700);
+  --component-action-list-item-icon-warning: var(--semantic-text-warning);
 
   /* Action List Item - Sizing */
   --component-action-list-item-height-min: var(--semantic-height-large);
@@ -1205,6 +1240,13 @@ svg {
   --component-typography-heading-font-family: var(--semantic-typography-font-family-heading);
   --component-typography-body-font-family: var(--semantic-typography-font-family-body);
 
+
+  /* ===== Drawer Semantic Tokens ===== */
+  --semantic-drawer-z-index: 1000;
+  --semantic-drawer-scrim-z-index: 999;
+  --semantic-drawer-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1), 0 -2px 4px rgba(0, 0, 0, 0.06);
+  --semantic-drawer-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
   /* Drawer Component */
   --component-drawer-bg: var(--semantic-surface-elevated);
   --component-drawer-border: var(--semantic-border-subtle);
@@ -1218,6 +1260,29 @@ svg {
   --component-drawer-radius: var(--semantic-radius-lg);
   --component-drawer-padding-block: var(--semantic-space-default);
   --component-drawer-padding-inline: var(--semantic-space-comfortable);
+  --component-drawer-gap: var(--semantic-space-default);
+
+  /* Drawer - Heights */
+  --component-drawer-height-collapsed: var(--semantic-height-drawer-collapsed);
+  --component-drawer-height-partial: var(--semantic-height-drawer-partial);
+  --component-drawer-height-full: var(--semantic-height-drawer-full);
+
+  /* Drawer - Handle */
+  --component-drawer-handle-width: var(--semantic-width-drawer-handle);
+  --component-drawer-handle-height: var(--semantic-height-drawer-handle);
+  --component-drawer-handle-radius: var(--semantic-radius-full);
+  --component-drawer-handle-spacing: var(--semantic-space-default);
+
+  /* Drawer - Layering */
+  --component-drawer-z-index: var(--semantic-drawer-z-index);
+  --component-drawer-scrim-z-index: var(--semantic-drawer-scrim-z-index);
+
+  /* Drawer - Animation */
+  --component-drawer-transition-duration: var(--semantic-duration-slow);
+  --component-drawer-transition-timing: var(--semantic-drawer-transition-timing);
+
+  /* Drawer - Shadow */
+  --component-drawer-shadow: var(--semantic-drawer-shadow);
 
   /* Popup Component */
   --component-popup-bg: var(--semantic-surface-elevated);
@@ -1438,6 +1503,15 @@ svg {
 
     /* Page Layout - Tablet & Desktop Adjustments */
     --component-page-padding-inline: var(--semantic-space-spacious);
-    --component-page-padding-block: var(--semantic-space-loose);
+    --component-page-padding-block: var(--semantic-space-comfortable);
   }
+}
+
+/* ============================================
+   LEAFLET MAP CUSTOMIZATION
+   ============================================ */
+
+/* Hide default Leaflet zoom controls - we use custom Tab component controls */
+.leaflet-control-zoom {
+  display: none !important;
 }

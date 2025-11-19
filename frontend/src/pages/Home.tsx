@@ -1,7 +1,11 @@
 import { ParkingMapView } from "@/features/parking/components/map";
 import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
+import { Drawer } from "@/shared/components/drawer";
+import { useState } from "react";
 
 export const Home = () => {
+  const [drawerState, setDrawerState] = useState<"collapsed" | "partial" | "full">("partial");
+
   return (
     <div className="fixed inset-0 top-[var(--component-nav-height)]">
       {/* Fullscreen Map Background */}
@@ -9,23 +13,23 @@ export const Home = () => {
         <ParkingMapView mapStyle="light" />
       </div>
 
-      {/* Overlay Content */}
-      <div className="relative z-20 pointer-events-none h-full">
-        {/* Parking Lot List Overlay */}
-        <div className="absolute bottom-[var(--component-page-gap-comfortable)] left-[var(--component-page-padding-inline)] right-[var(--component-page-padding-inline)] pointer-events-auto">
-          <div className="bg-white/95 backdrop-blur-sm shadow-2xl rounded-lg border border-gray-200 max-h-[60vh] overflow-auto">
-            <section className="p-[var(--component-page-padding-inline)]">
-              <h2 className="mb-[var(--component-page-gap-default)] text-xl font-semibold">
-                SDSU Parking Availability
-              </h2>
-              <p className="mb-[var(--component-page-gap-default)] opacity-85 text-sm">
-                View current parking lot conditions and help keep the information updated by submitting your own report.
-              </p>
-              <ParkingLotList />
-            </section>
-          </div>
-        </div>
-      </div>
+      {/* Drawer for all screen sizes */}
+      <Drawer
+        state={drawerState}
+        onStateChange={setDrawerState}
+        showScrim={true}
+        closeOnScrimClick={true}
+      >
+        <section>
+          <h2 className="mb-[var(--component-page-gap-default)] text-xl font-semibold">
+            SDSU Parking Availability
+          </h2>
+          <p className="mb-[var(--component-page-gap-default)] opacity-85 text-sm">
+            View current parking lot conditions and help keep the information updated by submitting your own report.
+          </p>
+          <ParkingLotList />
+        </section>
+      </Drawer>
     </div>
   );
 };

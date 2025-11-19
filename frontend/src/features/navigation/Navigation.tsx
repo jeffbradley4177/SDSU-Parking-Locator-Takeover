@@ -2,8 +2,14 @@ import { cn } from "@/lib/cn";
 import { Monogram } from "@/shared/components/logo";
 import { Icon } from "@/shared/components/icon";
 
+export interface NavigationLink {
+  to: string;
+  label: string;
+}
+
 export interface NavigationProps {
   brandName?: string;
+  links?: NavigationLink[];
 }
 
 export function Navigation({
@@ -27,16 +33,16 @@ export function Navigation({
       }}
     >
       {/* Menu Icon - Left */}
-      <div className="flex items-center justify-center h-full text-[var(--component-nav-icon)]">
-        <Icon name="menu" size="md" color="current" />
+      <div className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)]">
+        <Icon name="menu" size="lg" color="current" />
       </div>
 
       {/* Logo Monogram - Center */}
       <Monogram variant="red" size="sm" alt={brandName} className="h-full max-h-full min-w-[20px]" />
 
       {/* Profile Icon - Right */}
-      <div className="flex items-center justify-center h-full text-[var(--component-nav-icon)]">
-        <Icon name="user-circle" size="md" color="current" />
+      <div className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)]">
+        <Icon name="user-circle" size="lg" color="current" />
       </div>
     </nav>
   );

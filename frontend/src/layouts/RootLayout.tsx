@@ -11,8 +11,10 @@ const navigationLinks: NavigationLink[] = [
 export const RootLayout = () => {
   return (
     <div className="min-h-screen bg-[var(--component-page-bg)] text-[var(--semantic-text-primary)]">
-      <Navigation links={navigationLinks} />
-      <main className="p-[var(--component-page-padding-block)]">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navigation links={navigationLinks} />
+      </div>
+      <main className="pt-[var(--component-nav-height)] p-[var(--component-page-padding-block)]">
         <Outlet />
       </main>
     </div>

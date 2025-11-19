@@ -1,7 +1,9 @@
 import { cn } from "@/lib/cn";
 import { forwardRef, memo, useEffect, type ComponentPropsWithoutRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { configureLeafletIcons } from "@/shared/utils";
+import { Tab } from "@/shared/components/tabs";
+import { Icon } from "@/shared/components/icon";
 
 const BASE_CLASSES = [
   "w-full h-full rounded-[var(--component-map-radius)]",
@@ -36,6 +38,7 @@ export interface MapMarker {
   position: [number, number];
   popup?: React.ReactNode;
   key?: string | number;
+  icon?: L.Icon | L.DivIcon;
 }
 
 export interface MapProps extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
@@ -51,6 +54,40 @@ export interface MapProps extends Omit<ComponentPropsWithoutRef<"div">, "childre
   tileLayerUrl?: string;
   /** Tile layer attribution (overrides mapStyle) */
   tileLayerAttribution?: string;
+  /** Show custom zoom controls using Tab component (default: true) */
+  showZoomControls?: boolean;
+}
+
+/**
+ * Custom zoom control component using Tab buttons
+ */
+function ZoomControls() {
+  const map = useMap();
+
+  const handleZoomIn = () => {
+    map.zoomIn();
+  };
+
+  const handleZoomOut = () => {
+    map.zoomOut();
+  };
+
+  return (
+    <div className="absolute top-4 right-4 z-[1000] flex flex-col gap-1 pointer-events-auto">
+      <Tab
+        onClick={handleZoomIn}
+        leadingIcon={<Icon name="plus" size="sm" color="current" />}
+        aria-label="Zoom in"
+        className="bg-white shadow-lg hover:shadow-xl"
+      />
+      <Tab
+        onClick={handleZoomOut}
+        leadingIcon={<Icon name="minus" size="sm" color="current" />}
+        aria-label="Zoom out"
+        className="bg-white shadow-lg hover:shadow-xl"
+      />
+    </div>
+  );
 }
 
 /**
@@ -101,6 +138,7 @@ export const Map = memo(
       mapStyle = "default",
       tileLayerUrl,
       tileLayerAttribution,
+      showZoomControls = true,
       className,
       ...rest
     },
@@ -123,6 +161,7 @@ export const Map = memo(
         <MapContainer
           center={center}
           zoom={zoom}
+          zoomControl={false}
           className="w-full h-full rounded-[var(--component-map-radius)]"
         >
           <TileLayer
@@ -130,10 +169,15 @@ export const Map = memo(
             url={tileConfig.url}
           />
           {markers.map((marker, index) => (
-            <Marker key={marker.key ?? index} position={marker.position}>
+            <Marker 
+              key={marker.key ?? index} 
+              position={marker.position}
+              icon={marker.icon}
+            >
               {marker.popup && <Popup>{marker.popup}</Popup>}
             </Marker>
           ))}
+          {showZoomControls && <ZoomControls />}
         </MapContainer>
       </div>
     );

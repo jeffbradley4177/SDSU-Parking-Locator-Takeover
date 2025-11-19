@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container, type ContainerMaxWidth, type ContainerMinWidth, type ContainerGap, type ContainerRadius } from "./container";
+import { Container, type ContainerMaxWidth, type ContainerMinWidth, type ContainerGap, type ContainerRadius } from "./Container";
 
 const MAX_WIDTH_OPTIONS: ContainerMaxWidth[] = ["full"];
 const MIN_WIDTH_OPTIONS: ContainerMinWidth[] = ["sm", "md", "lg", "xl", "full"];

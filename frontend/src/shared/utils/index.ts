@@ -3,6 +3,7 @@
  */
 export {
   configureLeafletIcons,
+  tealMarkerIcon,
   SDSU_CENTER_COORDS,
-  DEFAULT_MAP_CONFIG
+  DEFAULT_MAP_CONFIG,
 } from "./mapConfig";
