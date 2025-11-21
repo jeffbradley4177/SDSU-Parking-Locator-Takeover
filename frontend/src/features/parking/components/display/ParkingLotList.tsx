@@ -1,5 +1,7 @@
 import { useState, useMemo, useRef } from "react";
 import type { Lot, LotStatus } from "@/shared/types";
+import { LotStatusBadge } from "./LotStatusBadge"
+
 
 export const ParkingLotList = () => {
 
@@ -72,8 +74,8 @@ const dialogRef = useRef<HTMLDialogElement | null>(null);
             >
               <td className="p-[var(--component-table-cell-padding)]">{lot.name}</td>
               <td className="p-[var(--component-table-cell-padding)] font-[var(--component-table-text-weight-bold)]">
-                {lot.status}
-              </td>
+                <LotStatusBadge status={lot.status} />
+                </td>
               <td className="p-[var(--component-table-cell-padding)] opacity-80">{lot.lastUpdated}</td>
             </tr>
           ))}

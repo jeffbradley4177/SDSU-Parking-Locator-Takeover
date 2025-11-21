@@ -13,6 +13,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
+        
       </Route>
     </Routes>
   );
