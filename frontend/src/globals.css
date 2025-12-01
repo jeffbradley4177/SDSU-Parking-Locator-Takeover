@@ -890,8 +890,8 @@ svg {
 
   /* Page Layout - Mobile First */
   --component-page-bg: var(--semantic-surface-base);
-  --component-page-padding-inline: var(--semantic-space-comfortable);
-  --component-page-padding-block: var(--semantic-space-default);
+  --component-page-padding-inline: var(--semantic-space-spacious);
+  --component-page-padding-block: var(--semantic-space-spacious);
   --component-page-gap-tight: var(--semantic-space-default);
   --component-page-gap-default: var(--semantic-space-comfortable);
   --component-page-gap-comfortable: var(--semantic-space-loose);

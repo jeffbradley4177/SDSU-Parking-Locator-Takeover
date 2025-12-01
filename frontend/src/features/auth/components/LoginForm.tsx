@@ -11,7 +11,6 @@ import { FcGoogle } from "react-icons/fc";
 // Memoized icons - created once, not on every render
 const EmailIcon = <Icon icon={BiEnvelope} size="md" />;
 const LockIcon = <Icon icon={BiLock} size="md" />;
-const GoogleIcon = <FcGoogle className="h-5 w-5" />;
 
 export interface LoginFormProps {
   /** Callback when form is submitted */
@@ -122,7 +121,7 @@ export const LoginForm = memo(function LoginForm({
       <Button
         variant="google"
         onClick={onGoogleSignIn}
-        leadingIcon={GoogleIcon}
+        leadingIcon={FcGoogle}
         disabled={isLoading}
       >
         Continue with Google
