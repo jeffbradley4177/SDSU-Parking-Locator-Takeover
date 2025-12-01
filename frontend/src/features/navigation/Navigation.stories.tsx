@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Navigation } from "./Navigation";
+import { Text } from "@/shared/components/typography";
 
 /**
  * Navigation bar component with fixed width layout and icon-based design.
@@ -60,24 +61,24 @@ export const StylingTokens: Story = {
     <div className="space-y-6">
       <Navigation />
       <div className="max-w-2xl p-6 bg-white rounded-lg shadow">
-        <h2 className="text-xl font-bold mb-4">CSS Custom Properties Used</h2>
+        <Text as="h2" level="h3" className="mb-4">CSS Custom Properties Used</Text>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border border-[var(--primitive-color-neutral-300)] rounded p-4">
-            <h3 className="font-semibold mb-2">Dimensions</h3>
+            <Text as="h3" level="h5" className="mb-2">Dimensions</Text>
             <ul className="text-sm space-y-1">
               <li><code>--component-nav-width</code> - 445px</li>
               <li><code>--component-nav-height</code> - 44px</li>
             </ul>
           </div>
           <div className="border border-[var(--primitive-color-neutral-300)] rounded p-4">
-            <h3 className="font-semibold mb-2">Padding</h3>
+            <Text as="h3" level="h5" className="mb-2">Padding</Text>
             <ul className="text-sm space-y-1">
               <li><code>--component-nav-padding-block</code> - 12px</li>
               <li><code>--component-nav-padding-inline</code> - 16px</li>
             </ul>
           </div>
           <div className="border border-[var(--primitive-color-neutral-300)] rounded p-4">
-            <h3 className="font-semibold mb-2">Colors</h3>
+            <Text as="h3" level="h5" className="mb-2">Colors</Text>
             <ul className="text-sm space-y-1">
               <li><code>--component-nav-bg</code> - Background</li>
               <li><code>--component-nav-text</code> - Text color</li>
@@ -85,7 +86,7 @@ export const StylingTokens: Story = {
             </ul>
           </div>
           <div className="border border-[var(--primitive-color-neutral-300)] rounded p-4">
-            <h3 className="font-semibold mb-2">Shape</h3>
+            <Text as="h3" level="h5" className="mb-2">Shape</Text>
             <ul className="text-sm space-y-1">
               <li><code>--component-nav-radius</code> - Border radius</li>
             </ul>

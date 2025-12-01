@@ -1,43 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ButtonProps } from "./Button";
 import { Button, type ButtonVariant } from "./Button";
-import { Icon } from "../icon/Icon";
-
-// Google Icon is custom and not in Box Icons, so we keep it as SVG
-const GoogleIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 25 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M24.8334 12.2728C24.8334 11.4219 24.7555 10.6037 24.6107 9.81826H13.0783V14.4601H19.6683C19.3844 15.9601 18.5217 17.231 17.2248 18.0819V21.0928H21.1822C23.4976 19.0037 24.8334 15.9274 24.8334 12.2728Z"
-      fill="#4285F4"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M13.0783 24C16.3844 24 19.1562 22.9255 21.1822 21.0928L17.2248 18.0819C16.1284 18.8019 14.7258 19.2273 13.0783 19.2273C9.88904 19.2273 7.1896 17.1164 6.2267 14.28H2.13579V17.3891C4.15064 21.3109 8.29164 24 13.0783 24Z"
-      fill="#34A853"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M6.2267 14.28C5.98181 13.56 5.84265 12.791 5.84265 12.0001C5.84265 11.2092 5.9818 10.4401 6.2267 9.72007V6.61097H2.13579C1.30647 8.23098 0.833374 10.0637 0.833374 12.0001C0.833374 13.9364 1.30648 15.7691 2.13579 17.3891L6.2267 14.28Z"
-      fill="#FBBC05"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M13.0783 4.77273C14.8761 4.77273 16.4902 5.37818 17.7592 6.56728L21.2712 3.12546C19.1506 1.18909 16.3788 0 13.0783 0C8.29164 0 4.15063 2.68915 2.13579 6.61097L6.2267 9.72007C7.18959 6.8837 9.88904 4.77273 13.0783 4.77273Z"
-      fill="#EA4335"
-    />
-  </svg>
-);
+import { BiHome, BiRightArrowAlt, BiTrash } from "react-icons/bi";
+import { FcGoogle } from "react-icons/fc";
 
 const VARIANT_OPTIONS: ButtonVariant[] = [
   "primary",
@@ -103,16 +68,16 @@ const meta = {
     },
     leadingIcon: {
       control: false,
-      description: "Icon displayed before button text",
+      description: "Icon from react-icons displayed before button text",
       table: {
-        type: { summary: "ReactNode" },
+        type: { summary: "IconType" },
       },
     },
     trailingIcon: {
       control: false,
-      description: "Icon displayed after button text",
+      description: "Icon from react-icons displayed after button text",
       table: {
-        type: { summary: "ReactNode" },
+        type: { summary: "IconType" },
       },
     },
     onClick: {
@@ -181,7 +146,7 @@ export const Destructive: Story = {
 export const Google: Story = {
   args: {
     variant: "google",
-    leadingIcon: <GoogleIcon />,
+    leadingIcon: FcGoogle,
     children: "Sign in with Google",
   },
 };
@@ -281,7 +246,7 @@ export const Disabled: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <Icon name="home" />,
+    leadingIcon: BiHome,
     children: "Go Home",
   },
   parameters: {
@@ -298,7 +263,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <Icon name="arrow-right" />,
+    trailingIcon: BiRightArrowAlt,
     children: "Continue",
   },
   parameters: {
@@ -315,8 +280,8 @@ export const WithTrailingIcon: Story = {
  */
 export const WithBothIcons: Story = {
   args: {
-    leadingIcon: <Icon name="home" />,
-    trailingIcon: <Icon name="arrow-right" />,
+    leadingIcon: BiHome,
+    trailingIcon: BiRightArrowAlt,
     children: "Home & Continue",
   },
   parameters: {
@@ -333,7 +298,7 @@ export const WithBothIcons: Story = {
  */
 export const IconOnly: Story = {
   args: {
-    leadingIcon: <Icon name="trash" />,
+    leadingIcon: BiTrash,
     children: undefined,
     "aria-label": "Delete",
   },
@@ -353,7 +318,7 @@ export const IconOnly: Story = {
 export const DestructiveWithIcon: Story = {
   args: {
     variant: "destructive",
-    leadingIcon: <Icon name="trash" />,
+    leadingIcon: BiTrash,
     children: "Delete Account",
   },
   parameters: {
@@ -372,11 +337,11 @@ export const InteractiveDemo: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-comfortable)]">
       <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-        <Button variant="primary" leadingIcon={<Icon name="home" />}>
+        <Button variant="primary" leadingIcon={BiHome}>
           Home
         </Button>
         <Button variant="secondary">Cancel</Button>
-        <Button variant="outline" trailingIcon={<Icon name="arrow-right" />}>
+        <Button variant="outline" trailingIcon={BiRightArrowAlt}>
           Next
         </Button>
       </div>
@@ -385,7 +350,7 @@ export const InteractiveDemo: Story = {
         <Button variant="primary" isLoading>
           Saving...
         </Button>
-        <Button variant="destructive" leadingIcon={<Icon name="trash" />}>
+        <Button variant="destructive" leadingIcon={BiTrash}>
           Delete
         </Button>
         <Button variant="outline" disabled>

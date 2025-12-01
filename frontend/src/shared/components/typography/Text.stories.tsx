@@ -160,7 +160,7 @@ export const CardContent: Story = {
   name: "Real World - Card",
   render: () => (
     <div className="border border-[var(--primitive-color-neutral-300)] rounded-lg p-4 max-w-md">
-      <h3 className="text-lg font-semibold mb-2">Structure 7A</h3>
+      <Text as="h3" level="h4" className="mb-2">Structure 7A</Text>
       <Text className="mb-2">234 spots available</Text>
       <Text variant="body-sm" color="secondary" className="mb-3">
         Last updated: 5 minutes ago by user #1234
@@ -211,7 +211,7 @@ export const MixedContent: Story = {
   render: () => (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h2 className="text-xl font-semibold mb-2">Parking Report Guidelines</h2>
+        <Text as="h2" level="h3" className="mb-2">Parking Report Guidelines</Text>
         <Text className="mb-4">
           Help us maintain accurate parking information by following these guidelines when
           submitting reports:

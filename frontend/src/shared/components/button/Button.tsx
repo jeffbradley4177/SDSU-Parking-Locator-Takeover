@@ -3,8 +3,9 @@ import {
   forwardRef,
   memo,
   type ComponentPropsWithoutRef,
-  type ReactNode,
 } from "react";
+import { type IconType } from "react-icons";
+import { Icon } from "@/shared/components/icon";
 
 export type ButtonVariant =
   | "primary"
@@ -12,15 +13,20 @@ export type ButtonVariant =
   | "outline"
   | "destructive"
   | "google"
-  | "teal";
+  | "teal"
+  | "tab";
 export type ButtonSize = "default";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   isLoading?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
+  /** Icon from react-icons to display before the button text */
+  leadingIcon?: IconType;
+  /** Icon from react-icons to display after the button text */
+  trailingIcon?: IconType;
+  /** Active state for tab variant */
+  isActive?: boolean;
 }
 
 // Base button styles using component tokens
@@ -151,7 +157,30 @@ const VARIANT_STYLES: Record<ButtonVariant, string> = {
     // Active State
     "active:bg-[var(--component-button-bg-teal-active)]",
   ].join(" "),
+
+  tab: [
+    // Base tab styles
+    "w-auto",
+    "border-transparent",
+    "rounded-[length:var(--component-tab-radius)]",
+    "text-[length:var(--component-tab-font-size)]",
+    "font-[var(--component-tab-font-weight)]",
+    "whitespace-nowrap",
+  ].join(" "),
 };
+
+// Tab active/inactive state styles (applied dynamically)
+const TAB_ACTIVE_STYLES = [
+  "bg-[var(--component-tab-bg-active)]",
+  "text-[var(--component-tab-text-active)]",
+].join(" ");
+
+const TAB_INACTIVE_STYLES = [
+  "bg-[var(--component-tab-bg-inactive)]",
+  "text-[var(--component-tab-text-inactive)]",
+  "hover:bg-[var(--component-tab-bg-hover)]",
+  "hover:text-[var(--component-tab-text-hover)]",
+].join(" ");
 
 // Memoized spinner component
 const Spinner = memo(() => (
@@ -161,20 +190,19 @@ const Spinner = memo(() => (
 ));
 Spinner.displayName = "Spinner";
 
-// Memoized icon wrapper component
-const IconWrapper = memo(({ icon }: { icon: ReactNode }) => (
-  <span className={ICON_WRAPPER_CLASSES} aria-hidden="true">
-    {icon}
-  </span>
-));
-IconWrapper.displayName = "IconWrapper";
+// Icon size for button icons
+const BUTTON_ICON_SIZE = "sm" as const;
 
 /**
+ * Button component with icon support via react-icons
  *
+ * @example
  * ```tsx
+ * import { BiHome, BiTrash } from "react-icons/bi";
+ * 
  * <Button variant="primary">Click me</Button>
- * <Button variant="outline" leadingIcon={<Icon />}>With Icon</Button>
- * <Button variant="destructive" isLoading>Loading...</Button>
+ * <Button variant="outline" leadingIcon={BiHome}>With Icon</Button>
+ * <Button variant="destructive" leadingIcon={BiTrash} isLoading>Loading...</Button>
  * ```
  */
 export const Button = memo(
@@ -184,6 +212,7 @@ export const Button = memo(
       size = "default",
       type = "button",
       isLoading = false,
+      isActive = false,
       disabled,
       leadingIcon,
       trailingIcon,
@@ -194,12 +223,15 @@ export const Button = memo(
     ref,
   ) {
     const isDisabled = disabled || isLoading;
+    const isTab = variant === "tab";
 
     // Compute button classes
     const buttonClasses = cn(
       BASE_CLASSES,
       SIZE_STYLES[size],
       VARIANT_STYLES[variant],
+      // Apply tab active/inactive styles
+      isTab && (isActive ? TAB_ACTIVE_STYLES : TAB_INACTIVE_STYLES),
       className,
     );
 
@@ -209,13 +241,18 @@ export const Button = memo(
         type={type}
         disabled={isDisabled}
         aria-busy={isLoading || undefined}
+        role={isTab ? "tab" : undefined}
+        aria-selected={isTab ? isActive : undefined}
+        tabIndex={isTab && !isActive ? -1 : undefined}
         data-variant={variant}
         data-size={size}
         data-loading={isLoading || undefined}
+        data-active={isTab && isActive ? true : undefined}
         className={cn(buttonClasses, isLoading && "relative")}
         style={{
-          paddingInline: "var(--component-button-padding-inline)",
-          paddingBlock: "var(--component-button-padding-block)",
+          minHeight: isTab ? "var(--component-tab-height)" : undefined,
+          paddingInline: isTab ? "var(--component-tab-padding-inline)" : "var(--component-button-padding-inline)",
+          paddingBlock: isTab ? "var(--component-tab-padding-block)" : "var(--component-button-padding-block)",
         }}
         {...rest}
       >
@@ -227,7 +264,9 @@ export const Button = memo(
         )}
 
         {/* Leading icon */}
-        {!isLoading && leadingIcon && <IconWrapper icon={leadingIcon} />}
+        {!isLoading && leadingIcon && (
+          <Icon icon={leadingIcon} size={BUTTON_ICON_SIZE} color="current" />
+        )}
 
         {/* Button content */}
         {children && (
@@ -242,7 +281,9 @@ export const Button = memo(
         )}
 
         {/* Trailing icon */}
-        {!isLoading && trailingIcon && <IconWrapper icon={trailingIcon} />}
+        {!isLoading && trailingIcon && (
+          <Icon icon={trailingIcon} size={BUTTON_ICON_SIZE} color="current" />
+        )}
       </button>
     );
   }),

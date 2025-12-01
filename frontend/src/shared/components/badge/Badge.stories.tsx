@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Badge, type BadgeVariant } from "./Badge";
 import { Icon } from "@/shared/components/icon";
+import { BiCheck, BiX, BiCheckCircle, BiError, BiErrorCircle, BiInfoCircle } from "react-icons/bi";
 
 // Custom dot icon for badge status indicators
 const DotIcon = () => (
@@ -258,7 +259,7 @@ export const ColorVariants: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <Icon name="check" />,
+    leadingIcon: <Icon icon={BiCheck} />,
     children: "Verified",
     variant: "success",
   },
@@ -276,7 +277,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <Icon name="close" />,
+    trailingIcon: <Icon icon={BiX} />,
     children: "Dismissible",
     variant: "neutral",
   },
@@ -296,7 +297,7 @@ export const WithTrailingIcon: Story = {
 export const WithBothIcons: Story = {
   args: {
     leadingIcon: <DotIcon />,
-    trailingIcon: <Icon name="close" />,
+    trailingIcon: <Icon icon={BiX} />,
     children: "Active Tag",
     variant: "primary",
   },
@@ -316,16 +317,16 @@ export const StatusIndicators: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
       <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-        <Badge variant="success" leadingIcon={<Icon name="check-circle" />}>
+        <Badge variant="success" leadingIcon={<Icon icon={BiCheckCircle} />}>
           Completed
         </Badge>
-        <Badge variant="warning" leadingIcon={<Icon name="error" />}>
+        <Badge variant="warning" leadingIcon={<Icon icon={BiError} />}>
           Warning
         </Badge>
-        <Badge variant="error" leadingIcon={<Icon name="error-circle" />}>
+        <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />}>
           Error
         </Badge>
-        <Badge variant="info" leadingIcon={<Icon name="info-circle" />}>
+        <Badge variant="info" leadingIcon={<Icon icon={BiInfoCircle} />}>
           Information
         </Badge>
       </div>
@@ -543,16 +544,16 @@ export const IconOnly: Story = {
     <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
       <Badge
         variant="success"
-        leadingIcon={<Icon name="check-circle" />}
+        leadingIcon={<Icon icon={BiCheckCircle} />}
         aria-label="Success"
       />
       <Badge
         variant="warning"
-        leadingIcon={<Icon name="error" />}
+        leadingIcon={<Icon icon={BiError} />}
         aria-label="Warning"
       />
-      <Badge variant="error" leadingIcon={<Icon name="error-circle" />} aria-label="Error" />
-      <Badge variant="info" leadingIcon={<Icon name="info-circle" />} aria-label="Info" />
+      <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />} aria-label="Error" />
+      <Badge variant="info" leadingIcon={<Icon icon={BiInfoCircle} />} aria-label="Info" />
       <Badge variant="primary" leadingIcon={<DotIcon />} aria-label="Active" />
     </div>
   ),
@@ -579,13 +580,13 @@ export const RealWorldExamples: Story = {
           Parking Lot Status:
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-          <Badge variant="success" leadingIcon={<Icon name="check-circle" />}>
+          <Badge variant="success" leadingIcon={<Icon icon={BiCheckCircle} />}>
             Available
           </Badge>
           <Badge variant="warning" leadingIcon={<DotIcon />}>
             Limited
           </Badge>
-          <Badge variant="error" leadingIcon={<Icon name="error-circle" />}>
+          <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />}>
             Full
           </Badge>
           <Badge variant="neutral" leadingIcon={<DotIcon />}>

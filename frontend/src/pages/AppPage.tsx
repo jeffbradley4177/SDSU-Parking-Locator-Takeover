@@ -5,6 +5,7 @@ import { About } from "./About";
 import { Profile } from "./Profile";
 import { Message } from "@/shared/components/message";
 import { ParkingLotList } from "@/features/parking/components/display/ParkingLotList";
+import { Text } from "@/shared/components/typography";
 import { RootLayout } from "../layouts";
 
 function AppPage() {
@@ -18,10 +19,10 @@ function AppPage() {
               <Home />
               <Message title="Here to help you find parking urgently" />
               <section style={{ marginTop: "2rem" }}>
-                <h1 style={{ marginBottom: "1rem" }}>SDSU Parking Availability</h1>
-                <p style={{ marginBottom: "1rem", opacity: 0.85 }}>
+                <Text as="h1" level="h1" className="mb-4">SDSU Parking Availability</Text>
+                <Text color="secondary" className="mb-4">
                   View current parking lot conditions and help keep the information updated by submitting your own report.
-                </p>
+                </Text>
                 <ParkingLotList />
               </section>
               <div></div>

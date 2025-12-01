@@ -13,6 +13,10 @@ export function ParkingMapView({
   center = SDSU_CENTER_COORDS,
   showParkingLots = true,
   zoom = DEFAULT_MAP_CONFIG.zoom,
+  rotatable = true,
+  bearing = 0,
+  touchRotate = true,
+  showRotateControl = true,
   ...props
 }: ParkingMapViewProps) {
   const tealIcon = tealMarkerIcon();
@@ -31,6 +35,10 @@ export function ParkingMapView({
       center={center}
       zoom={zoom}
       markers={markers}
+      rotatable={rotatable}
+      bearing={bearing}
+      touchRotate={touchRotate}
+      showRotateControl={showRotateControl}
       {...props}
     />
   );

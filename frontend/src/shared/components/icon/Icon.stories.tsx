@@ -1,142 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Icon, type IconName, type IconSize, type IconColor } from "./Icon";
-
-// All available icon names grouped by category
-const ICON_CATEGORIES = {
-  "Navigation & Map": [
-    "map",
-    "map-alt",
-    "navigation",
-    "current-location",
-    "map-pin",
-    "directions",
-  ],
-  Parking: ["car", "square", "square-rounded", "grid", "grid-alt"],
-  Status: [
-    "check-circle",
-    "check-shield",
-    "x-circle",
-    "error-circle",
-    "error",
-    "error-alt",
-    "time",
-    "time-five",
-    "pulse",
-    "circle",
-  ],
-  User: [
-    "user",
-    "user-circle",
-    "group",
-    "user-plus",
-    "shield",
-    "shield-alt",
-    "id-card",
-  ],
-  Analytics: [
-    "stats",
-    "bar-chart",
-    "bar-chart-alt",
-    "bar-chart-alt-2",
-    "pie-chart",
-    "pie-chart-alt",
-    "pie-chart-alt-2",
-    "trending-up",
-    "trending-down",
-    "line-chart",
-    "calendar",
-    "calendar-alt",
-    "data",
-  ],
-  Actions: [
-    "plus",
-    "plus-circle",
-    "minus",
-    "minus-circle",
-    "edit",
-    "edit-alt",
-    "save",
-    "trash",
-    "trash-alt",
-    "filter",
-    "filter-alt",
-    "search",
-    "search-alt",
-    "search-alt-2",
-    "refresh",
-    "upload",
-    "download",
-  ],
-  Reports: [
-    "flag",
-    "bell",
-    "check",
-    "check-double",
-    "file",
-    "file-blank",
-    "message-error",
-  ],
-  "UI Navigation": [
-    "menu",
-    "menu-left",
-    "menu-right",
-    "close",
-    "x",
-    "chevron-down",
-    "chevron-up",
-    "chevron-left",
-    "chevron-right",
-    "arrow-back",
-    "arrow-left",
-    "arrow-right",
-    "expand",
-    "collapse",
-    "show",
-    "hide",
-    "settings",
-    "cog",
-    "dots-horizontal",
-    "dots-vertical",
-  ],
-  Information: [
-    "info-circle",
-    "help",
-    "phone",
-    "phone-call",
-    "email",
-    "envelope",
-  ],
-  Authentication: [
-    "lock",
-    "lock-alt",
-    "lock-open",
-    "lock-open-alt",
-    "log-in",
-    "log-out",
-    "log-in-circle",
-    "log-out-circle",
-    "key",
-  ],
-  Staff: [
-    "wrench",
-    "briefcase",
-    "briefcase-alt",
-    "briefcase-alt-2",
-    "clipboard",
-    "task",
-  ],
-  Additional: [
-    "home",
-    "home-alt",
-    "like",
-    "dislike",
-    "link",
-    "link-external",
-    "history",
-    "layer-plus",
-    "layer",
-  ],
-} as const;
+import {
+  BiCar,
+  BiCheckCircle,
+  BiCog,
+  BiError,
+  BiMap,
+  BiMapPin,
+  BiPlus,
+  BiPulse,
+  BiSearch,
+  BiStats,
+  BiTrash,
+  BiUser,
+  BiXCircle,
+} from "react-icons/bi";
+import { Icon } from "./Icon";
+import type { IconSize, IconColor } from "./Icon";
 
 const SIZE_OPTIONS: IconSize[] = ["xs", "sm", "md", "lg", "xl", "2xl"];
 const COLOR_OPTIONS: IconColor[] = [
@@ -162,22 +41,21 @@ const meta = {
     docs: {
       description: {
         component:
-          "A flexible Icon component using Box Icons. Supports multiple sizes, colors, and includes all common icons needed for the parking locator application.",
+          "A flexible Icon component using react-icons. Import icons directly from react-icons and pass them to the `icon` prop.\n\n**Usage:**\n```tsx\nimport { BiCar } from 'react-icons/bi';\n<Icon icon={BiCar} size=\"md\" color=\"primary\" />\n```",
       },
     },
   },
   args: {
-    name: "car",
+    icon: BiCar,
     size: "md",
-    color: "current",
+    color: "inherit",
   },
   argTypes: {
-    name: {
-      control: "select",
-      options: Object.values(ICON_CATEGORIES).flat(),
-      description: "Icon name from the available set",
+    icon: {
+      control: false,
+      description: "Icon component from react-icons",
       table: {
-        type: { summary: "IconName" },
+        type: { summary: "IconType" },
       },
     },
     size: {
@@ -195,7 +73,7 @@ const meta = {
       description: "Color of the icon using design tokens",
       table: {
         type: { summary: "IconColor" },
-        defaultValue: { summary: "current" },
+        defaultValue: { summary: "inherit" },
       },
     },
   },
@@ -215,13 +93,11 @@ export const Playground: Story = {};
  */
 export const Sizes: Story = {
   render: () => (
-    <div className="flex items-end gap-[var(--component-page-gap-tight)]">
+    <div className="flex items-end gap-4">
       {SIZE_OPTIONS.map((size) => (
         <div key={size} className="flex flex-col items-center gap-2">
-          <Icon name="car" size={size} />
-          <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-tertiary)]">
-            {size}
-          </span>
+          <Icon icon={BiCar} size={size} />
+          <span className="text-xs text-gray-500">{size}</span>
         </div>
       ))}
     </div>
@@ -241,13 +117,11 @@ export const Sizes: Story = {
  */
 export const Colors: Story = {
   render: () => (
-    <div className="flex flex-wrap items-center gap-[var(--component-page-gap-comfortable)]">
+    <div className="flex flex-wrap items-center gap-6">
       {COLOR_OPTIONS.map((color) => (
         <div key={color} className="flex flex-col items-center gap-2">
-          <Icon name="map-pin" size="lg" color={color} />
-          <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-tertiary)]">
-            {color}
-          </span>
+          <Icon icon={BiMapPin} size="lg" color={color} />
+          <span className="text-xs text-gray-500">{color}</span>
         </div>
       ))}
     </div>
@@ -263,121 +137,26 @@ export const Colors: Story = {
 };
 
 /**
- * Complete icon library organized by category
- */
-export const AllIcons: Story = {
-  render: () => (
-    <div className="flex flex-col gap-[var(--component-page-gap-wide)]">
-      {Object.entries(ICON_CATEGORIES).map(([category, icons]) => (
-        <div key={category}>
-          <h3 className="mb-[var(--component-page-gap-comfortable)] text-[length:var(--text-size-lg)] font-[var(--text-weight-semibold)] text-[var(--text-color-primary)]">
-            {category}
-          </h3>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-[var(--component-page-gap-comfortable)]">
-            {icons.map((iconName) => (
-              <div
-                key={iconName}
-                className="flex flex-col items-center gap-2 rounded-[length:var(--component-button-radius)] border border-[var(--border-color-primary)] p-[var(--component-page-gap-comfortable)] transition-colors hover:bg-[var(--surface-color-secondary)]"
-              >
-                <Icon name={iconName as IconName} size="lg" color="primary" />
-                <span className="text-center text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-                  {iconName}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: {
-    controls: { disable: true },
-    docs: {
-      description: {
-        story:
-          "Complete library of all available icons organized by category. Click any icon name to copy it.",
-      },
-    },
-  },
-};
-
-/**
- * Navigation & Map icons
- */
-export const NavigationIcons: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-[var(--component-page-gap-comfortable)]">
-      {ICON_CATEGORIES["Navigation & Map"].map((iconName) => (
-        <div
-          key={iconName}
-          className="flex flex-col items-center gap-2 w-24"
-        >
-          <Icon name={iconName as IconName} size="xl" color="primary" />
-          <span className="text-center text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-            {iconName}
-          </span>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-/**
- * Parking-related icons
- */
-export const ParkingIcons: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-[var(--component-page-gap-comfortable)]">
-      {ICON_CATEGORIES.Parking.map((iconName) => (
-        <div
-          key={iconName}
-          className="flex flex-col items-center gap-2 w-24"
-        >
-          <Icon name={iconName as IconName} size="xl" color="primary" />
-          <span className="text-center text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-            {iconName}
-          </span>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-/**
- * Status icons showing different states
+ * Status icons with semantic colors
  */
 export const StatusIcons: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-[var(--component-page-gap-comfortable)]">
+    <div className="flex gap-6">
       <div className="flex flex-col items-center gap-2">
-        <Icon name="check-circle" size="xl" color="success" />
-        <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-          Available
-        </span>
+        <Icon icon={BiCheckCircle} size="xl" color="success" />
+        <span className="text-xs text-gray-500">Available</span>
       </div>
       <div className="flex flex-col items-center gap-2">
-        <Icon name="error" size="xl" color="warning" />
-        <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-          Limited
-        </span>
+        <Icon icon={BiError} size="xl" color="warning" />
+        <span className="text-xs text-gray-500">Limited</span>
       </div>
       <div className="flex flex-col items-center gap-2">
-        <Icon name="x-circle" size="xl" color="error" />
-        <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-          Full
-        </span>
+        <Icon icon={BiXCircle} size="xl" color="error" />
+        <span className="text-xs text-gray-500">Full</span>
       </div>
       <div className="flex flex-col items-center gap-2">
-        <Icon name="pulse" size="xl" color="primary" />
-        <span className="text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-          Real-time
-        </span>
+        <Icon icon={BiPulse} size="xl" color="primary" />
+        <span className="text-xs text-gray-500">Real-time</span>
       </div>
     </div>
   ),
@@ -392,97 +171,47 @@ export const StatusIcons: Story = {
 };
 
 /**
- * Analytics & Dashboard icons
- */
-export const AnalyticsIcons: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-[var(--component-page-gap-comfortable)]">
-      {ICON_CATEGORIES.Analytics.map((iconName) => (
-        <div
-          key={iconName}
-          className="flex flex-col items-center gap-2 w-24"
-        >
-          <Icon name={iconName as IconName} size="xl" color="primary" />
-          <span className="text-center text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-            {iconName}
-          </span>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-/**
- * Common action icons
- */
-export const ActionIcons: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-[var(--component-page-gap-comfortable)]">
-      {["plus", "edit", "trash", "search", "filter", "refresh"].map(
-        (iconName) => (
-          <div
-            key={iconName}
-            className="flex flex-col items-center gap-2 w-24"
-          >
-            <Icon name={iconName as IconName} size="xl" color="primary" />
-            <span className="text-center text-[length:var(--text-size-xs)] text-[var(--text-color-secondary)]">
-              {iconName}
-            </span>
-          </div>
-        ),
-      )}
-    </div>
-  ),
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-/**
- * Icons in buttons demonstration
+ * Icons in buttons
  */
 export const InButtons: Story = {
   render: () => (
-    <div className="flex flex-col gap-[var(--component-page-gap-comfortable)]">
-      <div className="flex gap-[var(--component-page-gap-tight)]">
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-3">
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-[length:var(--component-button-radius)] bg-[var(--component-button-bg-primary-default)] px-4 py-2 text-[var(--component-button-text-primary-default)]"
+          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white"
         >
-          <Icon name="plus" size="sm" />
+          <Icon icon={BiPlus} size="sm" />
           Add Parking
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-[length:var(--component-button-radius)] border border-[var(--border-color-primary)] px-4 py-2"
+          className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2"
         >
-          <Icon name="search" size="sm" />
+          <Icon icon={BiSearch} size="sm" />
           Search
         </button>
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-[length:var(--component-button-radius)] border border-[var(--border-color-primary)] p-2"
+          className="inline-flex items-center justify-center rounded-lg border border-gray-300 p-2"
           aria-label="Settings"
         >
-          <Icon name="settings" size="sm" />
+          <Icon icon={BiCog} size="sm" />
         </button>
       </div>
-      <div className="flex gap-[var(--component-page-gap-tight)]">
+      <div className="flex gap-3">
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-[length:var(--component-button-radius)] bg-[var(--semantic-color-error)] px-4 py-2 text-white"
+          className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white"
         >
-          <Icon name="trash" size="sm" color="inherit" />
+          <Icon icon={BiTrash} size="sm" />
           Delete
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-[length:var(--component-button-radius)] bg-[var(--surface-color-secondary)] px-4 py-2"
+          className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2"
         >
-          <Icon name="map" size="sm" />
+          <Icon icon={BiMap} size="sm" />
           View Map
         </button>
       </div>
@@ -503,47 +232,43 @@ export const InButtons: Story = {
  */
 export const UsageExamples: Story = {
   render: () => (
-    <div className="flex flex-col gap-[var(--component-page-gap-wide)]">
+    <div className="flex flex-col gap-6">
       {/* Parking status card */}
-      <div className="rounded-[length:var(--component-button-radius)] border border-[var(--border-color-primary)] p-[var(--component-page-gap-comfortable)]">
+      <div className="rounded-lg border border-gray-200 p-4">
         <div className="flex items-center gap-3">
-          <Icon name="car" size="xl" color="primary" />
+          <Icon icon={BiCar} size="xl" color="primary" />
           <div>
-            <h4 className="text-[length:var(--text-size-md)] font-[var(--text-weight-semibold)]">
-              Parking Lot A
-            </h4>
+            <h4 className="font-semibold">Parking Lot A</h4>
             <div className="mt-1 flex items-center gap-2">
-              <Icon name="check-circle" size="sm" color="success" />
-              <span className="text-[length:var(--text-size-sm)] text-[var(--text-color-secondary)]">
-                50 spots available
-              </span>
+              <Icon icon={BiCheckCircle} size="sm" color="success" />
+              <span className="text-sm text-gray-500">50 spots available</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation menu */}
-      <div className="rounded-[length:var(--component-button-radius)] border border-[var(--border-color-primary)] p-[var(--component-page-gap-comfortable)]">
-        <nav className="flex flex-col gap-2">
+      <div className="rounded-lg border border-gray-200 p-4">
+        <nav className="flex flex-col gap-1">
           <a
             href="#"
-            className="flex items-center gap-3 rounded px-3 py-2 transition-colors hover:bg-[var(--surface-color-secondary)]"
+            className="flex items-center gap-3 rounded px-3 py-2 hover:bg-gray-100"
           >
-            <Icon name="map" size="md" color="primary" />
+            <Icon icon={BiMap} size="md" color="primary" />
             <span>Map View</span>
           </a>
           <a
             href="#"
-            className="flex items-center gap-3 rounded px-3 py-2 transition-colors hover:bg-[var(--surface-color-secondary)]"
+            className="flex items-center gap-3 rounded px-3 py-2 hover:bg-gray-100"
           >
-            <Icon name="stats" size="md" color="primary" />
+            <Icon icon={BiStats} size="md" color="primary" />
             <span>Analytics</span>
           </a>
           <a
             href="#"
-            className="flex items-center gap-3 rounded px-3 py-2 transition-colors hover:bg-[var(--surface-color-secondary)]"
+            className="flex items-center gap-3 rounded px-3 py-2 hover:bg-gray-100"
           >
-            <Icon name="user" size="md" color="primary" />
+            <Icon icon={BiUser} size="md" color="primary" />
             <span>Profile</span>
           </a>
         </nav>

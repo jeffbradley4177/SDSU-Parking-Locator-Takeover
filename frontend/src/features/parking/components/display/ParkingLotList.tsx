@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef } from "react";
 import type { Lot, LotStatus } from "@/shared/types";
-import { LotStatusBadge } from "./LotStatusBadge"
+import { LotStatusBadge } from "./LotStatusBadge";
+import { Text } from "@/shared/components/typography";
 
 
 export const ParkingLotList = () => {
@@ -88,9 +89,9 @@ const dialogRef = useRef<HTMLDialogElement | null>(null);
         className="rounded-[var(--component-dialog-radius)] p-[var(--component-dialog-padding)]"
       >
         <form method="dialog" className="grid gap-[var(--component-dialog-gap)]">
-          <h3 className="m-0 text-[length:var(--component-dialog-heading-size)] font-[var(--component-dialog-heading-weight)]">
+          <Text as="h3" level="h4" className="m-0">
             Set status for {selectedLot?.name ?? "Lot"}
-          </h3>
+          </Text>
           <div className="flex gap-[var(--component-dialog-gap)]">
             <button
               type="button"

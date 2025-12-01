@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { GoogleMaps } from "./GoogleMaps";
+import { Text } from "@/shared/components/typography";
 
 /**
  * GoogleMaps component displays an interactive Google Maps view.
@@ -145,10 +146,10 @@ export const InPageContext: Story = {
   render: () => (
     <div className="max-w-6xl mx-auto p-6">
       <header className="mb-4">
-        <h1 className="text-3xl font-bold mb-2">Campus Location</h1>
-        <p className="text-[var(--component-typography-color-secondary)]">
+        <Text as="h1" level="h1" className="mb-2">Campus Location</Text>
+        <Text color="secondary">
           Find parking locations across the SDSU campus using Google Maps.
-        </p>
+        </Text>
       </header>
       <div className="rounded-lg overflow-hidden shadow-lg">
         <GoogleMaps
@@ -158,8 +159,8 @@ export const InPageContext: Story = {
           markers={SAMPLE_MARKERS}
         />
       </div>
-      <div className="mt-4 text-sm text-[var(--component-typography-color-secondary)]">
-        <p>Map data © Google</p>
+      <div className="mt-4">
+        <Text variant="body-sm" color="secondary">Map data © Google</Text>
       </div>
     </div>
   ),

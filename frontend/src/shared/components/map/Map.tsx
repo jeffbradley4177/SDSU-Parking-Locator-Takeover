@@ -2,8 +2,11 @@ import { cn } from "@/lib/cn";
 import { forwardRef, memo, useEffect, type ComponentPropsWithoutRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { configureLeafletIcons } from "@/shared/utils";
-import { Tab } from "@/shared/components/tabs";
-import { Icon } from "@/shared/components/icon";
+import { Button } from "@/shared/components/button";
+import { BiPlus, BiMinus, BiNavigation } from "react-icons/bi";
+
+// Import leaflet-rotate plugin (side-effect import that extends L.Map)
+import "leaflet-rotate";
 
 const BASE_CLASSES = [
   "w-full h-full rounded-[var(--component-map-radius)]",
@@ -56,6 +59,14 @@ export interface MapProps extends Omit<ComponentPropsWithoutRef<"div">, "childre
   tileLayerAttribution?: string;
   /** Show custom zoom controls using Tab component (default: true) */
   showZoomControls?: boolean;
+  /** Enable map rotation (default: false) */
+  rotatable?: boolean;
+  /** Initial bearing/rotation angle in degrees (0-360, 0 = north) */
+  bearing?: number;
+  /** Enable touch rotation gestures on mobile (default: true when rotatable) */
+  touchRotate?: boolean;
+  /** Show rotation control button to reset to north (default: true when rotatable) */
+  showRotateControl?: boolean;
 }
 
 /**
@@ -74,16 +85,42 @@ function ZoomControls() {
 
   return (
     <div className="absolute top-4 right-4 z-[1000] flex flex-col gap-1 pointer-events-auto">
-      <Tab
+      <Button
+        variant="tab"
         onClick={handleZoomIn}
-        leadingIcon={<Icon name="plus" size="sm" color="current" />}
+        leadingIcon={BiPlus}
         aria-label="Zoom in"
         className="bg-white shadow-lg hover:shadow-xl"
       />
-      <Tab
+      <Button
+        variant="tab"
         onClick={handleZoomOut}
-        leadingIcon={<Icon name="minus" size="sm" color="current" />}
+        leadingIcon={BiMinus}
         aria-label="Zoom out"
+        className="bg-white shadow-lg hover:shadow-xl"
+      />
+    </div>
+  );
+}
+
+/**
+ * Custom rotation control component - resets map to north
+ */
+function RotationControls() {
+  const map = useMap();
+
+  const handleResetNorth = () => {
+    // setBearing is added by leaflet-rotate plugin
+    (map as L.Map & { setBearing: (bearing: number) => void }).setBearing(0);
+  };
+
+  return (
+    <div className="absolute top-4 left-4 z-[1000] pointer-events-auto">
+      <Button
+        variant="tab"
+        onClick={handleResetNorth}
+        leadingIcon={BiNavigation}
+        aria-label="Reset to north"
         className="bg-white shadow-lg hover:shadow-xl"
       />
     </div>
@@ -124,6 +161,18 @@ function ZoomControls() {
  * - `terrain`: Stamen Terrain (topographic)
  * - `toner`: Stamen Toner (high contrast black & white)
  *
+ * Rotation support (requires leaflet-rotate plugin):
+ * - `rotatable`: Enable map rotation
+ * - `bearing`: Initial rotation angle (0-360°, 0 = north)
+ * - `touchRotate`: Enable two-finger rotation on mobile
+ * - `showRotateControl`: Show reset-to-north button
+ *
+ * @example
+ * ```tsx
+ * // Rotated map
+ * <Map center={[32.775, -117.071]} zoom={17} rotatable bearing={45} />
+ * ```
+ *
  * For Google Maps features, use the GoogleMaps component instead.
  *
  * @see GoogleMaps for Google Maps API integration
@@ -139,6 +188,10 @@ export const Map = memo(
       tileLayerUrl,
       tileLayerAttribution,
       showZoomControls = true,
+      rotatable = false,
+      bearing = 0,
+      touchRotate = true,
+      showRotateControl = true,
       className,
       ...rest
     },
@@ -156,6 +209,16 @@ export const Map = memo(
 
     const wrapperClasses = cn(BASE_CLASSES, className);
 
+    // Rotation options for leaflet-rotate plugin
+    const rotationOptions = rotatable
+      ? {
+          rotate: true,
+          bearing,
+          touchRotate,
+          rotateControl: false, // We use our own custom control
+        }
+      : {};
+
     return (
       <div ref={ref} className={wrapperClasses} {...rest}>
         <MapContainer
@@ -163,6 +226,7 @@ export const Map = memo(
           zoom={zoom}
           zoomControl={false}
           className="w-full h-full rounded-[var(--component-map-radius)]"
+          {...rotationOptions}
         >
           <TileLayer
             attribution={tileConfig.attribution}
@@ -178,6 +242,7 @@ export const Map = memo(
             </Marker>
           ))}
           {showZoomControls && <ZoomControls />}
+          {rotatable && showRotateControl && <RotationControls />}
         </MapContainer>
       </div>
     );

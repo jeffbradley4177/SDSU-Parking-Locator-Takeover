@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ParkingLotList } from "./ParkingLotList";
+import { Text } from "@/shared/components/typography";
 
 /**
  * ParkingLotList displays an interactive table of all parking lots.
@@ -39,11 +40,11 @@ export const InPageContext: Story = {
   render: () => (
     <div className="max-w-4xl mx-auto">
       <header className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">SDSU Parking Availability</h1>
-        <p className="text-[var(--component-typography-color-secondary)]">
+        <Text as="h1" level="h1" className="mb-2">SDSU Parking Availability</Text>
+        <Text color="secondary">
           View current parking lot conditions and help keep the information updated by
           submitting your own report.
-        </p>
+        </Text>
       </header>
       <div className="bg-white rounded-lg shadow">
         <ParkingLotList />

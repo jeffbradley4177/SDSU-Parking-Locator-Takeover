@@ -1,6 +1,7 @@
 import { cn } from "@/lib/cn";
 import { Monogram } from "@/shared/components/logo";
 import { Icon } from "@/shared/components/icon";
+import { BiMenu, BiUserCircle } from "react-icons/bi";
 
 export interface NavigationLink {
   to: string;
@@ -34,7 +35,7 @@ export function Navigation({
     >
       {/* Menu Icon - Left */}
       <div className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)]">
-        <Icon name="menu" size="lg" color="current" />
+        <Icon icon={BiMenu} size="lg" color="current" />
       </div>
 
       {/* Logo Monogram - Center */}
@@ -42,7 +43,7 @@ export function Navigation({
 
       {/* Profile Icon - Right */}
       <div className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)]">
-        <Icon name="user-circle" size="lg" color="current" />
+        <Icon icon={BiUserCircle} size="lg" color="current" />
       </div>
     </nav>
   );

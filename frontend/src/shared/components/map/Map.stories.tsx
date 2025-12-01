@@ -15,6 +15,22 @@ const meta = {
       options: ["default", "light", "dark", "terrain", "toner"],
       description: "Map tile layer style",
     },
+    rotatable: {
+      control: "boolean",
+      description: "Enable map rotation",
+    },
+    bearing: {
+      control: { type: "range", min: 0, max: 360, step: 15 },
+      description: "Initial rotation angle in degrees (0 = north)",
+    },
+    touchRotate: {
+      control: "boolean",
+      description: "Enable touch rotation gestures on mobile",
+    },
+    showRotateControl: {
+      control: "boolean",
+      description: "Show rotation control button",
+    },
   },
 } satisfies Meta<typeof Map>;
 
@@ -383,5 +399,169 @@ export const AllStyles: Story = {
   },
   parameters: {
     layout: "padded",
+  },
+};
+
+/**
+ * Rotated map with 45° bearing
+ * 
+ * Use Cases:
+ * - Navigation-oriented views
+ * - Following a route direction
+ * - Artistic/unique map displays
+ * - Aligning with real-world orientation
+ */
+export const RotatedView: Story = {
+  render: (args) => (
+    <div className="h-[500px]">
+      <Map {...args} />
+    </div>
+  ),
+  args: {
+    center: SDSU_CENTER,
+    zoom: 17,
+    markers: SAMPLE_MARKERS,
+    rotatable: true,
+    bearing: 45,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Map rotated 45° from north. Uses leaflet-rotate plugin for rotation support.",
+      },
+    },
+  },
+};
+
+/**
+ * Interactive rotation with touch/gesture support
+ * 
+ * Use Cases:
+ * - Mobile map applications
+ * - User-controlled orientation
+ * - Exploration interfaces
+ * - Freeform navigation
+ */
+export const InteractiveRotation: Story = {
+  render: (args) => (
+    <div className="h-[500px]">
+      <Map {...args} />
+    </div>
+  ),
+  args: {
+    center: SDSU_CENTER,
+    zoom: 17,
+    markers: SAMPLE_MARKERS,
+    rotatable: true,
+    bearing: 0,
+    touchRotate: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Interactive rotation enabled. On desktop: hold Shift and drag to rotate. On mobile: use two-finger rotation gesture. Click the compass button to reset to north.",
+      },
+    },
+  },
+};
+
+/**
+ * South-facing view (180° rotation)
+ * 
+ * Use Cases:
+ * - Reversed perspective views
+ * - Custom orientation displays
+ * - South-oriented maps (common in some regions)
+ */
+export const SouthFacing: Story = {
+  render: (args) => (
+    <div className="h-[500px]">
+      <Map {...args} />
+    </div>
+  ),
+  args: {
+    center: SDSU_CENTER,
+    zoom: 17,
+    markers: SAMPLE_MARKERS,
+    rotatable: true,
+    bearing: 180,
+  },
+};
+
+/**
+ * Rotated map without rotation control button
+ * 
+ * Use Cases:
+ * - Fixed orientation displays
+ * - Simplified UI requirements
+ * - When rotation reset isn't needed
+ */
+export const RotatedNoControl: Story = {
+  render: (args) => (
+    <div className="h-[500px]">
+      <Map {...args} />
+    </div>
+  ),
+  args: {
+    center: SDSU_CENTER,
+    zoom: 17,
+    markers: SAMPLE_MARKERS,
+    rotatable: true,
+    bearing: 30,
+    showRotateControl: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Rotated map without the reset-to-north button. Useful for fixed-orientation displays.",
+      },
+    },
+  },
+};
+
+/**
+ * Comparing rotation angles
+ * 
+ * Use Cases:
+ * - Design system documentation
+ * - Rotation comparison
+ * - Orientation demonstrations
+ */
+export const RotationAngles: Story = {
+  render: () => (
+    <div className="grid grid-cols-2 gap-4">
+      <div>
+        <h3 className="text-sm font-semibold mb-2">0° (North)</h3>
+        <div className="h-[300px]">
+          <Map center={SDSU_CENTER} zoom={17} markers={SAMPLE_MARKERS} rotatable bearing={0} />
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-semibold mb-2">45° (Northeast)</h3>
+        <div className="h-[300px]">
+          <Map center={SDSU_CENTER} zoom={17} markers={SAMPLE_MARKERS} rotatable bearing={45} />
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-semibold mb-2">90° (East)</h3>
+        <div className="h-[300px]">
+          <Map center={SDSU_CENTER} zoom={17} markers={SAMPLE_MARKERS} rotatable bearing={90} />
+        </div>
+      </div>
+      <div>
+        <h3 className="text-sm font-semibold mb-2">180° (South)</h3>
+        <div className="h-[300px]">
+          <Map center={SDSU_CENTER} zoom={17} markers={SAMPLE_MARKERS} rotatable bearing={180} />
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        story: "Comparison of different rotation angles from 0° (north) to 180° (south).",
+      },
+    },
   },
 };

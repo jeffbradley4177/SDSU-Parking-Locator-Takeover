@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input, type InputSize } from "./Input";
 import { Icon } from "@/shared/components/icon";
+import { Text } from "@/shared/components/typography";
+import { BiSearch, BiCheck, BiEnvelope, BiLock, BiErrorCircle } from "react-icons/bi";
 
 const SIZE_OPTIONS: InputSize[] = ["default"];
 
@@ -113,7 +115,7 @@ export const Default: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <Icon name="search" size="md" />,
+    leadingIcon: <Icon icon={BiSearch} size="md" />,
     placeholder: "Search...",
   },
 };
@@ -123,7 +125,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <Icon name="check" size="md" />,
+    trailingIcon: <Icon icon={BiCheck} size="md" />,
     placeholder: "Verified input",
   },
 };
@@ -133,8 +135,8 @@ export const WithTrailingIcon: Story = {
  */
 export const WithBothIcons: Story = {
   args: {
-    leadingIcon: <Icon name="email" size="md" />,
-    trailingIcon: <Icon name="check" size="md" />,
+    leadingIcon: <Icon icon={BiEnvelope} size="md" />,
+    trailingIcon: <Icon icon={BiCheck} size="md" />,
     placeholder: "verified@email.com",
   },
 };
@@ -166,8 +168,8 @@ export const ErrorWithIcon: Story = {
   args: {
     type: "password",
     placeholder: "Enter password",
-    leadingIcon: <Icon name="lock" size="md" />,
-    trailingIcon: <Icon name="error-circle" size="md" />,
+    leadingIcon: <Icon icon={BiLock} size="md" />,
+    trailingIcon: <Icon icon={BiErrorCircle} size="md" />,
     error: true,
   },
 };
@@ -179,8 +181,8 @@ export const AllStates: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-default)] w-full">
       <Input placeholder="Default state" />
-      <Input placeholder="With leading icon" leadingIcon={<Icon name="search" size="md" />} />
-      <Input placeholder="With trailing icon" trailingIcon={<Icon name="check" size="md" />} />
+      <Input placeholder="With leading icon" leadingIcon={<Icon icon={BiSearch} size="md" />} />
+      <Input placeholder="With trailing icon" trailingIcon={<Icon icon={BiCheck} size="md" />} />
       <Input placeholder="Disabled state" disabled />
       <Input placeholder="Error state" error />
     </div>
@@ -200,18 +202,18 @@ export const AllStates: Story = {
 export const LoginForm: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-default)] w-full">
-      <h2 className="text-[length:var(--component-typography-heading-h2-size)] font-[var(--component-typography-heading-weight-semibold)]">
+      <Text as="h2" level="h2">
         Sign In
-      </h2>
+      </Text>
       <Input
         type="email"
         placeholder="your.email@sdsu.edu"
-        leadingIcon={<Icon name="email" size="md" />}
+        leadingIcon={<Icon icon={BiEnvelope} size="md" />}
       />
       <Input
         type="password"
         placeholder="Enter your password"
-        leadingIcon={<Icon name="lock" size="md" />}
+        leadingIcon={<Icon icon={BiLock} size="md" />}
       />
     </div>
   ),
@@ -233,14 +235,14 @@ export const ValidationExample: Story = {
       <Input
         type="email"
         placeholder="invalid-email"
-        leadingIcon={<Icon name="email" size="md" />}
+        leadingIcon={<Icon icon={BiEnvelope} size="md" />}
         error
       />
       <Input
         type="password"
         placeholder="123"
-        leadingIcon={<Icon name="lock" size="md" />}
-        trailingIcon={<Icon name="error-circle" size="md" />}
+        leadingIcon={<Icon icon={BiLock} size="md" />}
+        trailingIcon={<Icon icon={BiErrorCircle} size="md" />}
         error
       />
       <Input placeholder="ab" error />

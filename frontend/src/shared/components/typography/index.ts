@@ -1,13 +1,9 @@
 /**
  * Typography Components
  *
- * Exports all typography components with consistent styling from design tokens
+ * Unified Text component for all typography needs including headings, body text, and links.
+ * Uses design tokens for consistent styling.
  */
 
-export { H1, H2, H3 } from "./Heading";
 export { Text } from "./Text";
-export type { TextProps } from "./Text";
-export { Link } from "./Link";
-export type { LinkProps } from "./Link";
-export { Caption } from "./Caption";
-export type { CaptionProps } from "./Caption";
+export type { TextProps, LinkVariant } from "./Text";

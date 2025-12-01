@@ -2,6 +2,8 @@ import { cn } from "@/lib/cn";
 import {
     forwardRef,
     memo,
+    useCallback,
+    useEffect,
     useRef,
     useState,
     type ComponentPropsWithoutRef,
@@ -11,13 +13,21 @@ import {
 export type DrawerState = "collapsed" | "partial" | "full";
 
 export interface DrawerProps extends Omit<ComponentPropsWithoutRef<"div">, "children"> {
+    /** Current drawer state (for controlled mode) */
     state?: DrawerState;
+    /** Callback when drawer state changes */
     onStateChange?: (state: DrawerState) => void;
+    /** Drawer content (hidden when collapsed) */
     children?: ReactNode;
+    /** Show backdrop scrim when drawer is open */
     showScrim?: boolean;
+    /** Close drawer when clicking the scrim */
     closeOnScrimClick?: boolean;
+    /** Enable controlled mode (state prop required) */
     controlled?: boolean;
-};
+    /** Allow closing drawer with Escape key */
+    closeOnEscape?: boolean;
+}
 
 const STATE_CLASSES: Record<DrawerState, string> = {
     collapsed: "h-[var(--component-drawer-height-collapsed)]",
@@ -34,6 +44,9 @@ const BASE_CLASSES = [
     "shadow-[var(--component-drawer-shadow)]",
     "z-[var(--component-drawer-z-index)]",
     "transition-all duration-[var(--component-drawer-transition-duration)]",
+    "motion-reduce:transition-none",
+    // Safe area inset for mobile devices with home indicator
+    "pb-[env(safe-area-inset-bottom)]",
 ].join(" ");
 
 const SCRIM_CLASSES = [
@@ -41,12 +54,14 @@ const SCRIM_CLASSES = [
     "bg-[var(--component-drawer-scrim)]",
     "z-[var(--component-drawer-scrim-z-index)]",
     "transition-opacity duration-[var(--component-drawer-transition-duration)]",
+    "motion-reduce:transition-none",
 ].join(" ");
 
 const HANDLE_CONTAINER_CLASSES = [
     "flex items-center justify-center",
     "cursor-grab active:cursor-grabbing",
     "touch-none",
+    "select-none",
 ].join(" ");
 
 const HANDLE_BAR_CLASSES = [
@@ -61,6 +76,9 @@ const CONTENT_CLASSES = [
     "flex",
     "flex-col",
     "overflow-y-auto",
+    // Smooth scrolling for mobile
+    "-webkit-overflow-scrolling-touch",
+    "overscroll-contain",
 ].join(" ");
 
 export const Drawer = memo(
@@ -73,6 +91,7 @@ export const Drawer = memo(
             showScrim = false,
             closeOnScrimClick = true,
             controlled = false,
+            closeOnEscape = true,
             ...props
         },
         ref
@@ -83,23 +102,63 @@ export const Drawer = memo(
         const startHeight = useRef<number>(0);
         const isDragging = useRef<boolean>(false);
         const currentState = controlled ? controlledState || "collapsed" : internalState;
+        const isOpen = currentState !== "collapsed";
 
-        const setState = (newState: DrawerState) => {
+        const setState = useCallback((newState: DrawerState) => {
             if (!controlled) {
                 setInternalState(newState);
             }
             onStateChange?.(newState);
-        };
+        }, [controlled, onStateChange]);
 
-        const handleDragStart = (clientY: number) => {
+        // Body scroll lock when drawer is open (prevents iOS bounce/scroll issues)
+        useEffect(() => {
+            if (!isOpen) return;
+
+            const originalOverflow = document.body.style.overflow;
+            const originalPosition = document.body.style.position;
+            const originalWidth = document.body.style.width;
+            const scrollY = window.scrollY;
+
+            // Lock body scroll
+            document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
+            document.body.style.width = "100%";
+            document.body.style.top = `-${scrollY}px`;
+
+            return () => {
+                // Restore body scroll
+                document.body.style.overflow = originalOverflow;
+                document.body.style.position = originalPosition;
+                document.body.style.width = originalWidth;
+                document.body.style.top = "";
+                window.scrollTo(0, scrollY);
+            };
+        }, [isOpen]);
+
+        // Escape key handler
+        useEffect(() => {
+            if (!isOpen || !closeOnEscape) return;
+
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (e.key === "Escape") {
+                    setState("collapsed");
+                }
+            };
+
+            document.addEventListener("keydown", handleKeyDown);
+            return () => document.removeEventListener("keydown", handleKeyDown);
+        }, [isOpen, closeOnEscape, setState]);
+
+        const handleDragStart = useCallback((clientY: number) => {
             isDragging.current = true;
             startY.current = clientY;
             if (drawerRef.current) {
                 startHeight.current = drawerRef.current.getBoundingClientRect().height;
             }
-        };
+        }, []);
 
-        const handleDragMove = (clientY: number) => {
+        const handleDragMove = useCallback((clientY: number) => {
             if (!isDragging.current || !drawerRef.current) return;
 
             const deltaY = startY.current - clientY;
@@ -113,36 +172,60 @@ export const Drawer = memo(
             } else {
                 setState("full");
             }
-        };
+        }, [setState]);
 
-        const handleDragEnd = () => {
+        const handleDragEnd = useCallback(() => {
             isDragging.current = false;
-        };
+        }, []);
 
-        const handleTouchStart = (e: React.TouchEvent) => {
+        const handleTouchStart = useCallback((e: React.TouchEvent) => {
             handleDragStart(e.touches[0].clientY);
-        };
+        }, [handleDragStart]);
 
-        const handleTouchMove = (e: React.TouchEvent) => {
+        const handleTouchMove = useCallback((e: React.TouchEvent) => {
             handleDragMove(e.touches[0].clientY);
-        };
+        }, [handleDragMove]);
 
-        const handleTouchEnd = () => {
+        const handleTouchEnd = useCallback(() => {
             handleDragEnd();
-        };
+        }, [handleDragEnd]);
 
-        const handleMouseDown = (e: React.MouseEvent) => {
+        // Mouse drag handlers (for desktop testing)
+        useEffect(() => {
+            const handleMouseMove = (e: MouseEvent) => {
+                if (isDragging.current) {
+                    handleDragMove(e.clientY);
+                }
+            };
+
+            const handleMouseUp = () => {
+                if (isDragging.current) {
+                    handleDragEnd();
+                }
+            };
+
+            // Add global listeners for mouse drag
+            document.addEventListener("mousemove", handleMouseMove);
+            document.addEventListener("mouseup", handleMouseUp);
+
+            return () => {
+                document.removeEventListener("mousemove", handleMouseMove);
+                document.removeEventListener("mouseup", handleMouseUp);
+            };
+        }, [handleDragMove, handleDragEnd]);
+
+        const handleMouseDown = useCallback((e: React.MouseEvent) => {
+            e.preventDefault(); // Prevent text selection during drag
             handleDragStart(e.clientY);
-        };
+        }, [handleDragStart]);
 
-
-        const handleScrimClick = () => {
-            if (closeOnScrimClick && currentState !== "collapsed") {
+        const handleScrimClick = useCallback(() => {
+            if (closeOnScrimClick && isOpen) {
                 setState("collapsed");
             }
-        };
+        }, [closeOnScrimClick, isOpen, setState]);
 
-        const handleHandleClick = () => {
+        const handleHandleClick = useCallback(() => {
             if (currentState === "collapsed") {
                 setState("partial");
             } else if (currentState === "partial") {
@@ -150,13 +233,17 @@ export const Drawer = memo(
             } else {
                 setState("collapsed");
             }
-        };
+        }, [currentState, setState]);
 
         return (
             <>
-                {showScrim && currentState !== "collapsed" && (
+                {/* Scrim always renders for smooth fade animation */}
+                {showScrim && (
                     <div
-                        className={SCRIM_CLASSES}
+                        className={cn(
+                            SCRIM_CLASSES,
+                            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                        )}
                         onClick={handleScrimClick}
                         aria-hidden="true"
                     />

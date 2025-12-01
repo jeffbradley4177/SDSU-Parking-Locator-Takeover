@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ParkingMapView } from "./ParkingMapView";
+import { Text } from "@/shared/components/typography";
 
 /**
  * ParkingMapView displays an interactive Leaflet map with parking lot markers.
@@ -40,16 +41,16 @@ export const InPageContext: Story = {
   render: () => (
     <div className="max-w-6xl mx-auto p-6">
       <header className="mb-4">
-        <h1 className="text-3xl font-bold mb-2">Campus Parking Map</h1>
-        <p className="text-[var(--component-typography-color-secondary)]">
+        <Text as="h1" level="h1" className="mb-2">Campus Parking Map</Text>
+        <Text color="secondary">
           Click on any marker to view parking lot details and current availability.
-        </p>
+        </Text>
       </header>
       <div className="rounded-lg overflow-hidden shadow-lg">
         <ParkingMapView size="default" />
       </div>
-      <div className="mt-4 text-sm text-[var(--component-typography-color-secondary)]">
-        <p>Map tiles © OpenStreetMap contributors</p>
+      <div className="mt-4">
+        <Text variant="body-sm" color="secondary">Map tiles © OpenStreetMap contributors</Text>
       </div>
     </div>
   ),
@@ -67,7 +68,7 @@ export const Features: Story = {
   render: () => (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div>
-        <h2 className="text-2xl font-bold mb-4">Map Features</h2>
+        <Text as="h2" level="h2" className="mb-4">Map Features</Text>
         <ul className="list-disc list-inside space-y-2 text-[var(--component-typography-color-secondary)]">
           <li>Interactive pan and zoom controls</li>
           <li>17 parking lot markers across campus</li>
@@ -95,7 +96,7 @@ export const ParkingLots: Story = {
   name: "Covered Parking Lots",
   render: () => (
     <div className="max-w-6xl mx-auto p-6 space-y-4">
-      <h2 className="text-2xl font-bold">Parking Lots on Map</h2>
+      <Text as="h2" level="h2">Parking Lots on Map</Text>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-4">
         {[
           "Lot 1",
