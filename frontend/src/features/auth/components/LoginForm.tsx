@@ -19,6 +19,8 @@ export interface LoginFormProps {
   onGoogleSignIn?: () => void;
   /** Callback for create account link */
   onCreateAccount?: () => void;
+  /** Callback for forgot password link */
+  onForgotPassword?: () => void;
   /** External loading state */
   isLoading?: boolean;
   /** External error message */
@@ -29,6 +31,7 @@ export const LoginForm = memo(function LoginForm({
   onSubmit,
   onGoogleSignIn,
   onCreateAccount,
+  onForgotPassword,
   isLoading = false,
   error,
 }: LoginFormProps) {
@@ -85,18 +88,32 @@ export const LoginForm = memo(function LoginForm({
           onChange={handleEmailChange}
           leadingIcon={EmailIcon}
           disabled={isLoading}
+          autoFocus
           required
         />
 
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-          leadingIcon={LockIcon}
-          disabled={isLoading}
-          required
-        />
+        <div>
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+            leadingIcon={LockIcon}
+            disabled={isLoading}
+            required
+          />
+          {onForgotPassword && (
+            <div className="mt-2">
+              <button
+                type="button"
+                onClick={onForgotPassword}
+                className="text-[var(--semantic-text-link)] hover:underline text-sm"
+              >
+                Forgot password?
+              </button>
+            </div>
+          )}
+        </div>
 
         <Button
           type="submit"

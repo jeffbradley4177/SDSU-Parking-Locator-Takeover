@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Marker, MarkerPin } from "@/shared/components/googlemaps";
+import { Marker } from "react-leaflet";
 
 export interface ParkingMarkerProps {
   /** Latitude and longitude coordinates */
@@ -13,9 +13,7 @@ export const ParkingMarker = memo(function ParkingMarker({
   title
 }: ParkingMarkerProps) {
   return (
-    <Marker position={position} title={title}>
-      <MarkerPin title={title} />
-    </Marker>
+    <Marker position={position} title={title} />
   );
 });
 
