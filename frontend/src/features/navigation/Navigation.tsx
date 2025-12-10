@@ -1,7 +1,9 @@
 import { cn } from "@/lib/cn";
 import { Monogram } from "@/shared/components/logo";
 import { Icon } from "@/shared/components/icon";
-import { BiMenu, BiUserCircle } from "react-icons/bi";
+import { BiMenu, BiUserCircle, BiLogIn } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export interface NavigationLink {
   to: string;
@@ -16,6 +18,17 @@ export interface NavigationProps {
 export function Navigation({
   brandName = "SDSU Parking Locator",
 }: NavigationProps) {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleProfileClick = () => {
+    if (isAuthenticated) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <nav
       className={cn(
@@ -41,10 +54,18 @@ export function Navigation({
       {/* Logo Monogram - Center */}
       <Monogram variant="red" size="sm" alt={brandName} className="h-full max-h-full min-w-[20px]" />
 
-      {/* Profile Icon - Right */}
-      <div className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)]">
-        <Icon icon={BiUserCircle} size="lg" color="current" />
-      </div>
+      {/* Profile/Login Icon - Right */}
+      <button
+        onClick={handleProfileClick}
+        className="flex items-center justify-center h-[44px] w-[44px] text-[var(--component-nav-icon)] hover:opacity-80 transition-opacity"
+        aria-label={isAuthenticated ? "View profile" : "Login"}
+      >
+        <Icon
+          icon={isAuthenticated ? BiUserCircle : BiLogIn}
+          size="lg"
+          color="current"
+        />
+      </button>
     </nav>
   );
 }
