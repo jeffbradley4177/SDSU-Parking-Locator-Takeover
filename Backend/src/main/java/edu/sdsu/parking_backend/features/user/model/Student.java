@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import edu.sdsu.parking_backend.features.parking.service.*;
 
 @Entity
 @Data

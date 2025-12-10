@@ -1,6 +1,11 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.parking.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
+import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
+import edu.sdsu.parking_backend.features.parking.service.ParkingLotService;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,10 +14,10 @@ import java.util.Map;
 
 public class ParkingLotController 
 {
-    private final ParkingLotRepo parkingLotRepo;
+    private final ParkingLotRepository parkingLotRepo;
     private final ParkingLotService parkingLotService;
 
-    public ParkingLotController(ParkingLotRepo parkingLotRepo, ParkingLotService parkingLotService)
+    public ParkingLotController(ParkingLotRepository parkingLotRepo, ParkingLotService parkingLotService)
     {this.parkingLotRepo = parkingLotRepo; this.parkingLotService = parkingLotService;}
 
     // ENDPOINTS:

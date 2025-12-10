@@ -2,6 +2,7 @@ package edu.sdsu.parking_backend.features.analytics.service;
 
 import edu.sdsu.parking_backend.features.analytics.model.Analytics;
 import edu.sdsu.parking_backend.features.analytics.repository.AnalyticsRepository;
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
 import edu.sdsu.parking_backend.features.parking.model.Report;
 import edu.sdsu.parking_backend.features.parking.repository.ReportRepository;
 import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
