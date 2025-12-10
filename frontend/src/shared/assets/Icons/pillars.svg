@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="pillars" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 184 224" enable-background="new 0 0 184 224" xml:space="preserve">
+<g>
+	<rect x="116" y="96" fill="none" width="12" height="104"/>
+	<rect x="56" y="96" fill="none" width="12" height="104"/>
+	<rect x="40" y="96" fill="none" width="8" height="104"/>
+	<rect x="20" y="96" fill="none" width="12" height="104"/>
+	<polygon fill="none" points="56,208 48,208 40,208 32,208 16,208 12,208 12,216 76,216 76,208 72,208 	"/>
+	<rect x="152" y="96" fill="none" width="12" height="104"/>
+	<rect x="136" y="96" fill="none" width="8" height="104"/>
+	<path fill="none" d="M92,8C47.0216,8,10.1876,43.5313,8.0936,88H16h16h8h8h8h16h40h16h8h8h8h16h7.9064
+		C173.8124,43.5313,136.9784,8,92,8z"/>
+	<polygon fill="none" points="152,208 144,208 136,208 128,208 112,208 108,208 108,216 172,216 172,208 168,208 	"/>
+	<path d="M92,0C41.2716,0,0,41.2697,0,92c0,2.2109,1.7912,4,4,4h8v104H8c-2.2088,0-4,1.7893-4,4v16c0,2.2109,1.7912,4,4,4h72
+		c2.2088,0,4-1.7891,4-4v-16c0-2.2107-1.7912-4-4-4h-4V96h32v104h-4c-2.2088,0-4,1.7893-4,4v16c0,2.2109,1.7912,4,4,4h72
+		c2.2088,0,4-1.7891,4-4v-16c0-2.2107-1.7912-4-4-4h-4V96h8c2.2088,0,4-1.7891,4-4C184,41.2697,142.7284,0,92,0z M20,96h12v104H20
+		V96z M40,96h8v104h-8V96z M76,216H12v-8h4h16h8h8h8h16h4V216z M68,200H56V96h12V200z M116,96h12v104h-12V96z M136,96h8v104h-8V96z
+		 M172,216h-64v-8h4h16h8h8h8h16h4V216z M164,200h-12V96h12V200z M168,88h-16h-8h-8h-8h-16H72H56h-8h-8h-8H16H8.0936
+		C10.1876,43.5313,47.0216,8,92,8c44.9784,0,81.8124,35.5313,83.9064,80H168z"/>
+</g>
+</svg>

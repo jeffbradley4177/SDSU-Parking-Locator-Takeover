@@ -1,8 +1,10 @@
-export function About() {
+import { Text } from "@/shared/components/typography";
+
+export const About = () => {
   return (
-    <div>
-      <h1>About</h1>
-      <p>This app was built by SDSU students to help track parking availability on campus.</p>
+    <div className="p-[var(--component-page-padding-block)]">
+      <Text as="h1">About</Text>
+      <Text>This app was built by SDSU students to help track parking availability on campus.</Text>
     </div>
   );
 }

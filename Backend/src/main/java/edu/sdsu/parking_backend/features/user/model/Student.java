@@ -1,4 +1,4 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.user.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

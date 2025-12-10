@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="labequipment" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 192 232" enable-background="new 0 0 192 232" xml:space="preserve">
+<g>
+	<rect x="40" y="40" fill="none" width="32" height="44"/>
+	<rect x="40" y="28" fill="none" width="32" height="4"/>
+	<path fill="none" d="M40,155.9689C40,164.8085,47.1776,172,56,172s16-7.1915,16-16.0311V92.6953H40V155.9689z"/>
+	<polygon fill="none" points="8,200 8,208 184,208 184,200 164,200 	"/>
+	<rect x="172" y="8" fill="none" width="12" height="184"/>
+	<path d="M164,0v32H80V20H32v12H22v8h10v44.6953V92v63.9689C32,169.2189,42.7656,180,56,180s24-10.7811,24-24.0311V92v-7.3047V40h84
+		v152H0v24h16v16h8v-16h144v16h8v-16h16v-16v-8V0H164z M72,155.9689C72,164.8085,64.8224,172,56,172s-16-7.1915-16-16.0311V92.6953
+		h32V155.9689z M40,28h32v4H40V28z M72,84H40V40h32V84z M184,208H8v-8h156h20V208z M172,192V8h12v184H172z"/>
+</g>
+</svg>

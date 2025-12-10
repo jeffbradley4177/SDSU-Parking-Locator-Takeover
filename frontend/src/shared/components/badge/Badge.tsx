@@ -49,6 +49,7 @@ export interface BadgeProps extends ComponentPropsWithoutRef<"span"> {
   variant?: BadgeVariant;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
+  onDismiss?: () => void;
   className?: string;
 }
 
@@ -57,12 +58,10 @@ const BASE_CLASSES = [
   // Layout
   "inline-flex items-center",
   "min-h-[var(--component-badge-height)]",
-  "gap-[var(--component-badge-gap)]",
+  "gap-[length:var(--component-badge-gap)]",
 
   // Shape & Border
-  "rounded-[var(--component-badge-radius)]",
-  "px-[var(--component-badge-padding-inline)]",
-  "py-[var(--component-badge-padding-block)]",
+  "rounded-[length:var(--component-badge-radius)]",
 
   // Typography
   "text-[length:var(--component-badge-font-size)]",
@@ -88,15 +87,15 @@ const ICON_WRAPPER_CLASSES = [
 const CloseIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="18"
+    width="var(--component-badge-close-icon-size)"
+    height="var(--component-badge-close-icon-size)"
     viewBox="0 0 18 18"
     fill="none"
   >
     <path
       d="M11.6092 6.39077L6.39077 11.6092M6.39077 6.39077L11.6092 11.6092M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="var(--component-badge-close-icon-stroke-width)"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -300,7 +299,7 @@ export const Badge = memo(
     const badgeClasses = cn(
       BASE_CLASSES,
       variantClass,
-      isDismissible && "cursor-pointer hover:opacity-80 transition-opacity",
+      isDismissible && "cursor-pointer hover:opacity-[var(--component-badge-hover-opacity)] duration-[var(--component-badge-transition-duration)]",
       className,
     );
 
@@ -322,6 +321,10 @@ export const Badge = memo(
         className={badgeClasses}
         role="status"
         onClick={handleClick}
+        style={{
+          paddingInline: "var(--component-badge-padding-inline)",
+          paddingBlock: "var(--component-badge-padding-block)",
+        }}
         {...props}
       >
         {leadingIcon && <IconWrapper icon={leadingIcon} />}
@@ -338,5 +341,3 @@ export const Badge = memo(
 );
 
 Badge.displayName = "Badge";
-
-export default Badge;

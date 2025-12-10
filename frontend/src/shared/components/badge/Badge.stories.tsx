@@ -1,69 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Badge, type BadgeVariant } from "./Badge";
+import { Icon } from "@/shared/components/icon";
+import { BiCheck, BiX, BiCheckCircle, BiError, BiErrorCircle, BiInfoCircle } from "react-icons/bi";
 
-// Icon components for stories
+// Custom dot icon for badge status indicators
 const DotIcon = () => (
   <span
     aria-hidden="true"
     className="inline-block h-[var(--component-badge-icon-size)] w-[var(--component-badge-icon-size)] rounded-full bg-current"
   />
-);
-
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-const AlertIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-const InfoIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path
-      fillRule="evenodd"
-      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-      clipRule="evenodd"
-    />
-  </svg>
 );
 
 const VARIANT_OPTIONS: BadgeVariant[] = [
@@ -313,7 +259,7 @@ export const ColorVariants: Story = {
  */
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <CheckIcon />,
+    leadingIcon: <Icon icon={BiCheck} />,
     children: "Verified",
     variant: "success",
   },
@@ -331,7 +277,7 @@ export const WithLeadingIcon: Story = {
  */
 export const WithTrailingIcon: Story = {
   args: {
-    trailingIcon: <CloseIcon />,
+    trailingIcon: <Icon icon={BiX} />,
     children: "Dismissible",
     variant: "neutral",
   },
@@ -351,7 +297,7 @@ export const WithTrailingIcon: Story = {
 export const WithBothIcons: Story = {
   args: {
     leadingIcon: <DotIcon />,
-    trailingIcon: <CloseIcon />,
+    trailingIcon: <Icon icon={BiX} />,
     children: "Active Tag",
     variant: "primary",
   },
@@ -371,16 +317,16 @@ export const StatusIndicators: Story = {
   render: () => (
     <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
       <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-        <Badge variant="success" leadingIcon={<CheckIcon />}>
+        <Badge variant="success" leadingIcon={<Icon icon={BiCheckCircle} />}>
           Completed
         </Badge>
-        <Badge variant="warning" leadingIcon={<AlertIcon />}>
+        <Badge variant="warning" leadingIcon={<Icon icon={BiError} />}>
           Warning
         </Badge>
-        <Badge variant="error" leadingIcon={<AlertIcon />}>
+        <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />}>
           Error
         </Badge>
-        <Badge variant="info" leadingIcon={<InfoIcon />}>
+        <Badge variant="info" leadingIcon={<Icon icon={BiInfoCircle} />}>
           Information
         </Badge>
       </div>
@@ -557,7 +503,7 @@ export const DismissibleDemo: Story = {
 
     return (
       <div className="flex flex-col gap-[var(--component-page-gap-default)] max-w-[500px]">
-        <p className="text-[length:var(--semantic-text-size-body-sm)] text-[color:var(--semantic-text-secondary)]">
+        <p className="text-[length:var(--component-typography-text-body-sm-size)] text-[color:var(--component-typography-color-secondary)]">
           Click on any badge to remove it:
         </p>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -572,7 +518,7 @@ export const DismissibleDemo: Story = {
           ))}
         </div>
         {tags.length === 0 && (
-          <p className="text-[length:var(--semantic-text-size-body-sm)] text-[color:var(--semantic-text-secondary)] italic">
+          <p className="text-[length:var(--component-typography-text-body-sm-size)] text-[color:var(--component-typography-color-secondary)] italic">
             All tags removed! Refresh to reset.
           </p>
         )}
@@ -598,16 +544,16 @@ export const IconOnly: Story = {
     <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
       <Badge
         variant="success"
-        leadingIcon={<CheckIcon />}
+        leadingIcon={<Icon icon={BiCheckCircle} />}
         aria-label="Success"
       />
       <Badge
         variant="warning"
-        leadingIcon={<AlertIcon />}
+        leadingIcon={<Icon icon={BiError} />}
         aria-label="Warning"
       />
-      <Badge variant="error" leadingIcon={<AlertIcon />} aria-label="Error" />
-      <Badge variant="info" leadingIcon={<InfoIcon />} aria-label="Info" />
+      <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />} aria-label="Error" />
+      <Badge variant="info" leadingIcon={<Icon icon={BiInfoCircle} />} aria-label="Info" />
       <Badge variant="primary" leadingIcon={<DotIcon />} aria-label="Active" />
     </div>
   ),
@@ -630,17 +576,17 @@ export const RealWorldExamples: Story = {
     <div className="flex flex-col gap-[var(--component-page-gap-comfortable)] max-w-[600px]">
       {/* Parking lot status */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Parking Lot Status:
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
-          <Badge variant="success" leadingIcon={<CheckIcon />}>
+          <Badge variant="success" leadingIcon={<Icon icon={BiCheckCircle} />}>
             Available
           </Badge>
           <Badge variant="warning" leadingIcon={<DotIcon />}>
             Limited
           </Badge>
-          <Badge variant="error" leadingIcon={<AlertIcon />}>
+          <Badge variant="error" leadingIcon={<Icon icon={BiErrorCircle} />}>
             Full
           </Badge>
           <Badge variant="neutral" leadingIcon={<DotIcon />}>
@@ -651,7 +597,7 @@ export const RealWorldExamples: Story = {
 
       {/* User roles */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           User Roles:
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -664,7 +610,7 @@ export const RealWorldExamples: Story = {
 
       {/* Categories - Using dismissible variants */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Selected Parking Structures (Dismissible):
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">
@@ -697,7 +643,7 @@ export const RealWorldExamples: Story = {
 
       {/* Filter tags - Using dismissible variants */}
       <div className="flex flex-col gap-[var(--component-page-gap-tight)]">
-        <span className="text-[length:var(--semantic-text-size-body-sm)] font-[var(--semantic-text-weight-semibold)]">
+        <span className="text-[length:var(--component-typography-text-body-sm-size)] font-[var(--component-typography-heading-weight-semibold)]">
           Active Filters (Click to Remove):
         </span>
         <div className="flex flex-wrap gap-[var(--component-page-gap-tight)]">

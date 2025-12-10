@@ -1,47 +1,20 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import { Text } from "@/shared/components/typography";
+import { ParkingMapView } from "@/features/parking/components/map";
+import { Container } from "@/shared/components/container";
 
-// Fix default marker icon issue in Leaflet + Vite
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-});
-
-export function Map() {
-  const sdsuCenter: [number, number] = [32.775, -117.071]; // SDSU coordinates
-
-  const parkingLots = [
-    { name: 'Parking Structure 1', coords: [32.7762, -117.0715] },
-    { name: 'Parking Structure 2', coords: [32.7745, -117.0702] },
-    { name: 'Parking 12', coords: [32.7768, -117.0728] },
-  ];
-
+export const Map = () => {
   return (
-    <div>
-      <h1 style={{ marginBottom: "1rem" }}>SDSU Campus Map</h1>
-      <p style={{ marginBottom: "1rem" }}>Explore parking lots on the SDSU campus.</p>
+    <div className="p-[var(--component-page-padding-block)]">
+      <Container minWidth="xl">
+        <Text as="h1" className="mb-[var(--component-page-gap-default)]">SDSU Campus Map</Text>
+        <Text className="mb-[var(--component-page-gap-default)]">
+          Explore parking lots on the SDSU campus.
+        </Text>
 
-      <MapContainer
-        center={sdsuCenter}
-        zoom={17}
-        style={{ height: "500px", width: "100%", borderRadius: "12px" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {parkingLots.map((lot, index) => (
-          <Marker key={index} position={lot.coords as [number, number]}>
-            <Popup>{lot.name}</Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+        <div className="h-[600px]">
+          <ParkingMapView />
+        </div>
+      </Container>
     </div>
   );
 }

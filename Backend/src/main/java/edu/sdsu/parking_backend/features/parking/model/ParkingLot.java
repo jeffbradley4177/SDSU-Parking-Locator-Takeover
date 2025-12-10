@@ -1,4 +1,4 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.parking.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

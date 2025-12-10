@@ -27,6 +27,7 @@
     /* Fixes "Cannot find module" warnings */
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["./*"],
       "*": ["*"]
     }
   },
