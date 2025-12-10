@@ -1,8 +1,14 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.user.model;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import edu.sdsu.parking_backend.features.analytics.model.Analytics;
+import edu.sdsu.parking_backend.features.analytics.service.AnalyticsService;
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
+import edu.sdsu.parking_backend.features.parking.service.ParkingLotService;
+import edu.sdsu.parking_backend.features.user.service.UserService;
 import jakarta.persistence.Transient;
 
 @Component

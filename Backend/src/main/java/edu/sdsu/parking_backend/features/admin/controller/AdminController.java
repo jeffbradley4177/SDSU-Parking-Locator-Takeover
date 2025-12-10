@@ -1,6 +1,10 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.admin.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import edu.sdsu.parking_backend.features.analytics.model.Analytics;
+import edu.sdsu.parking_backend.features.user.model.Admin;
+
 import org.springframework.http.ResponseEntity;
 
 @RestController

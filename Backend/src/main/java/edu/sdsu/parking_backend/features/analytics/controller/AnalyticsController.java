@@ -1,10 +1,14 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.analytics.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
+
+import edu.sdsu.parking_backend.features.analytics.model.Analytics;
+import edu.sdsu.parking_backend.features.analytics.repository.AnalyticsRepository;
+import edu.sdsu.parking_backend.features.analytics.service.AnalyticsService;
 
 // Creates the public API endpoints that admin can use
 @RestController
@@ -13,9 +17,9 @@ public class AnalyticsController
 {
     // Attributes
     private final AnalyticsService analyticsService;
-    private final AnalyticsRepo    analyticsRepo;
+    private final AnalyticsRepository    analyticsRepo;
     
-    public AnalyticsController(AnalyticsService analyticsService, AnalyticsRepo analyticsRepo)
+    public AnalyticsController(AnalyticsService analyticsService, AnalyticsRepository analyticsRepo)
     {
         this.analyticsRepo = analyticsRepo;
         this.analyticsService = analyticsService;

@@ -1,4 +1,4 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.user.model;
 
 import java.util.*;
 
@@ -28,7 +28,7 @@ public abstract class User
     @Transient
     private transient java.util.Scanner scanner = new java.util.Scanner(System.in);
 
-    void login() {
+    public void login() {
 
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
@@ -48,7 +48,7 @@ public abstract class User
         return this.userID;
     }
 
-    void logout() {
+    public void logout() {
 
         if (isLoggedIn) {
             isLoggedIn = false;

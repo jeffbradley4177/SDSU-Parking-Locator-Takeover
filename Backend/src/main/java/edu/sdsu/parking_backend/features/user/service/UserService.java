@@ -1,9 +1,11 @@
 
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.user.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import edu.sdsu.parking_backend.features.user.model.User;
 
 import java.util.Collection;
 import java.util.Map;

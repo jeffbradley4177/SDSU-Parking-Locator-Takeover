@@ -1,4 +1,4 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.analytics.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

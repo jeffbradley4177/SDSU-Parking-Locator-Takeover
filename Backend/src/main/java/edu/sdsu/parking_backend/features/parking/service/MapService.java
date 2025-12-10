@@ -1,6 +1,8 @@
-package edu.sdsu.parking_backend;
+package edu.sdsu.parking_backend.features.parking.service;
 
 import org.springframework.stereotype.Service;
+
+import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
 
 @Service
 public class MapService 
