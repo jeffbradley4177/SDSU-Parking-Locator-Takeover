@@ -75,6 +75,28 @@ public class ParkingLotService {
         log.info("Lot {} updated → occupied={}, capacity={}, status={}", lotId, occupied, capacity, lot.getCurrentStatus());
         return true;
     }
+    @Transactional
+    public boolean updateStatus(int lotId, String status) {
+        Optional<ParkingLot> opt = parkingLotRepository.findById(lotId);
+        if (opt.isEmpty()) {
+            return false;
+        }
+
+        ParkingLot lot = opt.get();
+
+        String normalized = status.toUpperCase();
+        if (!normalized.equals("OPEN") && !normalized.equals("BUSY") && !normalized.equals("FULL")) {
+            return false;
+        }
+
+        lot.setCurrentStatus(normalized);
+        lot.updateStatus(lot.getOccupiedSpaces()); 
+        parkingLotRepository.save(lot);
+
+        // Optional: create a Report record here too
+
+        return true;
+    }
 }
 
 

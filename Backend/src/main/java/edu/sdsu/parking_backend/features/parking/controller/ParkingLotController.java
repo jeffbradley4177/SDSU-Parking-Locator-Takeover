@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.*;
 import edu.sdsu.parking_backend.features.parking.model.ParkingLot;
 import edu.sdsu.parking_backend.features.parking.repository.ParkingLotRepository;
 import edu.sdsu.parking_backend.features.parking.service.ParkingLotService;
+import org.springframework.http.ResponseEntity;
+import edu.sdsu.parking_backend.shared.request.StatusUpdateRequest;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController         // handle web req
 @RequestMapping("/api") // every endpoint url start with "/api"
+@CrossOrigin(origins = "http://localhost:5173")
 
 public class ParkingLotController 
 {
@@ -31,9 +34,15 @@ public class ParkingLotController
     {return parkingLotRepo.findById(id).orElse(null);} // search for a parking lot with the specific id#
 
     // flips FULL/NOT FULL and records a timestamp
-    @PostMapping("/lots/{id}/occupied")
-    public Map<String, Object> updateOccupied(@PathVariable int id, @RequestParam int occupied) {
-        boolean ok = parkingLotService.updateOccupied(id, occupied);
-        return Map.of("ok", ok);
+    @PostMapping("/{id}/status")
+    public ResponseEntity<?> updateStatus(
+            @PathVariable int id,
+            @RequestBody StatusUpdateRequest request) {
+
+        boolean ok = parkingLotService.updateStatus(id, request.status());
+        if (!ok) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid lot or status"));
+        }
+        return ResponseEntity.ok(Map.of("ok", true));
     }
 }

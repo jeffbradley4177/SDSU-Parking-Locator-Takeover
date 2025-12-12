@@ -1,44 +1,45 @@
-import { useState, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import type { Lot, LotStatus } from "@/shared/types";
 import { LotStatusBadge } from "./LotStatusBadge";
 import { Text } from "@/shared/components/typography";
+import { fetchLots, updateLotStatus as apiUpdateLotStatus } from "../../../../shared/api/parking.ts";
 
 
 export const ParkingLotList = () => {
 
 
-// lot data exists here. We can build the JSON submission from the state values here.
-const [lots, setLots] = useState<Lot[]>([
-  { id: 1, name: "Lot 1", status: "Open", lastUpdated: "5 min ago" },
-  { id: 2, name: "Lot 2", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 3, name: "Lot 2A", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 4, name: "Lot 2B", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 5, name: "Lot 2C", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 6, name: "Lot 3", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 7, name: "Lot 4", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 8, name: "Lot 6", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 9, name: "Lot 7", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 10, name: "Lot 10", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 11, name: "Lot 11", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 12, name: "Lot 12", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 13, name: "Lot 14", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 14, name: "Lot 15", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 15, name: "Lot 17", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 16, name: "Lot 17A", status: "Busy", lastUpdated: "12 min ago" },
-  { id: 17, name: "Lot 17B", status: "Busy", lastUpdated: "12 min ago" },
-]);
+// Use state to hold the lots, initially an empty array as it will be loaded from the API
+  const [lots, setLots] = useState<Lot[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-const [selectedLotId, setSelectedLotId] = useState<number | null>(null);
+const [selectedLot, setSelectedLot] = useState<number | null>(null);
 const [, setIsDialogOpen] = useState(false);
 const dialogRef = useRef<HTMLDialogElement | null>(null);
 
-  const selectedLot = useMemo(
-    () => lots.find(lot => lot.id === selectedLotId) ?? null,
-    [lots, selectedLotId]
-  );
+useEffect(() => {
+    // This function loads the lot data from the backend
+    const loadLots = async () => {
+      try {
+        setLoading(true);
+        // Assuming fetchLots is available and returns Lot[]
+        const data = await fetchLots(); 
+        setLots(data);
+        setError(null); // Clear previous errors on success
+      } catch (e: any) {
+        // Set an error state if fetching fails
+        console.error("Failed to load lots:", e);
+        setError(e.message ?? "Failed to load lots");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadLots();
+  }, []);
 
   const openDialogFor = (id: number) => {
-    setSelectedLotId(id);
+    setSelectedLot(id);
     setIsDialogOpen(true);
     // show native dialog
     requestAnimationFrame(() => dialogRef.current?.showModal());
@@ -46,17 +47,33 @@ const dialogRef = useRef<HTMLDialogElement | null>(null);
 
    const closeDialog = () => {
     setIsDialogOpen(false);
+    setSelectedLot(null); // Clear the selected lot when closing
     dialogRef.current?.close();
   };
 
 
 // submission here can send information to the server side. It needs to be built out.
-  const updateLotStatus = (status: LotStatus) => {
-    if (selectedLotId == null) return;
-    setLots(prev =>
-      prev.map(l => (l.id === selectedLotId ? { ...l, status, lastUpdated: "just now" } : l))
-    );
-    closeDialog();
+  const updateLotStatus = async (status: LotStatus) => {
+    try {
+      // 1. Send the update to the server (from the refactored example)
+      await apiUpdateLotStatus(selectedLot.id, status);
+
+      // 2. Update the local state to reflect the change immediately
+      setLots(prev =>
+        prev.map(l =>
+          l.id === selectedLot.id
+            ? { ...l, status, lastUpdated: "just now" } // Use "just now" for local UI update
+            : l
+        )
+      );
+
+      // 3. Close the dialog on success
+      closeDialog();
+    } catch (e: any) {
+      // Handle the error and show a user-friendly message
+      console.error("Failed to update lot status:", e);
+      setError(e.message ?? `Failed to update status for ${selectedLot.name}.`);
+    }
   };
 
 
