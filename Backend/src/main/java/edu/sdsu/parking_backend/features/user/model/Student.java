@@ -1,27 +1,20 @@
 package edu.sdsu.parking_backend.features.user.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import edu.sdsu.parking_backend.features.parking.service.*;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@DiscriminatorValue("STUDENT") // links this to the user inheritance table
-public class Student extends User 
-{
+@DiscriminatorValue("STUDENT")
+public class Student extends User {
     private String studentID;
     private String carInfo;
-    @Transient
-    private transient final ParkingLotService parkingLotService;
+    // REMOVED: ParkingLotService and the complex @RequiredArgsConstructor
 }
-
